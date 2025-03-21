@@ -1,722 +1,457 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible"content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/fa8c2eff71.js" crossorigin="anonymous"></script>   
-    <link rel="stylesheet" href="/css/style.css">
-    <title>LVT</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
+
+	<!-- title -->
+	<title>Trung Tâm Tiêm Chủng</title>
+
+	<!-- Font Awesome (Dùng để lấy icon) -->
+	<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+	<!-- favicon -->
+	<link rel="shortcut icon" type="image/png" href="img/favicon.png">
+	<!-- google font -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+	<!-- fontawesome -->
+	<link rel="stylesheet" href="css/all.min.css">
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+	<!-- owl carousel -->
+	<link rel="stylesheet" href="css/owl.carousel.css">
+	<!-- magnific popup -->
+	<link rel="stylesheet" href="css/magnific-popup.css">
+	<!-- animate css -->
+	<link rel="stylesheet" href="css/animate.css">
+	<!-- mean menu css -->
+	<link rel="stylesheet" href="css/meanmenu.min.css">
+	<!-- main style -->
+	<link rel="stylesheet" href="css/main.css">
+	<!-- responsive -->
+	<link rel="stylesheet" href="css/responsive.css">
+	<link rel="stylesheet" href="css/styles.css">
+
 </head>
 <body>
-<header>
-    <nav>
-        <div class="container">
-           <ul>
-               <li><a href =""><img style="width: 120px" src="image/logonentrang.jpg" alt=""title="LVT"></a></li>
-               <li id="address-form"><a href ="#">SÀI GÒN<i class="fa-solid fa-sort-down"></i></a></li>
-               <li><input type="text" placeholder="Tìm Kiếm Nhanh..."><i class="fa-solid fa-magnifying-glass"></i></li>
-               <li><a href ="procart.html"></a><button><i class="fa-solid fa-cart-shopping"></i>Giỏ hàng</button></li>
-               <li><a href ="">Lịch sử <br> đơn Hàng</a></li>
-               <li><a href =""><span class="btn-content"><span class="btn-top"></span></span>Mua trả góp !</a></li>
-               <li><a href ="">Trực 24/7</a></li>
-               <li><a href ="">Hỏi đáp thắc mắc</a></li>
-               <li><a href ="">Mini game</a></li>
-                <div class="address-form">
-                    <div class="address-form-content">
-                        <h2>Chọn địa chỉ nhận hàng <span id="address-close">X đóng</span></h2>
-                        <form action="">
-                            <p>Chọn đầy đủ địa chỉ nhận hàng để biết chính xác thời gian giao </p>
-                            <select name="" >
-                                <option value="#">--Chọn địa điểm</option>
-                                <option value="#">--Sài gòn</option>
-                            </select>
-                            <select name="" >
-                                <option value="#">--Chọn quận\huyện</option>
-                                <option value="#">--Sài gòn</option>
-                            </select>
-                            <select name="" >
-                                <option value="#">--Chọn phường\xã</option>
-                                <option value="#">--Sài gòn</option>
-                            </select>
-                            <input type="text"placeholder="Số nhà, tên đường,(không bắt buộc)">
-                            <button>XÁC NHẬN</button>
-                        </form>
-                    </div>
-                </div>
-           </ul>
-        </div>
-    </nav>
-    <div class="logo-container">
-        <img src="image/xuan-retail-2025-1972x640noscheme.jpg" alt="Logo" class="logo" iframe width="100%">
-      </div>
-</header>
 
-<h2>Bạn đang tìm gì hôm nay ?</h2>
+<!--PreLoader-->
+<div class="loader">
+	<div class="loader-inner">
+		<div class="circle"></div>
+	</div>
+</div>
+<!--PreLoader Ends-->
 
-<section class="menu-bar">
-    <div class="container">
-        <div class="menu-bar-content">
-            <ul>
-               
-                <li><a href="procart.html"><img style="width: 200px;" src="image1/nhancuoi.png" alt=""><br><b><p style="color: rgb(90,90,90);">Nhẫn kim cương</p></b></a></li>
-                <li><a href="procart.html"><img style="width: 200px;" src="image1/nhancauhon.png" alt=""><br><b><p style="color: rgb(90,90,90);">Nhẫn cầu hôn </p></b> </a></li>
-                <li><a href="procart.html"><img style="width: 200px;" src="image1/bongtai.png" alt=""><br><b><p style="color :rgb(90,90,90)">Bông tai</p></b></a></li>
-                <li><a href="procart.html"><img style="width: 200px;" src="image1/daychuyen.png" alt=""><br><b><p style="color: rgb(90,90,90);">Dây chuyền</p></b></a></li>
-                <li><a href="procart.html"><img style="width: 200px;" src="image1/dongho.png" alt=""><br><b><p style="color: rgb(90,90,90);">Đồng Hồ</p></b></a></li>
-            </ul>
-        </div>
-    </div>
+<!-- header -->
+<div class="top-header-area" id="sticker">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 col-sm-12 text-center">
+				<div class="main-menu-wrap">
+					<!-- logo -->
+					<div class="site-logo">
+						<div class="logo">
+							<a href="index.html">
+								<i class="fas fa-shield-alt"></i>
+							</a>
+						</div>
+					</div>
+					<!-- logo -->
 
-</section>
-<section class="slider">
-    <div class="container">
-        <div class="slider-content">
-            <div class="slider-content-left">
-               <div class="slider-content-left-top-container">
-                    <div class="slider-content-left-top">
-                        <a href=""><img src="image/logolvt.jpg" alt=""></a>
-                        <a href=""><img src="image/DonMuaKhoiSac.jpg" alt=""></a>
-                        <a href=""><img src="image/xuan-retail-2025-1972x640noscheme.jpg" alt=""></a>
-                        <a href=""><img src="image/cauhon.jpg" alt=""></a>
-                        <a href=""><img src="image/transucvang.png" alt=""></a>
-                
-                    </div>
-                    <div class="slider-content-left-top-btn">
-                        <i class="fa-solid fa-chevron-left"></i>
-                        <i class="fa-solid fa-chevron-right"></i>
-                    </div>
-                </div>
-                    <div class="slider-content-left-bottom">
-                        <li class="active">Tiêu đề 1</li>
-                        <li>Tiêu đề 2</li>
-                        <li>Tiêu đề 3</li>
-                        <li>Tiêu đề 4</li>
-                        <li>Tiêu đề 5</li>
-                    </div>
-            </div>
-            <div class="slider-content-right">
-                <li><a href=""><img src="image/img1.webp" alt=""></a></li>
-                <li><a href=""><img src="image/img2.webp" alt=""></a></li>
-                <li><a href=""><img src="image/img3.webp" alt=""></a></li>
-                <li><a href=""><img src="image/img4.webp" alt=""></a></li>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="banner-one">
-    <div class="container">
-        <img src="image/banner.webp" alt=""iframe width="100%">
-    </div>
-</section>
-<!------------------------------------------Slider-product------------------------------------------------------>
-<section class="slider-product-one">
-    <div class="container">
-        <div class="slider-product-one-content">
-            <div class="slider-product-one-content-title">
-                <h2>Săn Sale Online Mỗi Ngày</h2>
-            </div>
-            <div class="slider-product-one-content-container">
-                <div class="slider-product-one-content-items-content">
-                    <div class="slider-product-one-content-items">
-                        <div class="slider-product-one-content-item">
-                            <img src="image/product1.png" alt="">
-                            <div class="slider-product-one-content-item-text">
-                                <li><i class="fa-brands fa-salesforce"></i><p>Trợ giá mùa tết</p></li>
-                                <li>Nhẫn Vàng 18K đính đá CZ chữ Tài XM00Y004932</li>
-                                <li>Nhanh tay chốt đơn </li>
-                                <li>8.000.000 <sup>Đ</sup></li>
-                                <li>7.299.000 <sup>Đ</sup></li>
-                                <li>Quà 400.000 <sup>Đ</sup></li>
-                                <li>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </li>
-                            </div>
-                        </div>
-                        <div class="slider-product-one-content-item">
-                            <img src="image/product3.png" alt="">
-                            <div class="slider-product-one-content-item-text">
-                                <li><i class="fa-brands fa-salesforce"></i><p>Trợ giá mùa tết</p></li>
-                                <li>Bông tai Vàng trắng Ý 18K 0000W002727</li>
-                                <li>Nhanh tay chốt đơn </li>
-                                <li>6.000.000 <sup>Đ</sup></li>
-                                <li>5.724.000 <sup>Đ</sup></li>
-                                <li>Quà 40.000 <sup>Đ</sup></li>
-                                <li>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </li>
-                            </div>
-                        </div>
-                        <div class="slider-product-one-content-item">
-                            <img src="image/product2.png" alt="">
-                            <div class="slider-product-one-content-item-text">
-                                <li><i class="fa-brands fa-salesforce"></i><p>Trợ giá mùa tết</p></li>
-                                <li>Nhẫn Vàng 18K đính đá CZ chữ Lộc XM00Y004933</li>
-                                <li>Nhanh tay chốt đơn </li>
-                                <li>8.000.000 <sup>Đ</sup></li>
-                                <li>7.184.000<sup>Đ</sup></li>
-                                <li>Quà 500.000 <sup>Đ</sup></li>
-                                <li>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </li>
-                            </div>
-                        </div>
-                        <div class="slider-product-one-content-item">
-                            <img src="image/product5.png" alt="">
-                            <div class="slider-product-one-content-item-text">
-                                <li><i class="fa-brands fa-salesforce"></i><p>Trợ giá mùa tết</p></li>
-                                <li>Mặt dây chuyền Vàng 24K 0000Y001566</li>
-                                <li>Nhanh tay chốt đơn </li>
-                                <li>5.000.000 <sup>Đ</sup></li>
-                                <li>4.756.000<sup>Đ</sup></li>
-                                <li>Quà 100.000 <sup>Đ</sup></li>
-                                <li>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </li>
-                            </div>
-                        </div>
-                        <div class="slider-product-one-content-item">
-                            <img src="image/product5.png" alt="">
-                            <div class="slider-product-one-content-item-text">
-                                <li><i class="fa-brands fa-salesforce"></i><p>Trợ giá mùa tết</p></li>
-                                <li>Mặt dây chuyền Vàng 24K 0000Y001566</li>
-                                <li>Nhanh tay chốt đơn </li>
-                                <li>5.000.000 <sup>Đ</sup></li>
-                                <li>4.756.000<sup>Đ</sup></li>
-                                <li>Quà 100.000 <sup>Đ</sup></li>
-                                <li>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </li>
-                            </div>
-                        </div> <div class="slider-product-one-content-item">
-                            <img src="image/product5.png" alt="">
-                            <div class="slider-product-one-content-item-text">
-                                <li><i class="fa-brands fa-salesforce"></i><p>Trợ giá mùa tết</p></li>
-                                <li>Mặt dây chuyền Vàng 24K 0000Y001566</li>
-                                <li>Nhanh tay chốt đơn </li>
-                                <li>5.000.000 <sup>Đ</sup></li>
-                                <li>4.756.000<sup>Đ</sup></li>
-                                <li>Quà 100.000 <sup>Đ</sup></li>
-                                <li>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </li>
-                            </div>
-                        </div>
-                        <div class="slider-product-one-content-item">
-                            <img src="image/product4.png" alt="">
-                            <div class="slider-product-one-content-item-text">
-                                <li><i class="fa-brands fa-salesforce"></i><p>Trợ giá mùa tết</p></li>
-                                <li>Dây chuyền Vàng 24K 0000Y012244</li>
-                                <li>Nhanh tay chốt đơn </li>
-                                <li>38.000.000 <sup>Đ</sup></li>
-                                <li>34.717.000 <sup>Đ</sup></li>
-                                <li>Quà 1.000.000 <sup>Đ</sup></li>
-                                <li>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </li>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slider-product-one-content-items">
-                        <div class="slider-product-one-content-item">
-                            <img src="image/product6.png" alt="">
-                            <div class="slider-product-one-content-item-text">
-                                <li><i class="fa-brands fa-salesforce"></i><p>Trợ giá mùa tết</p></li>
-                                <li>Nhẫn Vàng 18K đính đá CZ chữ Tài XM00Y004932</li>
-                                <li>Nhanh tay chốt đơn </li>
-                                <li>8.000.000 <sup>Đ</sup></li>
-                                <li>7.299.000 <sup>Đ</sup></li>
-                                <li>Quà 400.000 <sup>Đ</sup></li>
-                                <li>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </li>
-                            </div>
-                        </div>
-                        <div class="slider-product-one-content-item">
-                            <img src="image/product7.png" alt="">
-                            <div class="slider-product-one-content-item-text">
-                                <li><i class="fa-brands fa-salesforce"></i><p>Trợ giá mùa tết</p></li>
-                                <li>Bông tai Vàng trắng Ý 18K 0000W002727</li>
-                                <li>Nhanh tay chốt đơn </li>
-                                <li>6.000.000 <sup>Đ</sup></li>
-                                <li>5.724.000 <sup>Đ</sup></li>
-                                <li>Quà 40.000 <sup>Đ</sup></li>
-                                <li>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </li>
-                            </div>
-                        </div>
-                        <div class="slider-product-one-content-item">
-                            <img src="image1/product8.png" alt="">
-                            <div class="slider-product-one-content-item-text">
-                                <li><i class="fa-brands fa-salesforce"></i><p>Trợ giá mùa tết</p></li>
-                                <li>Nhẫn Vàng 18K đính đá CZ chữ Lộc XM00Y004933</li>
-                                <li>Nhanh tay chốt đơn </li>
-                                <li>8.000.000 <sup>Đ</sup></li>
-                                <li>7.184.000<sup>Đ</sup></li>
-                                <li>Quà 500.000 <sup>Đ</sup></li>
-                                <li>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </li>
-                            </div>
-                        </div>
-                        <div class="slider-product-one-content-item">
-                            <img src="image/product9.png" alt="">
-                            <div class="slider-product-one-content-item-text">
-                                <li><i class="fa-brands fa-salesforce"></i><p>Trợ giá mùa tết</p></li>
-                                <li>Mặt dây chuyền Vàng 24K 0000Y001566</li>
-                                <li>Nhanh tay chốt đơn </li>
-                                <li>5.000.000 <sup>Đ</sup></li>
-                                <li>4.756.000<sup>Đ</sup></li>
-                                <li>Quà 100.000 <sup>Đ</sup></li>
-                                <li>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </li>
-                            </div>
-                        </div>
-                        <div class="slider-product-one-content-item">
-                            <img src="image/product10.png" alt="">
-                            <div class="slider-product-one-content-item-text">
-                                <li><i class="fa-brands fa-salesforce"></i><p>Trợ giá mùa tết</p></li>
-                                <li>Dây chuyền Vàng 24K 0000Y012244</li>
-                                <li>Nhanh tay chốt đơn </li>
-                                <li>38.000.000 <sup>Đ</sup></li>
-                                <li>34.717.000 <sup>Đ</sup></li>
-                                <li>Quà 1.000.000 <sup>Đ</sup></li>
-                                <li>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </li>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slider-product-one-content-items">
-                        <div class="slider-product-one-content-item">
-                            <img src="image/product1.png" alt="">
-                            <div class="slider-product-one-content-item-text">
-                                <li><i class="fa-brands fa-salesforce"></i><p>Trợ giá mùa tết</p></li>
-                                <li>Nhẫn Vàng 18K đính đá CZ chữ Tài XM00Y004932</li>
-                                <li>Nhanh tay chốt đơn </li>
-                                <li>8.000.000 <sup>Đ</sup></li>
-                                <li>7.299.000 <sup>Đ</sup></li>
-                                <li>Quà 400.000 <sup>Đ</sup></li>
-                                <li>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </li>
-                            </div>
-                        </div>
-                        <div class="slider-product-one-content-item">
-                            <img src="image/product3.png" alt="">
-                            <div class="slider-product-one-content-item-text">
-                                <li><i class="fa-brands fa-salesforce"></i><p>Trợ giá mùa tết</p></li>
-                                <li>Bông tai Vàng trắng Ý 18K 0000W002727</li>
-                                <li>Nhanh tay chốt đơn </li>
-                                <li>6.000.000 <sup>Đ</sup></li>
-                                <li>5.724.000 <sup>Đ</sup></li>
-                                <li>Quà 40.000 <sup>Đ</sup></li>
-                                <li>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </li>
-                            </div>
-                        </div>
-                        <div class="slider-product-one-content-item">
-                            <img src="image/product2.png" alt="">
-                            <div class="slider-product-one-content-item-text">
-                                <li><i class="fa-brands fa-salesforce"></i><p>Trợ giá mùa tết</p></li>
-                                <li>Nhẫn Vàng 18K đính đá CZ chữ Lộc XM00Y004933</li>
-                                <li>Nhanh tay chốt đơn </li>
-                                <li>8.000.000 <sup>Đ</sup></li>
-                                <li>7.184.000<sup>Đ</sup></li>
-                                <li>Quà 500.000 <sup>Đ</sup></li>
-                                <li>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </li>
-                            </div>
-                        </div>
-                        <div class="slider-product-one-content-item">
-                            <img src="image/product5.png" alt="">
-                            <div class="slider-product-one-content-item-text">
-                                <li><i class="fa-brands fa-salesforce"></i><p>Trợ giá mùa tết</p></li>
-                                <li>Mặt dây chuyền Vàng 24K 0000Y001566</li>
-                                <li>Nhanh tay chốt đơn </li>
-                                <li>5.000.000 <sup>Đ</sup></li>
-                                <li>4.756.000<sup>Đ</sup></li>
-                                <li>Quà 100.000 <sup>Đ</sup></li>
-                                <li>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </li>
-                            </div>
-                        </div>
-                        <div class="slider-product-one-content-item">
-                            <img src="image/product4.png" alt="">
-                            <div class="slider-product-one-content-item-text">
-                                <li><i class="fa-brands fa-salesforce"></i><p>Trợ giá mùa tết</p></li>
-                                <li>Dây chuyền Vàng 24K 0000Y012244</li>
-                                <li>Nhanh tay chốt đơn </li>
-                                <li>38.000.000 <sup>Đ</sup></li>
-                                <li>34.717.000 <sup>Đ</sup></li>
-                                <li>Quà 1.000.000 <sup>Đ</sup></li>
-                                <li>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                    <i class="fa-solid fa-star"></i>
-                                </li>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="slider-product-one-content-btn">
-                    <i class="fa-solid fa-chevron-left fa-chevron-left-two"></i>
-                    <i class="fa-solid fa-chevron-right fa-chevron-right-two"></i>
-                </div>
+					<!-- menu start -->
+					<nav class="main-menu">
+						<ul>
+							<li class="current-list-item"><a href="#">Trang chủ</a>
 
-            </div>
-        </div>
-    </div>
-</section>
-<!------------------------------------------PRoduct gallery----------------------------------------------------->
-<div class="product-gallery-one">
-    <div class="container">
-        <div class="product-gallery-one-content">
-            <div class="product-gallery-one-content-title">
-                <h2>TRANG SỨC NỔI BẬT NHẤT </h2>
-                <ul>
-                    <li><a href="">Vàng 888</a></li>
-                    <li><a href="">Vàng trắng</a></li>
-                    <li><a href="">Bạc nguyên </a></li>
-                    <li><a href="">Xem thêm</a></li>
+							</li>
+							<li><a href="about.html">Giới thiệu</a>
+								<ul class="sub-menu">
+									<li><a href="#">Về hệ thống tiêm chủng</a></li>
+									<li><a href="#">Đội ngũ chuyên gia</a></li>
 
-                </ul>
-            </div>
-            <div class="product-gallery-one-content-product">
-                <div class="product-gallery-one-content-product-item">
-                    <img src="image/product1.png" alt="">
-                    <div class="product-gallery-one-content-product-item-text">
-                        <li><i class="fa-brands fa-salesforce"></i><p>Trợ giá mùa tết</p></li>
-                        <li>Nhẫn Vàng 18K đính đá CZ chữ Tài XM00Y004932</li>
-                        <li>Nhanh tay chốt đơn </li>
-                        <li>8.000.000 <sup>Đ</sup></li>
-                        <li>7.299.000 <sup>Đ</sup></li>
-                        <li>Quà 400.000 <sup>Đ</sup></li>
-                        <li>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </li>
-                    </div>
-                </div>
-                <div class="product-gallery-one-content-product-item">
-                    <img src="image/product1.png" alt="">
-                    <div class="product-gallery-one-content-product-item-text">
-                        <li><i class="fa-brands fa-salesforce"></i><p>Trợ giá mùa tết</p></li>
-                        <li>Nhẫn Vàng 18K đính đá CZ chữ Tài XM00Y004932</li>
-                        <li>Nhanh tay chốt đơn </li>
-                        <li>8.000.000 <sup>Đ</sup></li>
-                        <li>7.299.000 <sup>Đ</sup></li>
-                        <li>Quà 400.000 <sup>Đ</sup></li>
-                        <li>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </li>
-                    </div>
-                </div>
-                <div class="product-gallery-one-content-product-item">
-                    <img src="image/product1.png" alt="">
-                    <div class="product-gallery-one-content-product-item-text">
-                        <li><i class="fa-brands fa-salesforce"></i><p>Trợ giá mùa tết</p></li>
-                        <li>Nhẫn Vàng 18K đính đá CZ chữ Tài XM00Y004932</li>
-                        <li>Nhanh tay chốt đơn </li>
-                        <li>8.000.000 <sup>Đ</sup></li>
-                        <li>7.299.000 <sup>Đ</sup></li>
-                        <li>Quà 400.000 <sup>Đ</sup></li>
-                        <li>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </li>
-                    </div>
-                </div>
-                <div class="product-gallery-one-content-product-item">
-                    <img src="image/product1.png" alt="">
-                    <div class="product-gallery-one-content-product-item-text">
-                        <li><i class="fa-brands fa-salesforce"></i><p>Trợ giá mùa tết</p></li>
-                        <li>Nhẫn Vàng 18K đính đá CZ chữ Tài XM00Y004932</li>
-                        <li>Nhanh tay chốt đơn </li>
-                        <li>8.000.000 <sup>Đ</sup></li>
-                        <li>7.299.000 <sup>Đ</sup></li>
-                        <li>Quà 400.000 <sup>Đ</sup></li>
-                        <li>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </li>
-                    </div>
-                </div>
-                <div class="product-gallery-one-content-product-item">
-                    <img src="image/product1.png" alt="">
-                    <div class="product-gallery-one-content-product-item-text">
-                        <li><i class="fa-brands fa-salesforce"></i><p>Trợ giá mùa tết</p></li>
-                        <li>Nhẫn Vàng 18K đính đá CZ chữ Tài XM00Y004932</li>
-                        <li>Nhanh tay chốt đơn </li>
-                        <li>8.000.000 <sup>Đ</sup></li>
-                        <li>7.299.000 <sup>Đ</sup></li>
-                        <li>Quà 400.000 <sup>Đ</sup></li>
-                        <li>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </li>
-                    </div>
-                </div>
-                <div class="product-gallery-one-content-product-item">
-                    <img src="image/product1.png" alt="">
-                    <div class="product-gallery-one-content-product-item-text">
-                        <li><i class="fa-brands fa-salesforce"></i><p>Trợ giá mùa tết</p></li>
-                        <li>Nhẫn Vàng 18K đính đá CZ chữ Tài XM00Y004932</li>
-                        <li>Nhanh tay chốt đơn </li>
-                        <li>8.000.000 <sup>Đ</sup></li>
-                        <li>7.299.000 <sup>Đ</sup></li>
-                        <li>Quà 400.000 <sup>Đ</sup></li>
-                        <li>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </li>
-                    </div>
-                </div>
-                <div class="product-gallery-one-content-product-item">
-                    <img src="image/product1.png" alt="">
-                    <div class="product-gallery-one-content-product-item-text">
-                        <li><i class="fa-brands fa-salesforce"></i><p>Trợ giá mùa tết</p></li>
-                        <li>Nhẫn Vàng 18K đính đá CZ chữ Tài XM00Y004932</li>
-                        <li>Nhanh tay chốt đơn </li>
-                        <li>8.000.000 <sup>Đ</sup></li>
-                        <li>7.299.000 <sup>Đ</sup></li>
-                        <li>Quà 400.000 <sup>Đ</sup></li>
-                        <li>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </li>
-                    </div>
-                </div>
-                <div class="product-gallery-one-content-product-item">
-                    <img src="image/product1.png" alt="">
-                    <div class="product-gallery-one-content-product-item-text">
-                        <li><i class="fa-brands fa-salesforce"></i><p>Trợ giá mùa tết</p></li>
-                        <li>Nhẫn Vàng 18K đính đá CZ chữ Tài XM00Y004932</li>
-                        <li>Nhanh tay chốt đơn </li>
-                        <li>8.000.000 <sup>Đ</sup></li>
-                        <li>7.299.000 <sup>Đ</sup></li>
-                        <li>Quà 400.000 <sup>Đ</sup></li>
-                        <li>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </li>
-                    </div>
-                </div>
-                <div class="product-gallery-one-content-product-item">
-                    <img src="image/product1.png" alt="">
-                    <div class="product-gallery-one-content-product-item-text">
-                        <li><i class="fa-brands fa-salesforce"></i><p>Trợ giá mùa tết</p></li>
-                        <li>Nhẫn Vàng 18K đính đá CZ chữ Tài XM00Y004932</li>
-                        <li>Nhanh tay chốt đơn </li>
-                        <li>8.000.000 <sup>Đ</sup></li>
-                        <li>7.299.000 <sup>Đ</sup></li>
-                        <li>Quà 400.000 <sup>Đ</sup></li>
-                        <li>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </li>
-                    </div>
-                </div>
-                <div class="product-gallery-one-content-product-item">
-                    <img src="image/product1.png" alt="">
-                    <div class="product-gallery-one-content-product-item-text">
-                        <li><i class="fa-brands fa-salesforce"></i><p>Trợ giá mùa tết</p></li>
-                        <li>Nhẫn Vàng 18K đính đá CZ chữ Tài XM00Y004932</li>
-                        <li>Nhanh tay chốt đơn </li>
-                        <li>8.000.000 <sup>Đ</sup></li>
-                        <li>7.299.000 <sup>Đ</sup></li>
-                        <li>Quà 400.000 <sup>Đ</sup></li>
-                        <li>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </li>
-                    </div>
-                </div>
-                
+								</ul>
+							</li>
+							<li><a href="#">Dịch vụ</a>
+								<ul class="sub-menu">
+									<li><a href="#">Tiêm chủng tại Trung tâm</a></li>
+									<li><a href="#">Tiêm chung cho trường học</a></li>
+									<li><a href="#">Tiêm chủng gói</a></li>
+									<li><a href="#">Tiêm chủng theo yêu cầu</a></li>
+								</ul>
+							</li>
+							<li><a href="news.html">Tin tức</a>
 
-            </div>
-        </div>
-    </div>
+							</li>
+							<li><a href="shop.html">Vắc xin trẻ em</a>
+							<ul class="sub-menu">
+								<li><a href="shop.html">Vì sao trẻ em cần tiêm vắc xin</a></li>
+								<li><a href="checkout.html">Lịch tiêm chủng cho trẻ</a></li>
+								<li><a href="single-product.html">Các loại vắc xin</a></li>
+								<li><a href="cart.html">Bảng giá tiêm chủng</a></li>
+							</ul>
+						</li>
+							<li><a href="contact.html">Liên hệ </a></li>
+							<li><a href="contact.html">F&Q</a></li>
+
+							<li>
+								<div class="header-icons">
+									<a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+									<a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+								</div>
+							</li>
+						</ul>
+					</nav>
+					<a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+					<div class="mobile-menu"></div>
+					<!-- menu end -->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- end header -->
+
+<!-- search area -->
+<div class="search-area">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<span class="close-btn"><i class="fas fa-window-close"></i></span>
+				<div class="search-bar">
+					<div class="search-bar-tablecell">
+						<h3>Search For:</h3>
+						<input type="text" placeholder="Keywords">
+						<button type="submit">Search <i class="fas fa-search"></i></button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- end search area -->
+
+<!-- hero area -->
+<div class="hero-area hero-bg">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-9 offset-lg-2 text-center">
+				<div class="hero-text">
+					<div class="hero-text-tablecell">
+
+						<h1>Hệ thống tiêm chung dành cho trẻ
+						</h1>
+						<div class="hero-btns">
+							<a href="shop.html" class="boxed-btn">Vắc xin</a>
+							<a href="contact.html" class="bordered-btn">Liên hệ</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- end hero area -->
+<div class="mission-section">
+	<div class="mission-content">
+		<div class="header">
+		<h3>Sứ mệnh & Tầm nhìn</h3></div>
+		<p>
+			Tại Trung Tâm Tiêm Chủng, chúng tôi tin tưởng vào sức mạnh của y học dự phòng. Sứ mệnh của chúng tôi là cung cấp dịch vụ tiêm chủng chất lượng cao, dễ tiếp cận cho các cá nhân và gia đình ở mọi giai đoạn cuộc sống.
+		</p>
+		<p>
+			Được thành lập vào năm 2010 bởi đội ngũ chuyên gia y tế, chúng tôi đã phát triển từ một phòng khám đơn lẻ thành nhiều trung tâm, luôn duy trì cam kết về sự xuất sắc và chăm sóc lấy bệnh nhân làm trung tâm.
+		</p>
+		<p>
+			Tầm nhìn của chúng tôi là tạo ra một cộng đồng khỏe mạnh hơn thông qua các dịch vụ tiêm chủng toàn diện, giáo dục và các chương trình tiếp cận cộng đồng. Chúng tôi phấn đấu trở thành nhà cung cấp dịch vụ tiêm chủng hàng đầu, được biết đến với chuyên môn, lòng trắc ẩn và sự đổi mới.
+		</p>
+	</div>
+
+
+	<div class="stats-container">
+		<div class="stat-box">
+			<h3>10+</h3>
+			<p>Năm kinh nghiệm</p>
+		</div>
+		<div class="stat-box">
+			<h3>3</h3>
+			<p>Địa điểm</p>
+		</div>
+		<div class="stat-box">
+			<h3>50+</h3>
+			<p>Chuyên gia y tế</p>
+		</div>
+		<div class="stat-box">
+			<h3>100K+</h3>
+			<p>Mũi tiêm đã thực hiện</p>
+		</div>
+	</div>
+</div>
+
+
+<!-- product section -->
+<div class="vaccine-container">
+	<div class="header">
+		<h2>DANH MỤC VẮC XIN TẠI VNVC</h2>
+		<a href="#" class="view-all">Xem tất cả</a>
+	</div>
+
+	<div class="vaccine-list">
+		<div class="vaccine-item">
+			<a href="#">
+				<img src="img/products/vacxin-1.jpg" alt="Vắc xin Sốt Xuất Huyết">
+				<h3>VẮC XIN SỐT XUẤT HUYẾT</h3>
+				<p>(Qdenga, Nhật Bản)</p>
+			</a>
+		</div>
+
+		<div class="vaccine-item">
+			<a href="#">
+				<img src="img/products/vacxin-2.jpg" alt="Vắc xin Phế Cầu 23">
+				<h3>VẮC XIN PHẾ CẦU 23</h3>
+				<p>(Pneumovax 23, Mỹ)</p>
+			</a>
+		</div>
+
+		<div class="vaccine-item">
+			<a href="#">
+				<img src="img/products/vacxin-3.jpg" alt="Vắc xin Phế Cầu 13">
+				<h3>VẮC XIN PHẾ CẦU 13</h3>
+				<p>(Prevenar 13, Bỉ)</p>
+			</a>
+		</div>
+
+		<div class="vaccine-item">
+			<a href="#">
+				<img src="img/products/vaccine-5.jpg" alt="Vắc xin HPV">
+				<h3>VẮC XIN UNG THƯ DO HPV</h3>
+				<p>(Gardasil 9, Mỹ)</p>
+			</a>
+		</div>
+
+		<div class="vaccine-item">
+			<a href="#">
+				<img src="img/products/vaccine-7.jpg" alt="Vắc xin Zona">
+				<h3>VẮC XIN ZONA THẦN KINH</h3>
+				<p>(Shingrix, Bỉ)</p>
+			</a>
+		</div>
+
+		<div class="vaccine-item">
+			<a href="#">
+				<img src="img/products/vacxin-8.jpg" alt="Vắc xin Não Mô Cầu B">
+				<h3>VẮC XIN NÃO MÔ CẦU NHÓM B</h3>
+				<p>(Bexsero, Ý)</p>
+			</a>
+		</div>
+
+		<div class="vaccine-item">
+			<a href="#">
+				<img src="img/products/vaccine-9.jpg" alt="Vắc xin Não Mô Cầu ACYW135">
+				<h3>VẮC XIN NÃO MÔ CẦU NHÓM A,C,Y,W-135</h3>
+				<p>(Menactra, Mỹ)</p>
+			</a>
+		</div>
+
+		<div class="vaccine-item">
+			<a href="#">
+				<img src="img/products/vaccine-10.jpg" alt="Vắc xin 6in1">
+				<h3>VẮC XIN 6IN1</h3>
+				<p>(Hexaxim, Pháp)</p>
+			</a>
+		</div>
+	</div>
+</div>
+<div class="vaccine-container">
+<!-- cart banner section -->
+<div class="header">
+<h2>CÁC DỊCH VỤ CỦA CHÚNG TÔI</h2>
+</div>
+<div class="services-list">
+	<div class="service-item">
+		<img src="https://cdn-icons-png.flaticon.com/128/2920/2920089.png" alt="Tiêm chủng tại trung tâm VNVC">
+		<p>TIÊM CHỦNG TẠI TRUNG TÂM VNVC</p>
+	</div>
+	<div class="service-item">
+		<img src="https://cdn-icons-png.flaticon.com/128/3159/3159745.png" alt="Tiêm chủng cho doanh nghiệp, trường học">
+		<p>TIÊM CHỦNG CHO DOANH NGHIỆP, TRƯỜNG HỌC</p>
+	</div>
+	<div class="service-item">
+		<img src="https://cdn-icons-png.flaticon.com/128/2921/2921829.png" alt="Tiêm chủng gói/ưu tiên">
+		<p>TIÊM CHỦNG GÓI/ƯU TIÊN</p>
+	</div>
+	<div class="service-item">
+		<img src="https://cdn-icons-png.flaticon.com/128/2921/2921806.png" alt="Tiêm chủng theo yêu cầu">
+		<p>TIÊM CHỦNG THEO YÊU CẦU</p>
+	</div>
 
 </div>
-<!-----------------------------------------Product gallery two-------------------------------------------------->
-<section class="product-gallery-two">
-    <div class="container">
-        <div class="product-gallery-two-content">
-            <div class="product-gallery-two-content-right">
-                <img src="image/img3.webp" alt="">
-            </div>
-            <div class="product-gallery-two-content-left">
-                    <div class="product-gallery-two-content-left-top">
-                        <li class="active">Đồng Hồ thông minh </li>
-                        <li>Trang sức nữ </li>
-                        <li>Trang sức nam  </li>
-                        <li>Trang sức trẻ em  </li>
-                        <li><a href="">Xem tất cả </a><i class="fa-solid fa-play"></i></li>
-                    </div>
-                    <div class="product-gallery-two-content-left-bottom">
-                        <div class="product-gallery-two-content-left-bottom-item">
-                            <img src="image/product1.png" alt="">
-                            <div class="product-gallery-two-content-left-bottom-item-text">
-                                <li>Đặt trước đến 16/09</li>
-                                <li>Vàng 888</li>
-                                <li>Bạc trắng</li>
-                                <li>Đau lưng</li>
-                                <li>Ưu đãi khủng</li>
-                            </div>
-                        </div>
-                        <div class="product-gallery-two-content-left-bottom-item">
-                            <img src="image/product1.png" alt="">
-                            <div class="product-gallery-two-content-left-bottom-item-text">
-                                <li>Đặt trước đến 16/09</li>
-                                <li>Vàng 888</li>
-                                <li>Bạc trắng</li>
-                                <li>Đau lưng</li>
-                                <li>Ưu đãi khủng</li>
-                            </div>
-                        </div>
-                        <div class="product-gallery-two-content-left-bottom-item">
-                            <img src="image/product1.png" alt="">
-                            <div class="product-gallery-two-content-left-bottom-item-text">
-                                <li>Đặt trước đến 16/09</li>
-                                <li>Vàng 888</li>
-                                <li>Bạc trắng</li>
-                                <li>Đau lưng</li>
-                                <li>Ưu đãi khủng</li>
-                            </div>
-                        </div>
-                        <div class="product-gallery-two-content-left-bottom-item">
-                            <img src="image/product1.png" alt="">
-                            <div class="product-gallery-two-content-left-bottom-item-text">
-                                <li>Đặt trước đến 16/09</li>
-                                <li>Vàng 888</li>
-                                <li>Bạc trắng</li>
-                                <li>Đau lưng</li>
-                                <li>Ưu đãi khủng</li>
-                            </div>
-                        </div>
-                        <div class="product-gallery-two-content-left-bottom-item">
-                            <img src="image/product1.png" alt="">
-                            <div class="product-gallery-two-content-left-bottom-item-text">
-                                <li>Đặt trước đến 16/09</li>
-                                <li>Vàng 888</li>
-                                <li>Bạc trắng</li>
-                                <li>Đau lưng</li>
-                                <li>Ưu đãi khủng</li>
-                            </div>
-                        </div>
+</div>
 
-                    </div>
-            </div>
+<!-- latest news -->
+<div class="latest-news pt-150 pb-150">
+	<div class="vaccine-container">
+		<div class="row">
+			<div class="col-lg-8 offset-lg-2 text-center">
+				<div class="header">
+					<h3>TIN TỨC</h3>
+				</div>
+				<div class="news-container">
+					<!-- Bài viết lớn -->
+					<div class="main-news">
+						<img src="https://vnvc.vn/wp-content/uploads/2025/03/tiem-vac-xin-soi-cho-tre.jpg" alt="Dịch sởi có nguy cơ bùng phát">
+						<div class="main-news-content">
+							<h2><a href="#">Dịch sởi có nguy cơ bùng phát, cần tăng tỷ lệ tiêm chủng đạt 95%</a></h2>
+							<p>Dịch sởi đang bùng phát mạnh tại 63 tỉnh thành trên cả nước, trong đó hơn 90% trường hợp chưa được tiêm phòng đầy đủ...</p>
+							<div class="news-footer">
+								<span><i class="fa fa-calendar"></i> 20/03/2025</span>
+								<a href="#" class="read-more">Xem thêm</a>
+							</div>
+						</div>
+					</div>
 
-        </div>
+					<!-- Danh sách bài viết nhỏ -->
+					<div class="side-news">
+						<div class="side-news-item">
+							<img src="https://vnvc.vn/wp-content/uploads/2025/03/tre-bi-viem-phoi.jpg" alt="Tại sao trẻ nhiễm sởi thường biến chứng viêm phổi?">
+							<div class="side-news-content">
+								<h3><a href="#">Tại sao trẻ nhiễm sởi thường biến chứng viêm phổi?</a></h3>
+								<p>Trẻ mắc sởi có nguy cơ cao bị biến chứng viêm phổi, một phần do tác động trực tiếp từ...</p>
+								<div class="news-footer">
+									<span><i class="fa fa-calendar"></i> 20/03/2025</span>
+									<a href="#" class="read-more">Xem thêm</a>
+								</div>
+							</div>
+						</div>
 
-    </div>
+						<div class="side-news-item">
+							<img src="https://vnvc.vn/wp-content/uploads/2025/03/phu-nu-mang-thai-mac-viem-phoi.jpg" alt="Những biến chứng nguy hiểm khi phụ nữ mang thai mắc viêm phổi">
+							<div class="side-news-content">
+								<h3><a href="#">Những biến chứng nguy hiểm khi phụ nữ mang thai mắc viêm phổi</a></h3>
+								<p>Viêm phổi là bệnh lý nhiễm trùng đường hô hấp dưới, thường gây hậu quả nghiêm trọng ở phụ...</p>
+								<div class="news-footer">
+									<span><i class="fa fa-calendar"></i> 20/03/2025</span>
+									<a href="#" class="read-more">Xem thêm</a>
+								</div>
+							</div>
+						</div>
 
-</section>
-<script src="../static/image/js/java.js"></script>
+						<div class="side-news-item">
+							<img src="https://vnvc.vn/wp-content/uploads/2025/03/tre-em-bi-benh-soi.jpg" alt="Những biến chứng nguy hiểm của bệnh sởi ở trẻ em">
+							<div class="side-news-content">
+								<h3><a href="#">Những biến chứng nguy hiểm của bệnh sởi ở trẻ em</a></h3>
+								<p>Sởi có nguy cơ trở nặng ở giai đoạn phát ban hoặc sau khi phát ban với các biến chứng nguy...</p>
+								<div class="news-footer">
+									<span><i class="fa fa-calendar"></i> 20/03/2025</span>
+									<a href="#" class="read-more">Xem thêm</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>			</div>
+		</div>
+			</div>
+		</div>
+</div>
+	</div>
+
+</div>
+<!-- end latest news -->
+
+<footer>
+	<div class="footer-container">
+		<div class="footer-header">
+
+			<p>HỆ THỐNG TRUNG TÂM TIÊM CHỦNG VẮC XIN CHO TRẺ EM </p>
+			<p><strong>AN TOÀN - UY TÍN - CHẤT LƯỢNG HÀNG ĐẦU VIỆT NAM</strong></p>
+		</div>
+
+		<div class="footer-content">
+			<div class="footer-section">
+				<h2>Hệ thống Miền Bắc</h2>
+				<ul>
+					<li>Bắc Giang</li>
+					<li>Điện Biên</li>
+					<li>Hà Nam</li>
+					<li>Hoà Bình</li>
+					<li>Lạng Sơn</li>
+					<li>Ninh Bình</li>
+					<li>Quảng Ninh</li>
+					<li>Thái Nguyên</li>
+					<li>Yên Bái</li>
+					<li>Bắc Ninh</li>
+					<li>Hà Nội</li>
+				</ul>
+			</div>
+			<div class="footer-section">
+				<h2>Hệ thống Miền Trung</h2>
+				<ul>
+					<li>Bình Định</li>
+					<li>Đắk Lắk</li>
+
+					<li>Thừa Thiên Huế</li>
+					<li>Đà Nẵng</li>
+					<li>Đắk Nông</li>
+					<li>Hà Tĩnh</li>
+					<li>Kon Tum</li>
+					<li>Quảng Bình</li>
+					<li>Quảng Ngãi</li>
+					<li>Thanh Hóa</li>
+					<li>Phú Yên</li>
+				</ul>
+			</div>
+			<div class="footer-section">
+				<h2>Hệ thống Miền Nam</h2>
+				<ul>
+					<li>An Giang</li>
+
+					<li>Lâm Đồng</li>
+					<li>Ninh Thuận</li>
+					<li>Tiền Giang</li>
+					<li>Sóc Trăng</li>
+					<li>Bà Rịa - Vũng Tàu</li>
+					<li>Bến Tre</li>
+					<li>Bình Phước</li>
+					<li>Cà Mau</li>
+					<li>Đồng Nai</li>
+					<li>Hồ Chí Minh</li>
+
+				</ul>
+			</div>
+		</div>
+
+		<div class="footer-bottom">
+			<p><strong>CÔNG TY CỔ PHẦN VACCIN VIỆT NAM</strong></p>
+			<p>Địa chỉ: 180 Trường Chinh, phường Khương Thượng, quận Đống Đa, TP Hà Nội</p>
+			<p>Email: cskh@vnvc.vn | Hotline: 028 7102 6595</p>
+		</div>
+	</div>
+</footer>
+
+
+
+<!-- jquery -->
+<script src="js/jquery-1.11.3.min.js"></script>
+<!-- bootstrap -->
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<!-- count down -->
+<script src="js/jquery.countdown.js"></script>
+<!-- isotope -->
+<script src="js/jquery.isotope-3.0.6.min.js"></script>
+<!-- waypoints -->
+<script src="js/waypoints.js"></script>
+<!-- owl carousel -->
+<script src="js/owl.carousel.min.js"></script>
+<!-- magnific popup -->
+<script src="js/jquery.magnific-popup.min.js"></script>
+<!-- mean menu -->
+<script src="js/jquery.meanmenu.min.js"></script>
+<!-- sticker js -->
+<script src="js/sticker.js"></script>
+<!-- main js -->
+<script src="js/main.js"></script>
+
 </body>
 </html>
