@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
+
+    <!-- title -->
+    <title>Trung Tâm Tiêm Chủng</title>
+
+    <!-- Font Awesome (Dùng để lấy icon) -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <!-- favicon -->
+    <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="css/all.min.css">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <!-- owl carousel -->
+    <link rel="stylesheet" href="css/owl.carousel.css">
+    <!-- magnific popup -->
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <!-- animate css -->
+    <link rel="stylesheet" href="css/animate.css">
+    <!-- mean menu css -->
+    <link rel="stylesheet" href="css/meanmenu.min.css">
+    <!-- main style -->
+    <link rel="stylesheet" href="css/main.css">
+    <!-- responsive -->
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/styles.css">
+
+
+</head>
+<body>
+
+<!--&lt;!&ndash;PreLoader&ndash;&gt;-->
+<!--<div class="loader">-->
+<!--    <div class="loader-inner">-->
+<!--        <div class="circle"></div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--&lt;!&ndash;PreLoader Ends&ndash;&gt;-->
+
+<!-- header -->
+<div class="top-header-area" id="sticker">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 text-center">
+                <div class="main-menu-wrap">
+                    <!-- logo -->
+                    <div class="site-logo">
+                        <div class="logo">
+                            <a href="/static">
+                                <i class="fas fa-shield-alt"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- logo -->
+
+                    <!-- menu start -->
+                    <nav class="main-menu">
+                        <ul>
+                            <li class="current-list-item"><a href="http://localhost:8080">Trang chủ</a>
+
+                            </li>
+                            <li><a href="/"> Giới thiệu</a>
+                                <ul class="sub-menu">
+                                    <li><a href="gioithieu">Về hệ thống tiêm chủng</a></li>
+                                    <li><a href="doingu">Đội ngũ chuyên gia</a></li>
+                                </ul>
+                            </li>
+
+                            <li><a href="/">Vắc xin trẻ em</a>
+                                <ul class="sub-menu">
+                                    <li><a href="http://localhost:8080/lichtiem">Lịch tiêm chủng cho trẻ</a></li>
+                                    <li><a href="http://localhost:8080/loaivxn">Các loại vắc xin</a></li>
+                                    <li><a href="http://localhost:8080/banggia">Bảng giá tiêm chủng</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Cẩm nang</a>
+                                <ul class="sub-menu">
+                                    <li><a href="http://localhost:8080/danhmuc">Danh mục vắc xin</a></li>
+                                    <li><a href="http://localhost:8080/quytrinh">Quy trình tiêm chủng</a></li>
+                                    <li><a href="http://localhost:8080/luuyt">Lưu ý trước khi tiêm</a></li>
+                                    <li><a href="http://localhost:8080/luuys">Lưu ý sau khi tiêm</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Liên hệ </a></li>
+                            <li><a href="http://localhost:8080/F&Q">F&Q</a></li>
+
+                            <li>
+                                <div class="header-icons">
+                                    <a class="shopping-cart" href="#"><i class="fas fa-shopping-cart"></i></a>
+                                    <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                    <a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+                    <div class="mobile-menu"></div>
+                    <!-- menu end -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--css-->
+    <style>
+        .site-logo {
+            display: flex;
+            justify-content: center; /* Canh giữa theo chiều ngang */
+            align-items: center;     /* Canh giữa theo chiều dọc */
+            height: 60px;           /* Điều chỉnh chiều cao phù hợp */
+        }
+        .logo {
+            margin-left: 10px; /* Nhích logo sang phải 10px thui */
+        }
+
+    </style>
+    <style>
+        /* Áp dụng Flexbox cho phần chứa header */
+        .top-header-area .main-menu-wrap {
+            display: flex;
+            justify-content: center; /* Canh giữa theo chiều ngang */
+            align-items: center;     /* Canh giữa theo chiều dọc */
+            width: 100%;
+        }
+    </style>
+
+</div>
+
+<!-- end header -->
+
+<!-- search area -->
+<div class="search-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <span class="close-btn"><i class="fas fa-window-close"></i></span>
+                <div class="search-bar">
+                    <div class="search-bar-tablecell">
+                        <h3>Search For:</h3>
+                        <input type="text" placeholder="Keywords">
+                        <button type="submit">Search <i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end search area -->
+
+<!-- hero area -->
+<div class="hero-area hero-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 offset-lg-2 text-center">
+                <div class="hero-text">
+                    <div class="hero-text-tablecell">
+
+                        <h1>Hệ thống tiêm chung dành cho trẻ
+                        </h1>
+                        <div class="hero-btns">
+                            <a href="#" class="boxed-btn">Vắc xin</a>
+                            <a href="#" class="bordered-btn">Liên hệ</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end hero area -->
+<br/>
+<div class="row" style="min-height: 500px">
+    <div class="col-md-8 col-12 left-content ">
+
+
+        <h4 class="title">Trang chủ / Tin tức sự kiện / Lịch tiêm chủng cho trẻ từ 0-10 tuổi theo quy định của Bộ Y tế</h4>
+        <p class="TitleDateTop">Ngày đăng tin: 24-05-2019</p>
+        <div class="title-news"><strong>Lịch tiêm chủng cho trẻ từ 0-10 tuổi theo quy định của Bộ Y tế</strong></div>
+        <p class="noi-dung-tom-tat">
+            Vắc xin được coi là mộtbước đột phá trong Y tế dự phòng. Vắc-xin bảo vệ sức khỏe của trẻ bằng cáchngăn ngừa các bệnh truyền nhiễm nghiêm trọng.
+        </p>
+        <div>
+            class="noi-dung-chi-tiet">
+            <h2 style="text-align:center"><img alt="" src="/public/filemanager/uploads/DangTinBai/Thang042021/1-2.jpg" style="height:382px; width:90%" /></h2>
+
+            <h2>1. Lịch ti&ecirc;m chủng mở rộng theo quy định của Bộ Y tế</h2>
+
+            <p>Chương tr&igrave;nh ti&ecirc;m chủng mở rộngtheo quyết định 845/2010/QĐ-BYT ng&agrave;y 17/03/2010 quy định như sau:</p>
+
+            <table border="1" cellpadding="0" cellspacing="0" style="width:753px">
+                <tbody>
+                <tr>
+                    <td style="vertical-align:top">
+                        <p>STT</p>
+                    </td>
+                    <td style="vertical-align:top">
+                        <p>Tuổi của trẻ</p>
+                    </td>
+                    <td style="vertical-align:top">
+                        <p>Vắc xin sử dụng</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:top">
+                        <p>1</p>
+                    </td>
+                    <td style="vertical-align:top">
+                        <p>Sơ sinh</p>
+                    </td>
+                    <td style="vertical-align:top">
+                        <p>Ti&ecirc;m vắc xin Vi&ecirc;m gan B mũi 0 trong 24 giờ đầu sau sinh<br />
+                            Ti&ecirc;m vắc xin BCG Ph&ograve;ng bệnh lao</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:top">
+                        <p>2</p>
+                    </td>
+                    <td style="vertical-align:top">
+                        <p>02 th&aacute;ng</p>
+                    </td>
+                    <td style="vertical-align:top">
+                        <p>Ti&ecirc;m vắc xin bạch hầu &ndash; ho g&agrave; &ndash; uốn v&aacute;n &ndash; vi&ecirc;m gan B &ndash; Hib mũi 1 (vắc xin 5 trong 1)<br />
+                            Uống vắc xin bại liệt lần 1</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:top">
+                        <p>3</p>
+                    </td>
+                    <td style="vertical-align:top">
+                        <p>03 th&aacute;ng</p>
+                    </td>
+                    <td style="vertical-align:top">
+                        <p>Ti&ecirc;m vắc xin bạch hầu &ndash; ho g&agrave; &ndash; uốn v&aacute;n &ndash; vi&ecirc;m gan B &ndash; Hib mũi 2<br />
+                            Uống vắc xin bại liệt lần 2</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:top">
+                        <p>4</p>
+                    </td>
+                    <td style="vertical-align:top">
+                        <p>04 th&aacute;ng</p>
+                    </td>
+                    <td style="vertical-align:top">
+                        <p>Ti&ecirc;m vắc xin bạch hầu &ndash; ho g&agrave; &ndash; uốn v&aacute;n &ndash; vi&ecirc;m gan B &ndash; Hib mũi 3<br />
+                            Uống vắc xin bại liệt lần 3</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:top">
+                        <p>5</p>
+                    </td>
+                    <td style="vertical-align:top">
+                        <p>09 th&aacute;ng</p>
+                    </td>
+                    <td style="vertical-align:top">
+                        <p>Ti&ecirc;m vắc xin sởi mũi 1</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:top">
+                        <p>6</p>
+                    </td>
+                    <td style="vertical-align:top">
+                        <p>18 th&aacute;ng</p>
+                    </td>
+                    <td style="vertical-align:top">
+                        <p>Ti&ecirc;m vắc xin bạch hầu &ndash; ho g&agrave; &ndash; uốn v&aacute;n mũi 4<br />
+                            Ti&ecirc;m vắc xin sởi &ndash; rubella (MR)</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:top">
+                        <p>7</p>
+                    </td>
+                    <td style="vertical-align:top">
+                        <p>Từ 12 th&aacute;ng tuổi</p>
+                    </td>
+                    <td style="vertical-align:top">
+                        <p>Ti&ecirc;m vắc xin Vi&ecirc;m n&atilde;o Nhật Bản mũi 1<br />
+                            Ti&ecirc;m vắc xin Vi&ecirc;m n&atilde;o Nhật Bản mũi 2 (hai tuần sau mũi 1)<br />
+                            Ti&ecirc;m vắc xin Vi&ecirc;m n&atilde;o Nhật Bản mũi 3 (một năm sau mũi 2)</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:top">
+                        <p>8</p>
+                    </td>
+                    <td style="vertical-align:top">
+                        <p>Từ 2 đến 5 tuổi</p>
+                    </td>
+                    <td style="vertical-align:top">
+                        <p>Uống vắc xin Tả 2 lần (v&ugrave;ng nguy cơ cao)<br />
+                            Uống vắc xin Tả lần 2 sau lần một 2 tuần</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align:top">
+                        <p>9</p>
+                    </td>
+                    <td style="vertical-align:top">
+                        <p>Từ 3 đến 10 tuổi</p>
+                    </td>
+                    <td style="vertical-align:top">
+                        <p>Ti&ecirc;m vắc xin Thương h&agrave;n: 1 mũi duy nhất (v&ugrave;ng nguy cơ cao)</p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <h2>2. Nhữngloại vacxin cần thiết với trẻ ngo&agrave;i c&aacute;c loại vacxin nằm trong chương tr&igrave;nh ti&ecirc;mchủng mở rộng</h2>
+
+            <p>- Vắc xin ph&ograve;ng thủyđậu</p>
+
+            <p>- Vắc xin ph&ograve;ng 3 bệnh:sởi &ndash; quai bị &ndash; rubella</p>
+
+            <p>- Vắc xin ph&ograve;ngvi&ecirc;m gan A, A+B</p>
+
+            <p>- Vắc xin ph&ograve;ngvi&ecirc;m m&agrave;ng n&atilde;o do n&atilde;o m&ocirc; cầu tu&yacute;p A+C, tu&yacute;p B+C</p>
+
+            <p>- Vắc xin ph&ograve;ngvi&ecirc;m m&agrave;ng n&atilde;o, vi&ecirc;m phổi, nhiễm khuẩn huyết, vi&ecirc;m tai giữa</p>
+
+            <p>- Vắc xin ph&ograve;ngti&ecirc;u chảy do Rotavirus</p>
+
+            <p>- Vắc xin ph&ograve;ng c&uacute;m</p>
+
+            <p>- Vắc xin ph&ograve;ng dại</p>
+
+            <p>- Vắc xin ph&ograve;ngthương h&agrave;n</p>
+
+            <p>- Vắc xin ph&ograve;ng ungthư cổ tử cung (cho b&eacute; g&aacute;i từ 9 tuổi trở l&ecirc;n)</p>
+
+            <p style="text-align:center"><img alt="" src="/public/filemanager/uploads/DangTinBai/Thang042021/2-1.jpg" style="height:280px; width:80%" /></p>
+
+            <p>C&oacute; 10 loạivacxin cần thiết cho trẻ ngo&agrave;i c&aacute;c loại vacxin nằm trong chương tr&igrave;nh ti&ecirc;m chủngmở rộng</p>
+
+            <h2>3.Trường hợp chống chỉ định ti&ecirc;m chủng</h2>
+
+            <p><strong>Với trẻ sơ sinh</strong><strong>, chống chỉ định hoặc tạm ho&atilde;n trong c&aacute;c trường hợp:</strong></p>
+
+            <p>- Sốt tr&ecirc;n hoặc bằng37,5 độ C</p>
+
+            <p>- Hạ th&acirc;n nhiệt dướihoặc bằng 35,5 độ C.</p>
+
+            <p>- Nghe tim bất thường</p>
+
+            <p>- Tri gi&aacute;c bất thường(li b&igrave; hoặc k&iacute;ch th&iacute;ch, b&uacute; k&eacute;m,...)</p>
+
+            <p>- C&acirc;n nặng dưới 2000g v&agrave; c&oacute; c&aacute;c chống chỉ định kh&aacute;c.</p>
+
+            <p><strong>Với trẻ lớn</strong><strong>, chống chỉ định hoặc tạm ho&atilde;n trong c&aacute;c trường hợp:</strong></p>
+
+            <p>- Sốc, phản ứng nặngsau lần ti&ecirc;m chủng trước.</p>
+
+            <p>- Đang mắc bệnh cấpt&iacute;nh hoặc bệnh m&atilde;n t&iacute;nh tiến triển.</p>
+
+            <p>- Đang hoặc mới kếtth&uacute;c liều điều trị corticoid/gammaglobulin.</p>
+
+            <p>- Sốt tr&ecirc;n hoặc bằng37,5 độ C</p>
+
+            <p>- Hạ th&acirc;n nhiệt dướihoặc bằng 35,5 độ C; nghe tim bất thường.</p>
+
+            <p>- Nhịp thở nghe phổibất thường.</p>
+
+            <p>- Tri gi&aacute;c bất thườngv&agrave; c&aacute;c chống chỉ định kh&aacute;c.</p>
+
+            <h2>4.Trường hợp nhỡ lịch ti&ecirc;m chủng phải xử l&yacute; như thế n&agrave;o?</h2>
+
+            <p>C&oacute; nhiều nguy&ecirc;nnh&acirc;n dẫn đến nhỡ lịch ti&ecirc;m chủng cho trẻ trong đ&oacute; c&oacute; nguy&ecirc;n nh&acirc;n phổ biến nhưbố mẹ qu&ecirc;n lịch ti&ecirc;m chủng của con, trẻ bị bệnh, sốt trong ng&agrave;y c&oacute; lịch hẹn,...</p>
+
+            <p>Trong c&aacute;c trườnghợp lỡ lịch hẹn, t&ugrave;y v&agrave;o loại vacxin, thời gian lỡ, t&igrave;nh trạng của b&eacute; m&agrave; b&aacute;c sĩsẽ c&acirc;n nhắc, song trong đa số trường hợp trẻ vấn được ti&ecirc;m b&ugrave; mũi nhỡ.</p>
+
+            <p>Lỡ hẹn v&igrave; c&aacute;cnguy&ecirc;n nh&acirc;n chủ quan như tại cơ sở y tế gần nơi sống kh&ocirc;ng c&ograve;n loại vacxin trẻcần ti&ecirc;m th&igrave; cha mẹ n&ecirc;n chủ động t&igrave;m hiểu về c&aacute;c cơ sở y tế cao hơn, c&oacute; đầy đủc&aacute;c loại vacxin hơn, như vậy sẽ đảm bảo một sức khỏe tốt cho con.</p>
+        </div>
+        <p>
+        </p>
+        <p class="tac-gia"><strong> </strong></p>
+</body>
+</html>
