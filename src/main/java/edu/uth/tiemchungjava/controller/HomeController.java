@@ -7,11 +7,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 public class HomeController {
     @GetMapping("/gioithieu")
-    public String gioithieu() {
-        return "gioithieu.html";
+    public String gioiThieu() {
+        return "gioithieu";
     }
     @GetMapping("/doingu")
-    public String doingu() {
-        return "doingu.html";
+    public String doiNgu() {
+        return "doingu";
+    }
+    @GetMapping("/lichtiem")
+    public String lichTiem() {
+        return "lichtiem";
     }
 }
