@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
+
+  <!-- title -->
+  <title>Trung Tâm Tiêm Chủng</title>
+
+  <!-- Font Awesome (Dùng để lấy icon) -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <!-- favicon -->
+  <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+  <!-- google font -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="css/all.min.css">
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <!-- owl carousel -->
+  <link rel="stylesheet" href="css/owl.carousel.css">
+  <!-- magnific popup -->
+  <link rel="stylesheet" href="css/magnific-popup.css">
+  <!-- animate css -->
+  <link rel="stylesheet" href="css/animate.css">
+  <!-- mean menu css -->
+  <link rel="stylesheet" href="css/meanmenu.min.css">
+  <!-- main style -->
+  <link rel="stylesheet" href="css/main.css">
+  <!-- responsive -->
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/card.css">
+
+
+</head>
+<body>
+
+<!--PreLoader-->
+<div class="loader">
+  <div class="loader-inner">
+    <div class="circle"></div>
+  </div>
+</div>
+<!--PreLoader Ends-->
+
+<!-- header -->
+<div class="top-header-area" id="sticker">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-sm-12 text-center">
+        <div class="main-menu-wrap">
+          <!-- logo -->
+          <div class="site-logo">
+            <div class="logo">
+              <a href="/">
+                <i class="fas fa-shield-alt"></i>
+              </a>
+            </div>
+          </div>
+          <!-- logo -->
+
+          <!-- menu start -->
+          <nav class="main-menu">
+            <ul>
+              <li class="current-list-item"><a href="http://localhost:8080">Trang chủ</a>
+
+              </li>
+              <li>Giới thiệu</a>
+                <ul class="sub-menu">
+                  <li><a href="http://localhost:8080/gioithieu">Về hệ thống tiêm chủng</a></li>
+                  <li><a href="http://localhost:8080/doingu">Đội ngũ chuyên gia</a></li>
+
+                </ul>
+              </li>
+              <li><a href="#">Dịch vụ</a>
+                <ul class="sub-menu">
+                  <li><a href="#">Tiêm chủng tại Trung tâm</a></li>
+                  <li><a href="#">Tiêm chung cho trường học</a></li>
+                  <li><a href="#">Tiêm chủng gói</a></li>
+                  <li><a href="#">Tiêm chủng theo yêu cầu</a></li>
+                </ul>
+              </li>
+              <li>Tin tức
+
+              </li>
+              <li>Vắc xin trẻ em
+                <ul class="sub-menu">
+                  <li><a href="#l">Vì sao trẻ em cần tiêm vắc xin</a></li>
+                  <li><a href="#">Lịch tiêm chủng cho trẻ</a></li>
+                  <li><a href="#">Các loại vắc xin</a></li>
+                  <li><a href="#">Bảng giá tiêm chủng</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Liên hệ </a></li>
+              <li><a href="#">F&Q</a></li>
+
+              <li>
+                <div class="header-icons">
+                  <a class="shopping-cart" href="#"><i class="fas fa-shopping-cart"></i></a>
+                  <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          <a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+          <div class="mobile-menu"></div>
+          <!-- menu end -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--css-->
+  <style>
+    .site-logo {
+      display: flex;
+      justify-content: center; /* Canh giữa theo chiều ngang */
+      align-items: center;     /* Canh giữa theo chiều dọc */
+      height: 60px;           /* Điều chỉnh chiều cao phù hợp */
+    }
+    .logo {
+      margin-left: 10px; /* Nhích logo sang phải 10px thui */
+    }
+
+  </style>
+  <style>
+    /* Áp dụng Flexbox cho phần chứa header */
+    .top-header-area .main-menu-wrap {
+      display: flex;
+      justify-content: center; /* Canh giữa theo chiều ngang */
+      align-items: center;     /* Canh giữa theo chiều dọc */
+      width: 100%;
+    }
+  </style>
+
+</div><!-- end header -->
+
+<!-- search area -->
+<div class="search-area">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <span class="close-btn"><i class="fas fa-window-close"></i></span>
+        <div class="search-bar">
+          <div class="search-bar-tablecell">
+            <h3>Search For:</h3>
+            <input type="text" placeholder="Keywords">
+            <button type="submit">Search <i class="fas fa-search"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end search area -->
+
+<!-- hero area -->
+<div class="hero-area hero-bg">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-9 offset-lg-2 text-center">
+        <div class="hero-text">
+          <div class="hero-text-tablecell">
+
+            <h1>Hệ thống tiêm chung dành cho trẻ
+            </h1>
+            <div class="hero-btns">
+              <a href="shop.html" class="boxed-btn">Vắc xin</a>
+              <a href="contact.html" class="bordered-btn">Liên hệ</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="main_body">
+  <div class="w100 div_overflow">
+    <div class="div_full bg_xam pt_10 pb_10 br_catc ">
+      <div class="container">
+        <div class="row div-breckum">
+          <div class="col-sm-12">
+            <nav aria-label="breadcrumbs" class="rank-math-breadcrumb"><p><a href="https://vnvc.vn/">Trang chủ</a><span class="separator"> » </span><span class="last">Chuyên gia</span></p></nav>                                            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <section id="doctors" class="doctors section light-background">
+    <!-- Section Title -->
+
+
+    <div class="container">
+      <div class="team-container">
+        <!-- Doctor 1 -->
+        <div class="team-card" data-aos="fade-up" data-aos-delay="100">
+          <img src="img/doctors/doctors-1.jpg" alt="Walter White">
+          <h3>Walter White</h3>
+          <p>Chief Medical Officer</p>
+          <div class="social-icons">
+            <a href=""><i class="bi bi-twitter-x"></i></a>
+            <a href=""><i class="bi bi-facebook"></i></a>
+            <a href=""><i class="bi bi-instagram"></i></a>
+            <a href=""><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+        <!-- Doctor 2 -->
+        <div class="team-card" data-aos="fade-up" data-aos-delay="200">
+          <img src="img/doctors/doctors-2.jpg" alt="Sarah Jhonson">
+          <h3>Sarah Jhonson</h3>
+          <p>Anesthesiologist</p>
+          <div class="social-icons">
+            <a href=""><i class="bi bi-twitter-x"></i></a>
+            <a href=""><i class="bi bi-facebook"></i></a>
+            <a href=""><i class="bi bi-instagram"></i></a>
+            <a href=""><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+        <!-- Doctor 3 -->
+        <div class="team-card" data-aos="fade-up" data-aos-delay="300">
+          <img src="img/doctors/doctors-3.jpg" alt="William Anderson">
+          <h3>William Anderson</h3>
+          <p>Cardiology</p>
+          <div class="social-icons">
+            <a href=""><i class="bi bi-twitter-x"></i></a>
+            <a href=""><i class="bi bi-facebook"></i></a>
+            <a href=""><i class="bi bi-instagram"></i></a>
+            <a href=""><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+        <!-- Doctor 4 -->
+        <div class="team-card" data-aos="fade-up" data-aos-delay="400">
+          <img src="img/doctors/doctors-4.jpg" alt="Amanda Jepson">
+          <h3>Amanda Jepson</h3>
+          <p>Neurosurgeon</p>
+          <div class="social-icons">
+            <a href=""><i class="bi bi-twitter-x"></i></a>
+            <a href=""><i class="bi bi-facebook"></i></a>
+            <a href=""><i class="bi bi-instagram"></i></a>
+            <a href=""><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <footer>
+            <div class="footer-container">
+              <div class="footer-header">
+
+                <p>HỆ THỐNG TRUNG TÂM TIÊM CHỦNG VẮC XIN CHO TRẺ EM </p>
+                <p><strong>AN TOÀN - UY TÍN - CHẤT LƯỢNG HÀNG ĐẦU VIỆT NAM</strong></p>
+              </div>
+
+              <div class="footer-content">
+                <div class="footer-section">
+                  <h2>Hệ thống Miền Bắc</h2>
+                  <ul>
+                    <li>Bắc Giang</li>
+                    <li>Điện Biên</li>
+                    <li>Hà Nam</li>
+                    <li>Hoà Bình</li>
+                    <li>Lạng Sơn</li>
+                    <li>Ninh Bình</li>
+                    <li>Quảng Ninh</li>
+                    <li>Thái Nguyên</li>
+                    <li>Yên Bái</li>
+                    <li>Bắc Ninh</li>
+                    <li>Hà Nội</li>
+                  </ul>
+                </div>
+                <div class="footer-section">
+                  <h2>Hệ thống Miền Trung</h2>
+                  <ul>
+                    <li>Bình Định</li>
+                    <li>Đắk Lắk</li>
+
+                    <li>Thừa Thiên Huế</li>
+                    <li>Đà Nẵng</li>
+                    <li>Đắk Nông</li>
+                    <li>Hà Tĩnh</li>
+                    <li>Kon Tum</li>
+                    <li>Quảng Bình</li>
+                    <li>Quảng Ngãi</li>
+                    <li>Thanh Hóa</li>
+                    <li>Phú Yên</li>
+                  </ul>
+                </div>
+                <div class="footer-section">
+                  <h2>Hệ thống Miền Nam</h2>
+                  <ul>
+                    <li>An Giang</li>
+
+                    <li>Lâm Đồng</li>
+                    <li>Ninh Thuận</li>
+                    <li>Tiền Giang</li>
+                    <li>Sóc Trăng</li>
+                    <li>Bà Rịa - Vũng Tàu</li>
+                    <li>Bến Tre</li>
+                    <li>Bình Phước</li>
+                    <li>Cà Mau</li>
+                    <li>Đồng Nai</li>
+                    <li>Hồ Chí Minh</li>
+
+                  </ul>
+                </div>
+              </div>
+
+              <div class="footer-bottom">
+                <p><strong>CÔNG TY CỔ PHẦN VACCIN VIỆT NAM</strong></p>
+                <p>Địa chỉ: 180 Trường Chinh, phường Khương Thượng, quận Đống Đa, TP Hà Nội</p>
+                <p>Email: cskh@vnvc.vn | Hotline: 028 7102 6595</p>
+              </div>
+            </div>
+          </footer>
+
+
+
+          <!-- jquery -->
+          <script src="js/jquery-1.11.3.min.js"></script>
+          <!-- bootstrap -->
+          <script src="bootstrap/js/bootstrap.min.js"></script>
+          <!-- count down -->
+          <script src="js/jquery.countdown.js"></script>
+          <!-- isotope -->
+          <script src="js/jquery.isotope-3.0.6.min.js"></script>
+          <!-- waypoints -->
+          <script src="js/waypoints.js"></script>
+          <!-- owl carousel -->
+          <script src="js/owl.carousel.min.js"></script>
+          <!-- magnific popup -->
+          <script src="js/jquery.magnific-popup.min.js"></script>
+          <!-- mean menu -->
+          <script src="js/jquery.meanmenu.min.js"></script>
+          <!-- sticker js -->
+          <script src="js/sticker.js"></script>
+          <!-- main js -->
+          <script src="js/main.js"></script>
+
+</body>
+</html>

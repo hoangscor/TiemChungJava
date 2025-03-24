@@ -1,0 +1,66 @@
+/* Container for all cards */
+.team-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Individual card */
+.team-card {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    text-align: center;
+    width: 250px;
+    transition: transform 0.3s ease;
+}
+
+.team-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Image */
+.team-card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Name */
+.team-card h3 {
+    font-size: 1.2rem;
+    margin: 15px 0 5px;
+    color: #333;
+}
+
+/* Title */
+.team-card p {
+    color: #777;
+    margin-bottom: 15px;
+    font-size: 0.95rem;
+}
+
+/* Social icons container */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 0 15px;
+}
+
+.social-icons a {
+    background-color: #f3f4f6;
+    padding: 8px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.social-icons a:hover {
+    background-color: #e5e7eb;
+}
