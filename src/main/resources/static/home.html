@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><!DOCTYPE html>
+        <html lang="vi">
+        <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Trang chủ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #333;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .logout-btn {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .logout-btn:hover {
+            background-color: #d32f2f;
+        }
+
+        .welcome-message {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #e7f3ff;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <h2>Ứng dụng đăng nhập</h2>
+    <div>
+        <span id="user-info">Chào, </span>
+        <button id="logout-btn" class="logout-btn">Đăng xuất</button>
+    </div>
+</div>
+
+<div class="container">
+    <div class="welcome-message">
+        <h2>Chào mừng bạn đã đăng nhập thành công!</h2>
+        <p>Đây là trang chính của ứng dụng. Bạn đã đăng nhập với tài khoản <strong id="username-display"></strong>.</p>
+    </div>
+
+    <div>
+        <h3>Thông tin cá nhân:</h3>
+        <p><strong>ID:</strong> <span id="user-id"></span></p>
+        <p><strong>Tên đăng nhập:</strong> <span id="username"></span></p>
+        <p><strong>Email:</strong> <span id="email"></span></p>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Kiểm tra xem người dùng đã đăng nhập chưa
+        const userJson = localStorage.getItem('user');password
+        if (!userJson) {
+            // Nếu chưa đăng nhập, chuyển hướng về trang đăng nhập
+            window.location.href = 'login.html';
+            return;
+        }
+
+        // Hiển thị thông tin người dùng
+        const user = JSON.parse(userJson);
+        document.getElementById('user-info').textContent = 'Chào, ' + user.username;
+        document.getElementById('username-display').textContent = user.username;
+        document.getElementById('user-id').textContent = user.id;
+        document.getElementById('username').textContent = user.username;
+        document.getElementById('email').textContent = user.email;
+
+        // Xử lý sự kiện đăng xuất
+        document.getElementById('logout-btn').addEventListener('click', function() {
+            localStorage.removeItem('user');
+            window.location.href = 'login.html';
+        });
+    });
+</script>
+</body>
+</html></title>
+</head>
+<body>
+
+</body>
+</html>
