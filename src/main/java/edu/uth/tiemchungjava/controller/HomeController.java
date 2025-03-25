@@ -18,4 +18,8 @@ public class HomeController {
     public String lichTiem() {
         return "lichtiem";
     }
+    @GetMapping("/register")
+    public String register() {
+        return "register.html";
+    }
 }

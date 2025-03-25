@@ -5,10 +5,12 @@ import edu.uth.tiemchungjava.models.User;
 import edu.uth.tiemchungjava.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
+@Controller
 @RestController
 @RequestMapping("/api/users")
 @CrossOrigin(origins = "*")
@@ -38,6 +40,8 @@ public class UserController {
 
         return ResponseEntity.ok(new LoginResponse(false, "Tên đăng nhập hoặc mật khẩu không đúng"));
     }
+
+
     @PostMapping("/register")
     public ResponseEntity<LoginResponse> register(@RequestBody User user) {
         if (userRepository.findByUsername(user.getUsername()).isPresent()) {
