@@ -22,4 +22,8 @@ public class HomeController {
     public String register() {
         return "register.html";
     }
+    @GetMapping("/indexx")
+    public String indexx() {
+        return "indexx.html";
+    }
 }
