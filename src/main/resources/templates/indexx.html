@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html
+		lang="en"
+		xmlns:th="http://www.thymeleaf.org"
+>
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -37,7 +40,6 @@
 
 </head>
 <body>
-
 <!--PreLoader-->
 <div class="loader">
 	<div class="loader-inner">
@@ -45,94 +47,8 @@
 	</div>
 </div>
 <!--PreLoader Ends-->
-
-<!-- header -->
-<div class="top-header-area" id="sticker">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12 col-sm-12 text-center">
-				<div class="main-menu-wrap">
-					<!-- logo -->
-					<div class="site-logo">
-						<div class="logo">
-							<a href="/">
-								<i class="fas fa-shield-alt"></i>
-							</a>
-						</div>
-					</div>
-					<!-- logo -->
-
-					<!-- menu start -->
-					<nav class="main-menu">
-						<ul>
-							<li class="current-list-item"><a href="/indexx">Trang chủ</a>
-							</li>
-							<li><a href="/indexx">Giới thiệu</a>
-								<ul class="sub-menu">
-									<li><a href="/gioithieu">Về hệ thống tiêm chủng</a></li>
-									<li><a href="/doingu">Đội ngũ chuyên gia</a></li>
-								</ul>
-							</li>
-							<li><a href="/indexx">Vắc xin trẻ em</a>
-								<ul class="sub-menu">
-									<li><a href="/lido">Vì sao trẻ em cần tiêm vắc xin</a></li>
-									<li><a href="/lichtiem">Lịch tiêm chủng cho trẻ</a></li>
-									<li><a href="/loaivacxin">Các loại vắc xin</a></li>
-									<li><a href="/banggia">Bảng giá tiêm chủng</a></li>
-								</ul>
-							</li>
-							<li><a href="/indexx">Cẩm nang</a>
-								<ul class="sub-menu">
-									<li><a href="/danhmuc">Danh mục vắc xin</a></li>
-									<li><a href="/quytrinh">Quy trình tiêm chủng</a></li>
-									<li><a href="/luuytruoc">Lưu ý trước khi tiêm</a></li>
-									<li><a href="/luuysau">Lưu ý sau khi tiêm</a></li>
-								</ul>
-							</li>
-							<li><a href="/indexx">Liên hệ </a></li>
-							<li><a href="/indexx">F&Q</a></li>
-
-							<li>
-								<div class="header-icons">
-									<a class="shopping-cart" href="#"><i class="fas fa-shopping-cart"></i></a>
-<!--									<a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>-->
-								</div>
-							</li>
-						</ul>
-					</nav>
-					<a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
-					<div class="mobile-menu"></div>
-					<!-- menu end -->
-				</div>
-			</div>
-		</div>
-	</div>
-	<!--css-->
-	<style>
-		.site-logo {
-			display: flex;
-			justify-content: center; /* Canh giữa theo chiều ngang */
-			align-items: center;     /* Canh giữa theo chiều dọc */
-			height: 60px;           /* Điều chỉnh chiều cao phù hợp */
-		}
-		.logo {
-			margin-left: 10px; /* Nhích logo sang phải 10px thui */
-		}
-
-	</style>
-	<style>
-		/* Áp dụng Flexbox cho phần chứa header */
-		.top-header-area .main-menu-wrap
-		{
-			display: flex;
-			justify-content: center; /* Canh giữa theo chiều ngang */
-			align-items: center;     /* Canh giữa theo chiều dọc */
-			width: 100%;
-		}
-	</style>
-</div>
-
 <!-- end header -->
+<div th:replace="LayoutTiemChung/layoutHeader::header"></div>
 
 <!-- search area -->
 <div class="search-area">
@@ -305,7 +221,6 @@
 			<img src="https://cdn-icons-png.flaticon.com/128/2921/2921806.png" alt="Tiêm chủng theo yêu cầu">
 			<p>TIÊM CHỦNG THEO YÊU CẦU</p>
 		</div>
-
 	</div>
 </div>
 
@@ -369,7 +284,8 @@
 							</div>
 						</div>
 					</div>
-				</div>			</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
@@ -378,78 +294,8 @@
 
 </div>
 <!-- end latest news -->
-
-<footer>
-	<div class="footer-container">
-		<div class="footer-header">
-
-			<p>HỆ THỐNG TRUNG TÂM TIÊM CHỦNG VẮC XIN CHO TRẺ EM </p>
-			<p><strong>AN TOÀN - UY TÍN - CHẤT LƯỢNG HÀNG ĐẦU VIỆT NAM</strong></p>
-		</div>
-
-		<div class="footer-content">
-			<div class="footer-section">
-				<h2>Hệ thống Miền Bắc</h2>
-				<ul>
-					<li>Bắc Giang</li>
-					<li>Điện Biên</li>
-					<li>Hà Nam</li>
-					<li>Hoà Bình</li>
-					<li>Lạng Sơn</li>
-					<li>Ninh Bình</li>
-					<li>Quảng Ninh</li>
-					<li>Thái Nguyên</li>
-					<li>Yên Bái</li>
-					<li>Bắc Ninh</li>
-					<li>Hà Nội</li>
-				</ul>
-			</div>
-			<div class="footer-section">
-				<h2>Hệ thống Miền Trung</h2>
-				<ul>
-					<li>Bình Định</li>
-					<li>Đắk Lắk</li>
-
-					<li>Thừa Thiên Huế</li>
-					<li>Đà Nẵng</li>
-					<li>Đắk Nông</li>
-					<li>Hà Tĩnh</li>
-					<li>Kon Tum</li>
-					<li>Quảng Bình</li>
-					<li>Quảng Ngãi</li>
-					<li>Thanh Hóa</li>
-					<li>Phú Yên</li>
-				</ul>
-			</div>
-			<div class="footer-section">
-				<h2>Hệ thống Miền Nam</h2>
-				<ul>
-					<li>An Giang</li>
-
-					<li>Lâm Đồng</li>
-					<li>Ninh Thuận</li>
-					<li>Tiền Giang</li>
-					<li>Sóc Trăng</li>
-					<li>Bà Rịa - Vũng Tàu</li>
-					<li>Bến Tre</li>
-					<li>Bình Phước</li>
-					<li>Cà Mau</li>
-					<li>Đồng Nai</li>
-					<li>Hồ Chí Minh</li>
-
-				</ul>
-			</div>
-		</div>
-
-		<div class="footer-bottom">
-			<p><strong>CÔNG TY CỔ PHẦN VACCIN VIỆT NAM</strong></p>
-			<p>Địa chỉ: 180 Trường Chinh, phường Khương Thượng, quận Đống Đa, TP Hà Nội</p>
-			<p>Email: cskh@vnvc.vn | Hotline: 028 7102 6595</p>
-		</div>
-	</div>
-</footer>
-
-
+<!--FOOTER-->
+<div th:replace="LayoutTiemChung/layoutFooter::footer"></div>
 
 <!-- jquery -->
 <script src="js/jquery-1.11.3.min.js"></script>
@@ -471,6 +317,28 @@
 <script src="js/sticker.js"></script>
 <!-- main js -->
 <script src="js/main.js"></script>
+<!--css-->
+<style>
+	.site-logo {
+		display: flex;
+		justify-content: center; /* Canh giữa theo chiều ngang */
+		align-items: center;     /* Canh giữa theo chiều dọc */
+		height: 60px;           /* Điều chỉnh chiều cao phù hợp */
+	}
+	.logo {
+		margin-left: 10px; /* Nhích logo sang phải 10px thui */
+	}
 
+</style>
+<style>
+	/* Áp dụng Flexbox cho phần chứa header */
+	.top-header-area .main-menu-wrap
+	{
+		display: flex;
+		justify-content: center; /* Canh giữa theo chiều ngang */
+		align-items: center;     /* Canh giữa theo chiều dọc */
+		width: 100%;
+	}
+</style>
 </body>
 </html>
