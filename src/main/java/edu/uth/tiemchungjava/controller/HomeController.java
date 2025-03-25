@@ -26,4 +26,8 @@ public class HomeController {
     public String indexx() {
         return "indexx.html";
     }
+    @GetMapping("/quytrinh")
+    public String quytrinh() {
+        return "quytrinh.html";
+    }
 }
