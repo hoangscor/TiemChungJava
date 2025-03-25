@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html
+        lang="en"
+        xmlns:th="http://www.thymeleaf.org"
+>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -38,100 +41,10 @@
 </head>
 <body>
 
-<!--&lt;!&ndash;PreLoader&ndash;&gt;-->
-<!--<div class="loader">-->
-<!--    <div class="loader-inner">-->
-<!--        <div class="circle"></div>-->
-<!--    </div>-->
-<!--</div>-->
-<!--&lt;!&ndash;PreLoader Ends&ndash;&gt;-->
 
 <!-- header -->
-<div class="top-header-area" id="sticker">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12 col-sm-12 text-center">
-                <div class="main-menu-wrap">
-                    <!-- logo -->
-                    <div class="site-logo">
-                        <div class="logo">
-                            <a href="/static">
-                                <i class="fas fa-shield-alt"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <!-- logo -->
 
-                    <!-- menu start -->
-                    <nav class="main-menu">
-                        <ul>
-                            <li class="current-list-item"><a href="http://localhost:8080/indexx">Trang chủ</a>
-
-                            </li>
-                            <li><a href="/"> Giới thiệu</a>
-                                <ul class="sub-menu">
-                                    <li><a href="gioithieu">Về hệ thống tiêm chủng</a></li>
-                                    <li><a href="doingu">Đội ngũ chuyên gia</a></li>
-                                </ul>
-                            </li>
-
-                            <li><a href="/">Vắc xin trẻ em</a>
-                                <ul class="sub-menu">
-                                    <li><a href="http://localhost:8080/lichtiem">Lịch tiêm chủng cho trẻ</a></li>
-                                    <li><a href="http://localhost:8080/loaivxn">Các loại vắc xin</a></li>
-                                    <li><a href="http://localhost:8080/banggia">Bảng giá tiêm chủng</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Cẩm nang</a>
-                                <ul class="sub-menu">
-                                    <li><a href="http://localhost:8080/danhmuc">Danh mục vắc xin</a></li>
-                                    <li><a href="http://localhost:8080/quytrinh">Quy trình tiêm chủng</a></li>
-                                    <li><a href="http://localhost:8080/luuyt">Lưu ý trước khi tiêm</a></li>
-                                    <li><a href="http://localhost:8080/luuys">Lưu ý sau khi tiêm</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Liên hệ </a></li>
-                            <li><a href="http://localhost:8080/F&Q">F&Q</a></li>
-
-                            <li>
-                                <div class="header-icons">
-                                    <a class="shopping-cart" href="#"><i class="fas fa-shopping-cart"></i></a>
-                                    <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
-                                </div>
-                            </li>
-                        </ul>
-                    </nav>
-                    <a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
-                    <div class="mobile-menu"></div>
-                    <!-- menu end -->
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--css-->
-    <style>
-        .site-logo {
-            display: flex;
-            justify-content: center; /* Canh giữa theo chiều ngang */
-            align-items: center;     /* Canh giữa theo chiều dọc */
-            height: 60px;           /* Điều chỉnh chiều cao phù hợp */
-        }
-        .logo {
-            margin-left: 10px; /* Nhích logo sang phải 10px thui */
-        }
-
-    </style>
-    <style>
-        /* Áp dụng Flexbox cho phần chứa header */
-        .top-header-area .main-menu-wrap {
-            display: flex;
-            justify-content: center; /* Canh giữa theo chiều ngang */
-            align-items: center;     /* Canh giữa theo chiều dọc */
-            width: 100%;
-        }
-    </style>
-
-</div>
+<div th:replace="LayoutTiemChung/layoutHeader::header"></div>
 
 <!-- end header -->
 
@@ -384,5 +297,32 @@
         <p>
         </p>
         <p class="tac-gia"><strong> </strong></p>
+
+<!--        FOOTER-->
+        <div th:replace="LayoutTiemChung/layoutFooter::footer"></div>
+
+        <!--css-->
+        <style>
+            .site-logo {
+                display: flex;
+                justify-content: center; /* Canh giữa theo chiều ngang */
+                align-items: center;     /* Canh giữa theo chiều dọc */
+                height: 60px;           /* Điều chỉnh chiều cao phù hợp */
+            }
+            .logo {
+                margin-left: 10px; /* Nhích logo sang phải 10px thui */
+            }
+
+        </style>
+        <style>
+            /* Áp dụng Flexbox cho phần chứa header */
+            .top-header-area .main-menu-wrap
+            {
+                display: flex;
+                justify-content: center; /* Canh giữa theo chiều ngang */
+                align-items: center;     /* Canh giữa theo chiều dọc */
+                width: 100%;
+            }
+        </style>
 </body>
 </html>
