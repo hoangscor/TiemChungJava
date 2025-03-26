@@ -42,4 +42,7 @@ public class HomeController {
 
     @GetMapping("/lydatlichtiem")//goi den html
     public String lydatlichtiem() {return "lydatlichtiem.html";}
+
+    @GetMapping("/admin")//goi den admin
+    public String admin() {return "homeAdmin";}
 }
