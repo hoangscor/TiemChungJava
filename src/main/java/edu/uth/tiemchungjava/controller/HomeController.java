@@ -39,4 +39,7 @@ public class HomeController {
     public String indexx() {
         return "indexx"; // goi den html
     }
+
+    @GetMapping("/lydatlichtiem")//goi den html
+    public String lydatlichtiem() {return "lydatlichtiem.html";}
 }

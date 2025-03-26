@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đặt Lịch Tiêm Chủng</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .vaccination-container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            padding: 30px;
+        }
+
+        .vaccination-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .vaccination-header h1 {
+            color: #2c3e50;
+            font-size: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #34495e;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #bdc3c7;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+        }
+
+        .form-group-split {
+            display: flex;
+            gap: 15px;
+        }
+
+        .form-group-split > div {
+            flex: 1;
+        }
+
+        @media (max-width: 600px) {
+            .form-group-split {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="vaccination-container">
+    <div class="vaccination-header">
+        <h1>Đặt Lịch Tiêm Chủng</h1>
+    </div>
+    <form id="vaccination-form" action="/dat-lich-tiem" method="post">
+        <div class="form-group-split">
+            <div class="form-group">
+                <label for="fullName">Họ và Tên</label>
+                <input type="text" id="fullName" name="fullName" required>
+            </div>
+            <div class="form-group">
+                <label for="cccd">Căn Cước Công Dân</label>
+                <input type="text" id="cccd" name="cccd" required pattern="\d{12}" title="CCCD phải là 12 chữ số">
+            </div>
+        </div>
+
+        <div class="form-group-split">
+            <div class="form-group">
+                <label for="birthDate">Ngày Sinh</label>
+                <input type="text" id="birthDate" name="birthDate"
+                       pattern="\d{2}/\d{2}/\d{4}"
+                       placeholder="DD/MM/YYYY"
+                       maxlength="10"
+                       required>
+            </div>
+            <div class="form-group">
+                <label for="gender">Giới Tính</label>
+                <select id="gender" name="gender" required>
+                    <option value="">Chọn giới tính</option>
+                    <option value="male">Nam</option>
+                    <option value="female">Nữ</option>
+                    <option value="other">Khác</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="address">Địa Chỉ</label>
+            <input type="text" id="address" name="address" required>
+        </div>
+
+        <div class="form-group-split">
+            <div class="form-group">
+                <label for="ageGroup">Lứa Tuổi</label>
+                <select id="ageGroup" name="ageGroup" required>
+                    <option value="">Chọn lứa tuổi</option>
+                    <option value="0-12">0-12 tuổi</option>
+                    <option value="13-18">13-18 tuổi</option>
+                    <option value="19-40">19-40 tuổi</option>
+                    <option value="41-60">41-60 tuổi</option>
+                    <option value="60+">Trên 60 tuổi</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="vaccinationSite">Địa Điểm Tiêm</label>
+                <select id="vaccinationSite" name="vaccinationSite" required>
+                    <option value="">Chọn địa điểm</option>
+                    <option value="site1">Trung Tâm Y Tế Quận 1</option>
+                    <option value="site2">Bệnh Viện Đa Khoa Thành Phố</option>
+                    <option value="site3">Trạm Y Tế Phường</option>
+                    <option value="site4">Điểm Tiêm Lưu Động</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="vaccinationType">Loại Vắc-xin</label>
+            <select id="vaccinationType" name="vaccinationType" required>
+                <option value="">Chọn loại vắc-xin</option>
+                <option value="covid">COVID-19</option>
+                <option value="flu">Cúm</option>
+                <option value="mmr">MMR</option>
+                <option value="hepatitis">Viêm Gan</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="preferredDate">Ngày Tiêm Mong Muốn</label>
+            <input type="text" id="preferredDate" name="preferredDate"
+                   pattern="\d{2}/\d{2}/\d{4}"
+                   placeholder="DD/MM/YYYY"
+                   maxlength="10"
+                   required>
+        </div>
+
+        <div class="form-group">
+            <label for="phoneNumber">Số Điện Thoại</label>
+            <input type="tel" id="phoneNumber" name="phoneNumber" required pattern="[0-9]{10}" title="Số điện thoại phải là 10 chữ số">
+        </div>
+
+        <button type="submit" class="btn">Đặt Lịch Tiêm</button>
+    </form>
+</div>
+
+
+
+
+</body>
+</html>
