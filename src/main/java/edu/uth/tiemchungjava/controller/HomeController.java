@@ -45,4 +45,7 @@ public class HomeController {
 
     @GetMapping("/admin")//goi den admin
     public String admin() {return "homeAdmin";}
+    @GetMapping("/Vaccine")
+
+    public String Vaccine() {return "Vaccine.html";}
 }
