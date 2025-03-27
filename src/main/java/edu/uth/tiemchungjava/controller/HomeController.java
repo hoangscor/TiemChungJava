@@ -26,10 +26,10 @@ public class HomeController {
         return "register.html";
     }
 
-//    @GetMapping("/indexx")
-//    public String indexx() {
-//        return "indexx.html";
-//    }
+    @GetMapping("/login")
+    public String login() {
+        return "index";
+    }
     @GetMapping("/quytrinh")
     public String quytrinh() {
         return "quytrinh.html";
