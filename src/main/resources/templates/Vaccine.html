@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html
+        lang="en"
+        xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
+
+  <!-- title -->
+  <title>Trung Tâm Tiêm Chủng</title>
+
+  <!-- Font Awesome (Dùng để lấy icon) -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <!-- favicon -->
+  <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+  <!-- google font -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="css/all.min.css">
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <!-- owl carousel -->
+  <link rel="stylesheet" href="css/owl.carousel.css">
+  <!-- magnific popup -->
+  <link rel="stylesheet" href="css/magnific-popup.css">
+  <!-- animate css -->
+  <link rel="stylesheet" href="css/animate.css">
+  <!-- mean menu css -->
+  <link rel="stylesheet" href="css/meanmenu.min.css">
+  <!-- main style -->
+  <link rel="stylesheet" href="css/main.css">
+  <!-- responsive -->
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/styles.css">
+
+
+</head>
+
+
+<body>
+
+<!--PreLoader-->
+<div class="loader">
+  <div class="loader-inner">
+    <div class="circle"></div>
+  </div>
+</div>
+<!--PreLoader Ends-->
+
+<!-- header -->
+<div th:replace="LayoutTiemChung/layoutHeader::header"></div>
+
+<!-- end header -->
+<!--CONTENT-->
+
+<th:block th:fragment="content">
+  <h2>Thông tin các loại vắc xin</h2>
+
+  <div class="vacxin-list">
+    <div class="vacxin-card">
+      <img src="https://vnvc.vn/wp-content/uploads/2024/09/vaccine-qdenga-1.jpg" alt="Vắc xin Qdenga">
+      <a href="https://vnvc.vn/vac-xin-qdenga/">Vắc xin Qdenga (Nhật Bản)</a>
+      <p>Giá tham khảo: 950,000 VNĐ</p>
+    </div>
+
+    <div class="vacxin-card">
+      <img src="https://vnvc.vn/wp-content/uploads/2023/11/vacxin-shingrix.jpg" alt="Vắc xin Shingrix">
+      <a href="https://vnvc.vn/vac-xin-shingrix/">Vắc xin Shingrix (Bỉ)</a>
+      <p>Giá tham khảo: 2,150,000 VNĐ</p>
+    </div>
+
+    <div class="vacxin-card">
+      <img src="https://vnvc.vn/wp-content/uploads/2024/08/vaccine-pneumovax-23.jpg" alt="Vắc xin Pneumovax 23">
+      <a href="https://vnvc.vn/vac-xin-pneumovax-23/">Vắc xin Pneumovax 23 (Mỹ)</a>
+      <p>Giá tham khảo: 720,000 VNĐ</p>
+    </div>
+
+    <div class="vacxin-card">
+      <img src="https://vnvc.vn/wp-content/uploads/2024/02/bexsero.jpg" alt="Vắc xin Bexsero">
+      <a href="https://vnvc.vn/vac-xin-bexsero/">Vắc xin Bexsero (Ý)</a>
+      <p>Giá tham khảo: 2,500,000 VNĐ</p>
+    </div>
+
+    <div class="vacxin-card">
+      <img src="https://vnvc.vn/wp-content/uploads/2019/11/prevenar-13.jpg" alt="Vắc xin Prevenar 13">
+      <a href="https://vnvc.vn/prevenar-13-vac-xin-phong-benh-viem-phoi-viem-mang-nao-viem-tai-giua-nhiem-khuan-huyet-phe-cau-khuan/">Vắc xin Prevenar 13 (Bỉ)</a>
+      <p>Giá tham khảo: 1,550,000 VNĐ</p>
+    </div>
+
+    <div class="vacxin-card">
+      <img src="https://vnvc.vn/wp-content/uploads/2020/02/vacxin-menactra-1.jpg" alt="Vắc xin Menactra">
+      <a href="https://vnvc.vn/menactra-vac-xin-nao-mo-cau-nhom-acy-va-w-135-polysaccharide-cong-hop-giai-doc-bach-hau/">Vắc xin Menactra (Mỹ)</a>
+      <p>Giá tham khảo: 1,350,000 VNĐ</p>
+    </div>
+
+    <!-- Thêm các card khác tại đây theo cùng mẫu nếu cần -->
+  </div></th:block>
+
+<!--END CONTENT-->
+
+<!--FOOTER-->
+
+<div th:replace="LayoutTiemChung/layoutFooter::footer"></div>
+
+<!--END FOOTER-->
+
+<!-- jquery -->
+<script src="js/jquery-1.11.3.min.js"></script>
+<!-- bootstrap -->
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<!-- count down -->
+<script src="js/jquery.countdown.js"></script>
+<!-- isotope -->
+<script src="js/jquery.isotope-3.0.6.min.js"></script>
+<!-- waypoints -->
+<script src="js/waypoints.js"></script>
+<!-- owl carousel -->
+<script src="js/owl.carousel.min.js"></script>
+<!-- magnific popup -->
+<script src="js/jquery.magnific-popup.min.js"></script>
+<!-- mean menu -->
+<script src="js/jquery.meanmenu.min.js"></script>
+<!-- sticker js -->
+<script src="js/sticker.js"></script>
+<!-- main js -->
+<script src="js/main.js"></script>
+<!--css-->
+<style>
+  .site-logo {
+    display: flex;
+    justify-content: center; /* Canh giữa theo chiều ngang */
+    align-items: center;     /* Canh giữa theo chiều dọc */
+    height: 60px;           /* Điều chỉnh chiều cao phù hợp */
+  }
+  .logo {
+    margin-left: 10px; /* Nhích logo sang phải 10px thui */
+  }
+
+</style>
+<style>
+  /* Áp dụng Flexbox cho phần chứa header */
+  .top-header-area .main-menu-wrap
+  {
+    display: flex;
+    justify-content: center; /* Canh giữa theo chiều ngang */
+    align-items: center;     /* Canh giữa theo chiều dọc */
+    width: 100%;
+  }
+</style>
+</body>
+</html>
