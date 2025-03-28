@@ -39,10 +39,7 @@
 
 
 </head>
-
-
 <body>
-
 <!--PreLoader-->
 <div class="loader">
   <div class="loader-inner">
@@ -50,60 +47,188 @@
   </div>
 </div>
 <!--PreLoader Ends-->
-
-<!-- header -->
+<!-- end header -->
 <div th:replace="LayoutTiemChung/layoutHeader::header"></div>
 
-<!-- end header -->
+<!-- search area -->
+<div class="search-area">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <span class="close-btn"><i class="fas fa-window-close"></i></span>
+        <div class="search-bar">
+          <div class="search-bar-tablecell">
+            <h3>Search For:</h3>
+            <input type="text" placeholder="Keywords">
+            <button type="submit">Search <i class="fas fa-search"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end search area -->
 
 <!-- hero area -->
 <div th:replace="LayoutTiemChung/layoutHero::hero"></div>
-<!--END HERO-->
 
-<!--CONTENT-->
 
 <th:block th:fragment="content">
-  <h2>Thông tin các loại vắc xin</h2>
 
-  <div class="vacxin-list">
-    <div class="vacxin-card">
-      <img src="https://vnvc.vn/wp-content/uploads/2024/09/vaccine-qdenga-1.jpg" alt="Vắc xin Qdenga">
-      <a href="https://vnvc.vn/vac-xin-qdenga/">Vắc xin Qdenga (Nhật Bản)</a>
-      <p>Giá tham khảo: 950,000 VNĐ</p>
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to right, #0072ff, #00c6ff);
+        color: white;
+        text-align: center;
+      }
+
+      .container {
+        padding: 40px 20px;
+      }
+
+      h1 {
+        font-size: 32px;
+        margin-bottom: 20px;
+      }
+
+      .button-group {
+        margin-bottom: 20px;
+      }
+
+      .button-group button {
+        border: none;
+        padding: 10px 20px;
+        margin: 0 5px;
+        font-size: 16px;
+        border-radius: 25px;
+        cursor: pointer;
+      }
+
+      .btn-blue {
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+      }
+
+      .btn-orange {
+        background: linear-gradient(to right, orange, gold);
+        color: white;
+      }
+
+      .search-box {
+        margin-bottom: 30px;
+      }
+
+      .search-box input {
+        padding: 10px 15px;
+        border: none;
+        border-radius: 25px;
+        width: 300px;
+        max-width: 90%;
+      }
+
+      .search-box input::placeholder {
+        color: #888;
+      }
+
+      .items {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        flex-wrap: wrap;
+      }
+
+      .item {
+        text-align: center;
+        width: 150px;
+      }
+
+      .item-icon {
+        width: 100px;
+        height: 100px;
+        border: 2px solid white;
+        border-radius: 50%;
+        margin: 0 auto 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 40px;
+      }
+
+      .nav-arrow {
+        font-size: 30px;
+        cursor: pointer;
+        user-select: none;
+      }
+    </style>
+
+  <div class="container">
+    <h1 style="color: white;">Thông tin sản phẩm vắc xin</h1>
+
+    <div class="button-group">
+      <button class="btn-blue">VẮC XIN THEO NHÓM BỆNH</button>
+      <button class="btn-orange">VẮC XIN THEO ĐỘ TUỔI</button>
     </div>
 
-    <div class="vacxin-card">
-      <img src="https://vnvc.vn/wp-content/uploads/2023/11/vacxin-shingrix.jpg" alt="Vắc xin Shingrix">
-      <a href="https://vnvc.vn/vac-xin-shingrix/">Vắc xin Shingrix (Bỉ)</a>
-      <p>Giá tham khảo: 2,150,000 VNĐ</p>
+    <div class="search-box">
+      <input type="text" placeholder="Tìm kiếm..." />
     </div>
 
-    <div class="vacxin-card">
-      <img src="https://vnvc.vn/wp-content/uploads/2024/08/vaccine-pneumovax-23.jpg" alt="Vắc xin Pneumovax 23">
-      <a href="https://vnvc.vn/vac-xin-pneumovax-23/">Vắc xin Pneumovax 23 (Mỹ)</a>
-      <p>Giá tham khảo: 720,000 VNĐ</p>
-    </div>
+    <div class="items">
+      <div class="nav-arrow" onclick="scrollLeft()">&#8592;</div>
 
-    <div class="vacxin-card">
-      <img src="https://vnvc.vn/wp-content/uploads/2024/02/bexsero.jpg" alt="Vắc xin Bexsero">
-      <a href="https://vnvc.vn/vac-xin-bexsero/">Vắc xin Bexsero (Ý)</a>
-      <p>Giá tham khảo: 2,500,000 VNĐ</p>
-    </div>
+      <div class="item">
+        <img src="img/vaccine/iterm-1-3.png" >
+        <div>VẮC XIN CHO TRẺ 0 ĐẾN DƯỚI 2 THÁNG TUỔI</div>
+      </div>
 
-    <div class="vacxin-card">
-      <img src="https://vnvc.vn/wp-content/uploads/2019/11/prevenar-13.jpg" alt="Vắc xin Prevenar 13">
-      <a href="https://vnvc.vn/prevenar-13-vac-xin-phong-benh-viem-phoi-viem-mang-nao-viem-tai-giua-nhiem-khuan-huyet-phe-cau-khuan/">Vắc xin Prevenar 13 (Bỉ)</a>
-      <p>Giá tham khảo: 1,550,000 VNĐ</p>
-    </div>
+      <div class="item">
+        <img src="img/vaccine/iterm-2-2.png" >
+        <div>VẮC XIN CHO TRẺ 2 ĐẾN 6 THÁNG TUỔI</div>
+      </div>
 
-    <div class="vacxin-card">
-      <img src="https://vnvc.vn/wp-content/uploads/2020/02/vacxin-menactra-1.jpg" alt="Vắc xin Menactra">
-      <a href="https://vnvc.vn/menactra-vac-xin-nao-mo-cau-nhom-acy-va-w-135-polysaccharide-cong-hop-giai-doc-bach-hau/">Vắc xin Menactra (Mỹ)</a>
-      <p>Giá tham khảo: 1,350,000 VNĐ</p>
-    </div>
+      <div class="item">
+        <img src="img/vaccine/iterm-3-2.png" >
+        <div>VẮC XIN CHO TRẺ 7 ĐẾN 12 THÁNG TUỔI</div>
+      </div>
 
-    <!-- Thêm các card khác tại đây theo cùng mẫu nếu cần -->
-  </div></th:block>
+      <div class="item">
+        <img src="img/vaccine/iterm-4-2.png" >
+        <div>VẮC XIN CHO TRẺ 13 ĐẾN 24 THÁNG TUỔI</div>
+      </div>
+
+      <div class="item">
+        <img src="img/vaccine/iterm-7-2.png" >
+        <div>VẮC XIN CHO TRẺ TIỀN HỌC ĐƯỜNG</div>
+
+      </div>
+
+      <div class="item">
+        <img src="img/vaccine/iterm-8-1.png" >
+        <div>VẮC XIN CHO TRẺ VỊ THÀNH NIÊN</div>
+      </div>
+
+      <div class="nav-arrow" onclick="scrollRight()">&#8594;</div>
+    </div>
+  </div>
+
+  <script>
+    function scrollLeft() {
+      const items = document.querySelector('.items');
+      items.scrollBy({ left: -200, behavior: 'smooth' });
+    }
+
+    function scrollRight() {
+      const items = document.querySelector('.items');
+      items.scrollBy({ left: 200, behavior: 'smooth' });
+    }
+  </script>
+
+
+
+</th:block>
 
 <!--END CONTENT-->
 
