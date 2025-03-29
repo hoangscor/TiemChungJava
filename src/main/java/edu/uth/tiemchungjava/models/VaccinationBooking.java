@@ -1,124 +1,121 @@
 package edu.uth.tiemchungjava.models;
 
 import jakarta.persistence.*;
-
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Entity
-@Table(name = "vaccination_booking")
+@Table(name = "vaccination_bookings")
 public class VaccinationBooking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "full_name", nullable = false)
+    @Column(nullable = false)
     private String fullName;
 
-    @Column(name = "date_of_birth", nullable = false)
-    private LocalDate dateOfBirth;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Gender gender;
 
-    @Column(name = "gender")
-    private String gender;
+    @Column(nullable = false)
+    private Integer age;
 
-    @Column(name = "phone_number", nullable = false)
+    @Column(nullable = false)
     private String phoneNumber;
 
-    @Column(name = "email")
+    @Column(nullable = false)
     private String email;
 
-    @Column(name = "vaccine_type", nullable = false)
+    @Column(nullable = false)
+    private LocalDate bookingDate;
+
+    @Column(nullable = false)
+    private LocalTime bookingTime;
+
+    @Column(nullable = false)
     private String vaccineType;
 
-    @Column(name = "vaccination_date", nullable = false)
-    private LocalDate vaccinationDate;
+    @Column
+    private String underlyingConditions;
 
-    @Column(name = "notes")
-    private String notes;
+    // Enum cho giới tính
+    public enum Gender {
+        MALE, FEMALE, OTHER
+    }
 
     // Constructors
     public VaccinationBooking() {}
-    public VaccinationBooking(Long id, String fullName, LocalDate dateOfBirth, String gender, String phoneNumber, String email, String vaccineType, LocalDate vaccinationDate, String notes) {
-        this.id = id;
+
+    // Constructor đầy đủ
+    public VaccinationBooking(String fullName, Gender gender, Integer age,
+                              String phoneNumber, String email,
+                              LocalDate bookingDate, LocalTime bookingTime,
+                              String vaccineType, String underlyingConditions) {
         this.fullName = fullName;
-        this.dateOfBirth = dateOfBirth;
         this.gender = gender;
+        this.age = age;
         this.phoneNumber = phoneNumber;
         this.email = email;
+        this.bookingDate = bookingDate;
+        this.bookingTime = bookingTime;
         this.vaccineType = vaccineType;
-        this.vaccinationDate = vaccinationDate;
-        this.notes = notes;
+        this.underlyingConditions = underlyingConditions;
     }
 
     // Getters and Setters
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getFullName() {
         return fullName;
     }
-
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
-
-    public LocalDate getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(LocalDate dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    public String getGender() {
+    public Gender getGender() {
         return gender;
     }
-
-    public void setGender(String gender) {
+    public void setGender(Gender gender) {
         this.gender = gender;
     }
-
+    public Integer getAge() {
+        return age;
+    }
+    public void setAge(Integer age) {
+        this.age = age;
+    }
     public String getPhoneNumber() {
         return phoneNumber;
     }
-
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-
     public String getEmail() {
         return email;
     }
-
     public void setEmail(String email) {
         this.email = email;
     }
-
+    public LocalDate getBookingDate() {
+        return bookingDate;
+    }
+    public void setBookingDate(LocalDate bookingDate) {
+        this.bookingDate = bookingDate;
+    }
+    public LocalTime getBookingTime() {
+        return bookingTime;
+    }
+    public void setBookingTime(LocalTime bookingTime) {
+        this.bookingTime = bookingTime;
+    }
     public String getVaccineType() {
         return vaccineType;
     }
-
     public void setVaccineType(String vaccineType) {
         this.vaccineType = vaccineType;
     }
-
-    public LocalDate getVaccinationDate() {
-        return vaccinationDate;
+    public String getUnderlyingConditions() {
+        return underlyingConditions;
     }
-
-    public void setVaccinationDate(LocalDate vaccinationDate) {
-        this.vaccinationDate = vaccinationDate;
-    }
-
-    public String getNotes() {
-        return notes;
-    }
-
-    public void setNotes(String notes) {
-        this.notes = notes;
+    public void setUnderlyingConditions(String underlyingConditions) {
+        this.underlyingConditions = underlyingConditions;
     }
 }
