@@ -35,17 +35,20 @@ public class HomeController {
         return "quytrinh.html";
     }
 
-    @GetMapping("/indexx")
-    public String indexx() {
-        return "indexx"; // goi den html
-    }
 
     @GetMapping("/lydatlichtiem")//goi den html
     public String lydatlichtiem() {return "lydatlichtiem.html";}
 
-    @GetMapping("/admin")//goi den admin
+    @GetMapping("/indexx")
+    public String indexx() {
+        return "indexx"; // goi den html home
+    }
+    @GetMapping("/admin/home")//goi den admin
     public String admin() {return "homeAdmin";}
-    @GetMapping("/Vaccine")
 
+    @GetMapping("/user/home")
+    public String user() {return "indexx";} // goi den user
+
+    @GetMapping("/Vaccine")
     public String Vaccine() {return "Vaccine.html";}
 }
