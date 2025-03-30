@@ -2,6 +2,7 @@ package edu.uth.tiemchungjava.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+//import org.springframework.ui.Model;
 
 @Controller
 
@@ -36,19 +37,36 @@ public class HomeController {
         return "quytrinh.html";
     }
 
-    @GetMapping("/indexx")
-    public String indexx() {
-        return "indexx"; // goi den html
-    }
 
     @GetMapping("/lydatlichtiem")//goi den html
     public String lydatlichtiem() {
         return "lydatlichtiem.html";
     }
 
+<<<<<<< HEAD
     @GetMapping("/admin")//goi den admin
     public String admin() {
         return "homeAdmin";
     }
 
+=======
+    @GetMapping("/indexx")
+    public String indexx() {
+        return "indexx"; // goi den html home
+    }
+//    @GetMapping("/admin/home")//goi den admin
+//    public String admin() {
+//        model.addAttribute("title", "Admin");
+//        return "homeAdmin.html";
+//    }
+
+    @GetMapping("/admin")
+    public String admin() {return "homeAdmin";}
+
+    @GetMapping("/user/home")
+    public String user() {return "indexx";}     // goi den user
+
+    @GetMapping("/Vaccine")
+    public String Vaccine() {return "Vaccine.html";}
+>>>>>>> 9e64b095aed4af8aea1ec281236a466bba0a225f
 }
