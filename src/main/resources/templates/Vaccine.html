@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html
+        lang="en"
+        xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
+
+  <!-- title -->
+  <title>Trung Tâm Tiêm Chủng</title>
+
+  <!-- Font Awesome (Dùng để lấy icon) -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <!-- favicon -->
+  <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+  <!-- google font -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+  <!-- fontawesome -->
+  <link rel="stylesheet" href="css/all.min.css">
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <!-- owl carousel -->
+  <link rel="stylesheet" href="css/owl.carousel.css">
+  <!-- magnific popup -->
+  <link rel="stylesheet" href="css/magnific-popup.css">
+  <!-- animate css -->
+  <link rel="stylesheet" href="css/animate.css">
+  <!-- mean menu css -->
+  <link rel="stylesheet" href="css/meanmenu.min.css">
+  <!-- main style -->
+  <link rel="stylesheet" href="css/main.css">
+  <!-- responsive -->
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    .content-area {
+      background: linear-gradient(to right, #1e3c72, #2a5298);
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      padding: 30px;
+    }
+
+    .content-area h1, .content-area h2, .content-area h3,
+    .content-area p, .content-area span, .content-area li {
+      color: white;
+    }
+
+    .content-area ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .content-area li {
+      background-color: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 12px;
+    }
+
+    .content-area img {
+      width: 150px;
+      height: auto;
+      margin-top: 10px;
+      border-radius: 8px;
+      display: block;
+    }
+
+    .content-area .label {
+      font-weight: 600;
+      color: #ffd700;
+    }
+
+    .content-area hr {
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+  </style>
+
+</head>
+<body>
+<!--PreLoader-->
+<div class="loader">
+  <div class="loader-inner">
+    <div class="circle"></div>
+  </div>
+</div>
+<!--PreLoader Ends-->
+<!-- end header -->
+<div th:replace="LayoutTiemChung/layoutHeader::header"></div>
+
+<!-- search area -->
+<div class="search-area">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <span class="close-btn"><i class="fas fa-window-close"></i></span>
+        <div class="search-bar">
+          <div class="search-bar-tablecell">
+            <h3>Search For:</h3>
+            <input type="text" placeholder="Keywords">
+            <button type="submit">Search <i class="fas fa-search"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end search area -->
+
+<!-- hero area -->
+<div th:replace="LayoutTiemChung/layoutHero::hero"></div>
+
+
+<th:block th:fragment="content">
+
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to right, #0072ff, #00c6ff);
+        color: white;
+        text-align: center;
+      }
+
+      .vaccine-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+      .vaccine-card {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin: 10px;
+        width: 300px;
+        display: inline-block;
+        vertical-align: top;
+      }
+
+      .vaccine-card img {
+        width: 100%;
+        height: 150px;
+        object-fit: contain;
+      }
+      .price {
+        color: green;
+        font-weight: bold;
+      }
+      .container {
+        padding: 40px 20px;
+      }
+
+      h1 {
+        font-size: 32px;
+        margin-bottom: 20px;
+      }
+
+      .button-group {
+        margin-bottom: 20px;
+      }
+
+      .button-group button {
+        border: none;
+        padding: 10px 20px;
+        margin: 0 5px;
+        font-size: 16px;
+        border-radius: 25px;
+        cursor: pointer;
+      }
+
+      .btn-blue {
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+      }
+
+      .btn-orange {
+        background: linear-gradient(to right, orange, gold);
+        color: white;
+      }
+
+      .search-box {
+        margin-bottom: 30px;
+      }
+
+      .search-box input {
+        padding: 10px 15px;
+        border: none;
+        border-radius: 25px;
+        width: 300px;
+        max-width: 90%;
+      }
+
+      .search-box input::placeholder {
+        color: #888;
+      }
+
+      .items {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        flex-wrap: wrap;
+      }
+
+      .item {
+        text-align: center;
+        width: 150px;
+      }
+
+      .item-icon {
+        width: 100px;
+        height: 100px;
+        border: 2px solid white;
+        border-radius: 50%;
+        margin: 0 auto 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 40px;
+      }
+
+      .nav-arrow {
+        font-size: 30px;
+        cursor: pointer;
+        user-select: none;
+      }
+    </style>
+
+  <div class="container">
+    <h1 style="color: white;">Thông tin sản phẩm vắc xin</h1>
+
+    <div class="button-group">
+      <button class="btn-blue">VẮC XIN THEO NHÓM BỆNH</button>
+      <button class="btn-orange">VẮC XIN THEO ĐỘ TUỔI</button>
+    </div>
+
+    <div class="search-box">
+      <input type="text" placeholder="Tìm kiếm..." />
+    </div>
+
+    <div class="items">
+      <div class="nav-arrow" onclick="scrollLeft()">&#8592;</div>
+
+      <div class="item">
+        <img src="img/vaccine/iterm-1-3.png" >
+        <div>VẮC XIN CHO TRẺ 0 ĐẾN DƯỚI 2 THÁNG TUỔI</div>
+      </div>
+
+      <div class="item">
+        <img src="img/vaccine/iterm-2-2.png" >
+        <div>VẮC XIN CHO TRẺ 2 ĐẾN 6 THÁNG TUỔI</div>
+      </div>
+
+      <div class="item">
+        <img src="img/vaccine/iterm-3-2.png" >
+        <div>VẮC XIN CHO TRẺ 7 ĐẾN 12 THÁNG TUỔI</div>
+      </div>
+
+      <div class="item">
+        <img src="img/vaccine/iterm-4-2.png" >
+        <div>VẮC XIN CHO TRẺ 13 ĐẾN 24 THÁNG TUỔI</div>
+      </div>
+
+      <div class="item">
+        <img src="img/vaccine/iterm-7-2.png" >
+        <div>VẮC XIN CHO TRẺ TIỀN HỌC ĐƯỜNG</div>
+
+      </div>
+
+      <div class="item">
+        <img src="img/vaccine/iterm-8-1.png" >
+        <div>VẮC XIN CHO TRẺ VỊ THÀNH NIÊN</div>
+      </div>
+
+      <div class="nav-arrow" onclick="scrollRight()">&#8594;</div>
+    </div>
+  </div>
+  <div class="content-area">
+    <h1>Danh sách Vaccine</h1>
+
+    <p th:text="'Số lượng: ' + ${#lists.size(vaccines)}">Số lượng: 0</p>
+
+    <ul>
+      <li th:each="vaccine : ${vaccines}">
+        <p th:text="${vaccine.name}">Tên vaccine</p>
+        <p><span class="label">Mô tả:</span> <span th:text="${vaccine.description}"></span></p>
+        <img th:src="@{'/img/products' + ${vaccine.img_url}}" th:alt="${vaccine.name}" />
+        <p><span class="label">Giá:</span> <span th:text="${vaccine.price}"></span> VND</p>
+
+      </li>
+
+    </ul>
+  </div>
+
+    </li>
+  </ul>
+  <script>
+    function scrollLeft() {
+      const items = document.querySelector('.items');
+      items.scrollBy({ left: -200, behavior: 'smooth' });
+    }
+
+    function scrollRight() {
+      const items = document.querySelector('.items');
+      items.scrollBy({ left: 200, behavior: 'smooth' });
+    }
+  </script>
+
+
+
+</th:block>
+
+<!--END CONTENT-->
+
+<!--FOOTER-->
+
+<div th:replace="LayoutTiemChung/layoutFooter::footer"></div>
+
+<!--END FOOTER-->
+
+<!-- jquery -->
+<script src="js/jquery-1.11.3.min.js"></script>
+<!-- bootstrap -->
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<!-- count down -->
+<script src="js/jquery.countdown.js"></script>
+<!-- isotope -->
+<script src="js/jquery.isotope-3.0.6.min.js"></script>
+<!-- waypoints -->
+<script src="js/waypoints.js"></script>
+<!-- owl carousel -->
+<script src="js/owl.carousel.min.js"></script>
+<!-- magnific popup -->
+<script src="js/jquery.magnific-popup.min.js"></script>
+<!-- mean menu -->
+<script src="js/jquery.meanmenu.min.js"></script>
+<!-- sticker js -->
+<script src="js/sticker.js"></script>
+<!-- main js -->
+<script src="js/main.js"></script>
+<!--css-->
+<style>
+  .site-logo {
+    display: flex;
+    justify-content: center; /* Canh giữa theo chiều ngang */
+    align-items: center;     /* Canh giữa theo chiều dọc */
+    height: 60px;           /* Điều chỉnh chiều cao phù hợp */
+  }
+  .logo {
+    margin-left: 10px; /* Nhích logo sang phải 10px thui */
+  }
+
+</style>
+<style>
+  /* Áp dụng Flexbox cho phần chứa header */
+  .top-header-area .main-menu-wrap
+  {
+    display: flex;
+    justify-content: center; /* Canh giữa theo chiều ngang */
+    align-items: center;     /* Canh giữa theo chiều dọc */
+    width: 100%;
+  }
+</style>
+</body>
+</html>
