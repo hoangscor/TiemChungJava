@@ -13,51 +13,53 @@ public class Vaccine {
     private String description;
     private String ageGroup;
     private Integer price;
+    private String img_url;
     public Vaccine() {}
     public Vaccine(String name, String description, String ageGroup, Integer price) {
-        this.name = name;
-        this.description = description;
-        this.ageGroup = ageGroup;
-        this.price = price;
-    }
+                this.name = name;
+                this.description = description;
+                this.ageGroup = ageGroup;
+                this.price = price;
+                this.img_url= img_url;
+            }
 
-    public Long getId() {
-        return id;
-    }
+            public String getName() {
+                return name;
+            }
 
-    public String getName() {
-        return name;
-    }
+            public void setName(String name) {
+                this.name = name;
+            }
 
-    public String getDescription() {
-        return description;
-    }
+            public String getDescription() {
+                return description;
+            }
 
-    public String getAgeGroup() {
-        return ageGroup;
-    }
+            public void setDescription(String description) {
+                this.description = description;
+            }
 
-    public Integer getPrice() {
-        return price;
-    }
+            public String getImg_url() {
+                return img_url;
+            }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+            public void setImg_url(String img_url) {
+                this.img_url = img_url;
+            }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+            public String getAgeGroup() {
+                return ageGroup;
+            }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+            public void setAgeGroup(String ageGroup) {
+                this.ageGroup = ageGroup;
+            }
 
-    public void setAgeGroup(String ageGroup) {
-        this.ageGroup = ageGroup;
-    }
+            public Integer getPrice() {
+                return price;
+            }
 
-    public void setPrice(Integer price) {
-        this.price = price;
-    }
-}
+            public void setPrice(Integer price) {
+                this.price = price;
+            }
+        }
