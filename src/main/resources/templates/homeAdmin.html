@@ -9,7 +9,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin Tiêm Chủng</title>
+    <title>${title}Admin Tiêm Chủng</title>
     <link
             href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
             rel="stylesheet"
@@ -37,6 +37,7 @@
         class="flex h-screen bg-gray-50 dark:bg-gray-900"
         :class="{ 'overflow-hidden': isSideMenuOpen }">
 <!--    DESKTOP LAYOUT-->
+
     <div th:replace="LayoutAdmin/layoutadmindesktop::layoutadmindesktop"></div>
     <th:block th:fragment="content">
         <!--  NỘI DUNG CÁC TRANG CON SẼ THAY THẾ Ở ĐÂY-->
@@ -357,7 +358,7 @@
                                 </p>
                             </div>
                         </div>
-                        
+
                         <!-- Card -->
                         <div
                                 class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800"
