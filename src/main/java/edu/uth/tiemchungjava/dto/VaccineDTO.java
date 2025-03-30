@@ -4,12 +4,14 @@ public class VaccineDTO {
     private String description;
     private String ageGroup;
     private Integer price;
+    private String img_url;
 
-    public VaccineDTO(String name, String description, String ageGroup, Integer price) {
+    public VaccineDTO(String name, String description, String ageGroup, Integer price, String imgUrl) {
         this.name = name;
         this.description = description;
         this.ageGroup = ageGroup;
         this.price = price;
+        this.img_url= img_url;
     }
 
     public String getName() {
@@ -26,6 +28,14 @@ public class VaccineDTO {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getImg_url() {
+        return img_url;
+    }
+
+    public void setImg_url(String img_url) {
+        this.img_url = img_url;
     }
 
     public String getAgeGroup() {
