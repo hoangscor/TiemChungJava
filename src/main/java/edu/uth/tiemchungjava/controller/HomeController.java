@@ -30,6 +30,7 @@ public class HomeController {
     public String login() {
         return "index";
     }
+
     @GetMapping("/quytrinh")
     public String quytrinh() {
         return "quytrinh.html";
@@ -41,11 +42,13 @@ public class HomeController {
     }
 
     @GetMapping("/lydatlichtiem")//goi den html
-    public String lydatlichtiem() {return "lydatlichtiem.html";}
+    public String lydatlichtiem() {
+        return "lydatlichtiem.html";
+    }
 
     @GetMapping("/admin")//goi den admin
-    public String admin() {return "homeAdmin";}
-    @GetMapping("/Vaccine")
+    public String admin() {
+        return "homeAdmin";
+    }
 
-    public String Vaccine() {return "Vaccine.html";}
 }
