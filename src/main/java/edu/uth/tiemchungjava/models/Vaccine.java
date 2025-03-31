@@ -15,7 +15,7 @@ public class Vaccine {
     private Integer price;
     private String img_url;
     public Vaccine() {}
-    public Vaccine(String name, String description, String ageGroup, Integer price) {
+    public Vaccine(String name, String description, String ageGroup, Integer price, String img_url) {
                 this.name = name;
                 this.description = description;
                 this.ageGroup = ageGroup;
