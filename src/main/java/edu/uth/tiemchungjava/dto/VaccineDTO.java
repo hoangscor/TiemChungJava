@@ -11,7 +11,7 @@ public class VaccineDTO {
         this.description = description;
         this.ageGroup = ageGroup;
         this.price = price;
-        this.img_url= img_url;
+        this.img_url= imgUrl;
     }
 
     public String getName() {
