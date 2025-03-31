@@ -2,7 +2,7 @@ package edu.uth.tiemchungjava.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.ui.Model;
+//import org.springframework.ui.Model;
 
 @Controller
 
@@ -43,6 +43,7 @@ public class HomeController {
         return "lydatlichtiem.html";
     }
 
+
     @GetMapping("/indexx")
     public String indexx() {
         return "indexx"; // goi den html home
@@ -61,4 +62,5 @@ public class HomeController {
 
     @GetMapping("/Vaccine")
     public String Vaccine() {return "Vaccine.html";}
+
 }
