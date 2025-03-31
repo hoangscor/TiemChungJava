@@ -289,7 +289,7 @@
       <li th:each="vaccine : ${vaccines}">
         <p th:text="${vaccine.name}">Tên vaccine</p>
         <p><span class="label">Mô tả:</span> <span th:text="${vaccine.description}"></span></p>
-        <img th:src="@{'/img/products' + ${vaccine.img_url}}" th:alt="${vaccine.name}" />
+        <img th:src="@{'/img/products/' + ${vaccine.img_url}}" th:alt="${vaccine.name}" />
         <p><span class="label">Giá:</span> <span th:text="${vaccine.price}"></span> VND</p>
 
       </li>
