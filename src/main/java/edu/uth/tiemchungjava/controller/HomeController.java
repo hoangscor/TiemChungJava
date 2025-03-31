@@ -39,14 +39,11 @@ public class HomeController {
 
 
     @GetMapping("/lydatlichtiem")//goi den html
-    public String lydatlichtiem() {
-        return "lydatlichtiem.html";
-    }
+    public String lydatlichtiem() {return "lydatlichtiem";}
 
 
     @GetMapping("/indexx")
-    public String indexx() {
-        return "indexx"; // goi den html home
+    public String indexx() {return "indexx"; // goi den html home
     }
 //    @GetMapping("/admin/home")//goi den admin
 //    public String admin() {
