@@ -29,7 +29,7 @@ public class HomeController {
 
     @GetMapping("/login")
     public String login() {
-        return "index";
+        return "login.html";
     }
 
     @GetMapping("/quytrinh")
@@ -42,8 +42,8 @@ public class HomeController {
     public String lydatlichtiem() {return "lydatlichtiem";}
 
 
-    @GetMapping("/indexx")
-    public String indexx() {return "indexx"; // goi den html home
+    @GetMapping("/index")
+    public String index() {return "index"; // goi den html home
     }
 //    @GetMapping("/admin/home")//goi den admin
 //    public String admin() {
@@ -55,7 +55,7 @@ public class HomeController {
     public String admin() {return "homeAdmin";}
 
     @GetMapping("/user/home")
-    public String user() {return "indexx";}     // goi den user
+    public String user() {return "index";}     // goi den user
 
     @GetMapping("/Vaccine")
     public String Vaccine() {return "Vaccine.html";}
