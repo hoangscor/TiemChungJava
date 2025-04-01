@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hỗ trợ trực tuyến - Bệnh viện</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .chat-container {
+            width: 350px;
+            height: 500px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-header {
+            background-color: #1976D2;
+            color: white;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .hospital-logo {
+            width: 30px;
+            height: 30px;
+            background-color: white;
+            border-radius: 50%;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hospital-logo i {
+            color: #1976D2;
+            font-size: 16px;
+        }
+
+        .chat-header h3 {
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .operator-status {
+            font-size: 12px;
+            margin-top: 3px;
+            display: flex;
+            align-items: center;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #4CAF50;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+        }
+
+        .message {
+            margin-bottom: 15px;
+            max-width: 65%;
+        }
+
+        .message-text {
+            padding: 10px 15px;
+            border-radius: 18px;
+            font-size: 14px;
+            line-height: 1.4;
+            word-wrap: break-word;
+        }
+
+        .user-message {
+            margin-left: auto;
+            text-align: right;
+        }
+
+        .user-message .message-text {
+            background-color: #1976D2;
+            color: white;
+            border-bottom-right-radius: 5px;
+            display: inline-block;
+            max-width: 100%;
+        }
+
+        .operator-message {
+            margin-right: auto;
+            text-align: left;
+        }
+
+        .operator-message .message-text {
+            background-color: #f0f0f0;
+            color: #333;
+            border-bottom-left-radius: 5px;
+            display: inline-block;
+        }
+
+        .message-time {
+            font-size: 10px;
+            margin-top: 5px;
+            color: #888;
+        }
+
+        .typing-indicator {
+            display: flex;
+            padding: 10px 15px;
+            background-color: #f0f0f0;
+            border-radius: 18px;
+            width: fit-content;
+            margin-bottom: 15px;
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #888;
+            border-radius: 50%;
+            margin: 0 2px;
+            animation: typing-animation 1.5s infinite ease-in-out;
+        }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typing-animation {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+
+        .chat-input {
+            padding: 15px;
+            border-top: 1px solid #eee;
+            display: flex;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .chat-input button {
+            background-color: #1976D2;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            margin-left: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+
+        .chat-input button:hover {
+            background-color: #1565C0;
+        }
+
+        .chat-input button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        .attachment-btn {
+            background-color: transparent;
+            color: #1976D2;
+            border: 1px solid #ddd;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .material-icons {
+            font-size: 20px;
+        }
+
+        @media (max-width: 480px) {
+            .chat-container {
+                width: 100%;
+                height: 100%;
+                border-radius: 0;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+<div class="chat-container">
+    <div class="chat-header">
+        <div class="hospital-logo">
+            <i class="material-icons">local_hospital</i>
+        </div>
+        <div>
+            <h3>Hỗ trợ y tế trực tuyến</h3>
+            <div class="operator-status">
+                <div class="status-dot"></div>
+                <span>Bác sĩ đang trực tuyến</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="chat-messages" id="chatMessages">
+        <div class="message operator-message">
+            <div class="message-text">
+                Xin chào! Tôi là bác sĩ tư vấn. Tôi có thể giúp gì cho bạn hôm nay?
+            </div>
+            <div class="message-time">10:05</div>
+        </div>
+
+        <div class="message user-message">
+            <div class="message-text">
+                Tôi bị nhức đầu
+            </div>
+            <div class="message-time">10:06</div>
+        </div>
+
+        <div class="message operator-message">
+            <div class="message-text">
+                Vui lòng cung cấp thêm thông tin về triệu chứng của bạn.
+            </div>
+            <div class="message-time">10:07</div>
+        </div>
+
+        <div class="typing-indicator" id="typingIndicator" style="display: none;">
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+        </div>
+    </div>
+
+    <div class="chat-input">
+        <button class="attachment-btn" id="attachmentBtn">
+            <i class="material-icons">attach_file</i>
+        </button>
+        <input type="text" id="messageInput" placeholder="Nhập tin nhắn của bạn...">
+        <button id="sendBtn" disabled>
+            <i class="material-icons">send</i>
+        </button>
+    </div>
+</div>
+
+
+</body>
+</html>
