@@ -281,6 +281,21 @@
         </button>
     </div>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const messageInput = document.getElementById('messageInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const chatMessages = document.getElementById('chatMessages');
+        const typingIndicator = document.getElementById('typingIndicator');
+        const attachmentBtn = document.getElementById('attachmentBtn');
+
+        // Kích hoạt nút gửi khi có văn bản trong input
+        messageInput.addEventListener('input', function () {
+            sendBtn.disabled = messageInput.value.trim() === '';
+
+        });
+    });
+        </script>
 
 
 </body>
