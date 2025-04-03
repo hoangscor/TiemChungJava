@@ -295,6 +295,25 @@
 
         });
     });
+    messageInput.addEventListener('input', function() {
+        sendBtn.disabled = messageInput.value.trim() === '';
+    });
+
+    // Gửi tin nhắn khi nhấn Enter
+    messageInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter' && messageInput.value.trim() !== '') {
+            sendMessage();
+        }
+    });
+
+    // Gửi tin nhắn khi nhấn nút gửi
+    sendBtn.addEventListener('click', sendMessage);
+
+    // Xử lý nút đính kèm
+    attachmentBtn.addEventListener('click', function() {
+        // Xử lý đính kèm tệp ở đây
+        console.log('Đính kèm tệp');
+    });
         </script>
 
 
