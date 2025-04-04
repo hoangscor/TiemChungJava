@@ -28,8 +28,8 @@ public class HomeController {
     }
 
     @GetMapping("/login")
-    public String login() {
-        return "login.html";
+    public String handleLogin() {
+        return "custom_login";
     }
 
     @GetMapping("/quytrinh")
