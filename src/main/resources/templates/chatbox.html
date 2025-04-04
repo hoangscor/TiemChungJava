@@ -314,6 +314,20 @@
         // Xử lý đính kèm tệp ở đây
         console.log('Đính kèm tệp');
     });
+    function sendMessage() {
+        const messageText = messageInput.value.trim();
+        if (messageText === '') return;
+
+        // Thêm tin nhắn của người dùng
+        addMessage(messageText, 'user');
+
+        // Xóa input
+        messageInput.value = '';
+        sendBtn.disabled = true;
+
+        // Gửi tin nhắn đến máy chủ Spring Boot
+        sendToServer(messageText);
+    }
         </script>
 
 
