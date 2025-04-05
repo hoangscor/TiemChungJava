@@ -328,6 +328,9 @@
         // Gửi tin nhắn đến máy chủ Spring Boot
         sendToServer(messageText);
     }
+    function addMessage(text, sender) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `message ${sender}-message`;}
         </script>
 
 
