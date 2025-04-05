@@ -19,6 +19,13 @@ public class RegistrationController {
     @PostMapping("register/user")
     public MyUser createUser(@RequestBody MyUser user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+
+        // Gán role mặc định là USER nếu chưa có
+        if (user.getRole() == null) {
+            user.setRole("USER");
+        }
+
+
         return myUserRepository.save(user);
     }
 }

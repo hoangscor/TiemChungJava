@@ -14,6 +14,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+            overflow: hidden;
         }
 
         .container {
@@ -22,12 +23,13 @@
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             width: 350px;
+            position: relative;
+            z-index: 1;
         }
 
         h2 {
             text-align: center;
-            color: #333;
-            margin-bottom: 20px;
+            color: #000; /* Màu đen cho tiêu đề */
         }
 
         .form-group {
@@ -37,21 +39,22 @@
         label {
             display: block;
             margin-bottom: 5px;
-            font-weight: bold;
+            color: #000; /* Màu đen cho nhãn */
+            font-weight: normal;
         }
 
         input[type="text"],
-        input[type="email"],
         input[type="password"] {
             width: 100%;
             padding: 10px;
             border: 1px solid #ddd;
             border-radius: 5px;
             box-sizing: border-box;
+            color: #000; /* Màu chữ đen trong input */
         }
 
         button {
-            background-color: #4CAF50;
+            background-color: #007BFF; /* Nền xanh dương cho nút */
             color: white;
             padding: 10px 15px;
             border: none;
@@ -62,12 +65,21 @@
         }
 
         button:hover {
-            background-color: #45a049;
+            background-color: #0056b3; /* Màu xanh dương đậm khi hover */
         }
 
         .login-link {
             text-align: center;
             margin-top: 15px;
+        }
+
+        .login-link a {
+            color: #007BFF; /* Màu xanh dương cho liên kết */
+            font-weight: bold;
+        }
+
+        .login-link a:hover {
+            color: #0056b3; /* Màu xanh dương đậm khi hover */
         }
 
         .message {
@@ -90,6 +102,92 @@
         .hidden {
             display: none;
         }
+
+        /* Hiệu ứng chim bay */
+        .bird {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background-color: #ff6347; /* Màu đỏ cho chim */
+            border-radius: 50%;
+            animation: fly 5s linear infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes fly {
+            0% {
+                transform: translateX(0) translateY(0);
+                opacity: 0.7;
+            }
+            25% {
+                transform: translateX(200px) translateY(-200px);
+                opacity: 1;
+            }
+            50% {
+                transform: translateX(400px) translateY(0);
+                opacity: 0.7;
+            }
+            75% {
+                transform: translateX(600px) translateY(-200px);
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(800px) translateY(0);
+                opacity: 0.7;
+            }
+        }
+
+        /* Kim tiêm */
+        .syringe {
+            position: absolute;
+            top: 20%;
+            left: 40%;
+            width: 10px;
+            height: 60px;
+            background-color: #7a7a7a; /* Màu kim tiêm */
+            border-radius: 3px;
+            transform: rotate(45deg);
+        }
+
+        .syringe:before {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            margin-left: -5px;
+            width: 10px;
+            height: 5px;
+            background-color: #7a7a7a; /* Kim tiêm */
+            border-radius: 50%;
+        }
+
+        /* Nước xịt từ kim tiêm */
+        .water {
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            margin-left: -2px;
+            width: 4px;
+            height: 20px;
+            background-color: #00bfff; /* Màu nước */
+            animation: waterAnimation 1s infinite ease-in-out;
+        }
+
+        /* Hiệu ứng nước bắn lên */
+        @keyframes waterAnimation {
+            0% {
+                transform: translateY(0) scaleY(1);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-30px) scaleY(1.5);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-60px) scaleY(2);
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -104,10 +202,6 @@
             <input type="text" id="username" name="username" required>
         </div>
         <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-        </div>
-        <div class="form-group">
             <label for="password">Mật khẩu:</label>
             <input type="password" id="password" name="password" required>
         </div>
@@ -115,8 +209,19 @@
     </form>
 
     <div class="login-link">
-        Đã có tài khoản? <a href="http://localhost:8080/index">Đăng nhập</a>
+        Đã có tài khoản? <a href="/login">Đăng nhập</a>
     </div>
+</div>
+
+<!-- Chim bay -->
+<div class="bird" style="animation-delay: 0s;"></div>
+<div class="bird" style="animation-delay: 2s;"></div>
+<div class="bird" style="animation-delay: 4s;"></div>
+<div class="bird" style="animation-delay: 6s;"></div>
+
+<!-- Kim tiêm xịt nước -->
+<div class="syringe">
+    <div class="water"></div>
 </div>
 
 <script>
@@ -124,18 +229,16 @@
         event.preventDefault();
 
         const username = document.getElementById('username').value;
-        const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
 
-        // Gửi request đến API
-        fetch('http://localhost:8080/api/users/register', {
+        // Gửi request đến API đăng ký
+        fetch('http://localhost:8080/register/user', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
                 username: username,
-                email: email,
                 password: password
             })
         })
@@ -143,23 +246,18 @@
             .then(data => {
                 const messageElement = document.getElementById('message');
 
-                if (data.success) {
+                if (data) {
                     // Đăng ký thành công
-                    messageElement.textContent = data.message;
+                    messageElement.textContent = 'Đăng ký thành công!';
                     messageElement.classList.remove('error');
                     messageElement.classList.add('success');
                     messageElement.classList.remove('hidden');
-
-                    // Reset form
-                    document.getElementById('register-form').reset();
-
-                    // Chuyển hướng đến trang đăng nhập sau 2 giây
                     setTimeout(function() {
-                        window.location.href = 'http://localhost:8080/index';
+                        window.location.href = '/login'; // Chuyển hướng đến trang đăng nhập
                     }, 2000);
                 } else {
                     // Đăng ký thất bại
-                    messageElement.textContent = data.message;
+                    messageElement.textContent = 'Tên đăng nhập đã tồn tại';
                     messageElement.classList.remove('success');
                     messageElement.classList.add('error');
                     messageElement.classList.remove('hidden');

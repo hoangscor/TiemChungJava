@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Đăng nhập</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,60 +13,189 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+            overflow: hidden;
         }
+
         .login-container {
             background-color: #fff;
             padding: 30px;
             border-radius: 8px;
             box-shadow: 0 2px 6px rgba(0,0,0,0.1);
             width: 320px;
+            position: relative;
+            z-index: 1;
         }
+
         .login-container h2 {
             margin-bottom: 20px;
             text-align: center;
+            color: #000; /* Màu đen cho tiêu đề */
         }
+
         .form-group {
             margin-bottom: 15px;
         }
+
         .form-group label {
             display: block;
             margin-bottom: 5px;
+            color: #000; /* Màu đen cho nhãn */
+            font-weight: normal;
         }
+
         .form-group input {
             width: 100%;
             padding: 8px;
             box-sizing: border-box;
             border: 1px solid #ccc;
             border-radius: 4px;
+            color: #000; /* Màu chữ đen trong input */
         }
+
         .login-btn {
             width: 100%;
             padding: 10px;
-            background-color: #3b82f6;
+            background-color: #007BFF; /* Nền xanh dương cho nút */
             border: none;
             color: white;
             border-radius: 4px;
             cursor: pointer;
+            font-size: 16px;
         }
+
         .login-btn:hover {
-            background-color: #2563eb;
+            background-color: #0056b3; /* Màu xanh dương đậm khi hover */
+        }
+
+        .signup-link {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .signup-link a {
+            color: #007BFF; /* Màu xanh dương cho liên kết */
+            font-weight: bold;
+        }
+
+        .signup-link a:hover {
+            color: #0056b3; /* Màu xanh dương đậm khi hover */
+        }
+
+        /* Hiệu ứng chim bay */
+        .bird {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background-color: #ff6347; /* Màu đỏ cho chim */
+            border-radius: 50%;
+            animation: fly 5s linear infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes fly {
+            0% {
+                transform: translateX(0) translateY(0);
+                opacity: 0.7;
+            }
+            25% {
+                transform: translateX(200px) translateY(-200px);
+                opacity: 1;
+            }
+            50% {
+                transform: translateX(400px) translateY(0);
+                opacity: 0.7;
+            }
+            75% {
+                transform: translateX(600px) translateY(-200px);
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(800px) translateY(0);
+                opacity: 0.7;
+            }
+        }
+
+        /* Kim tiêm */
+        .syringe {
+            position: absolute;
+            top: 30%;
+            left: 10%;
+            width: 10px;
+            height: 60px;
+            background-color: #7a7a7a; /* Màu kim tiêm */
+            border-radius: 3px;
+            transform: rotate(45deg);
+        }
+
+        .syringe:before {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            margin-left: -5px;
+            width: 10px;
+            height: 5px;
+            background-color: #7a7a7a; /* Kim tiêm */
+            border-radius: 50%;
+        }
+
+        /* Nước xịt từ kim tiêm */
+        .water {
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            margin-left: -2px;
+            width: 4px;
+            height: 20px;
+            background-color: #00bfff; /* Màu nước */
+            animation: waterAnimation 1s infinite ease-in-out;
+        }
+
+        /* Hiệu ứng nước bắn lên */
+        @keyframes waterAnimation {
+            0% {
+                transform: translateY(0) scaleY(1);
+                opacity: 1;
+            }
+            50% {
+                transform: translateY(-30px) scaleY(1.5);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-60px) scaleY(2);
+                opacity: 0;
+            }
         }
     </style>
 </head>
 <body>
 <div class="login-container">
-    <h2>Login</h2>
+    <h2>Đăng nhập</h2>
     <form method="POST" action="/login">
         <div class="form-group">
-            <label for="username">Username</label>
+            <label for="username">Tên đăng nhập</label>
             <input type="text" id="username" name="username" required>
         </div>
         <div class="form-group">
-            <label for="password">Password</label>
+            <label for="password">Mật khẩu</label>
             <input type="password" id="password" name="password" required>
         </div>
-        <button type="submit" class="login-btn">Login</button>
+        <button type="submit" class="login-btn">Đăng nhập</button>
     </form>
+    <div class="signup-link">
+        Chưa có tài khoản? <a href="/register">Đăng ký ngay</a>
+    </div>
+</div>
+
+<!-- Chim bay -->
+<div class="bird" style="animation-delay: 0s;"></div>
+<div class="bird" style="animation-delay: 2s;"></div>
+<div class="bird" style="animation-delay: 4s;"></div>
+<div class="bird" style="animation-delay: 6s;"></div>
+
+<!-- Kim tiêm xịt nước -->
+<div class="syringe">
+    <div class="water"></div>
 </div>
 </body>
 </html>
