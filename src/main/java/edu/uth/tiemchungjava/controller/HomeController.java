@@ -59,5 +59,7 @@ public class HomeController {
 
     @GetMapping("/Vaccine")
     public String Vaccine() {return "Vaccine.html";}
+    @GetMapping("/order")
+    public String order() {return "order.html";}
 
 }
