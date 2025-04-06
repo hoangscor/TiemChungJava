@@ -1,5 +1,7 @@
-
-<header th:fragment="layoutadminheader" class="z-10 py-4 bg-white shadow-md dark:bg-gray-800">
+<header th:fragment="layoutadminheader" class="z-10 py-4 bg-white shadow-md dark:bg-gray-800"
+        xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:x-transition="http://www.w3.org/1999/xhtml">
+<!--        xmlns:th="https://thymeleaf.org"-->
+<!--        xmlns:sec="https://thymeleaf.org/extras/spring-security6"-->
     <div
             class="container flex items-center justify-between h-full px-6 mx-auto text-purple-600 dark:text-purple-300"
     >
@@ -131,6 +133,11 @@
 <!--                            <span>Settings</span>-->
 <!--                        </a>-->
 <!--                    </li>-->
+                    <li class="flex items-center space-x-2">
+                        <span class="text-sm font-semibold text-gray-800 dark:text-gray-200">
+                            Xin chào <span sec:authentication="name"></span> yêu dấu
+                        </span>
+                    </li>
                     <li class="flex">
                         <a
                                 class="inline-flex items-center w-full px-2 py-1 text-sm font-semibold transition-colors duration-150 rounded-md hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-800 dark:hover:text-gray-200"

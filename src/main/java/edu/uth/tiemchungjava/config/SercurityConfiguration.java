@@ -1,5 +1,6 @@
 package edu.uth.tiemchungjava.config;
 
+import edu.uth.tiemchungjava.models.AuthenticationSuccessHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -7,6 +8,7 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractAuthenticationFilterConfigurer;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -31,11 +33,16 @@ public class SercurityConfiguration {
             registry.requestMatchers("/index", "/doingu", "/gioithieu", "/lichtiem", "/lydatlichtiem", "/quytrinh", "/Vaccine"
                     ,"/register/**", "/img/**", "/assets/**", "/bootstrap/**"
                     , "/css/**", "/js/**", "/pages/**", "/webfonts/**").permitAll();
-            registry.requestMatchers("/admin/**, ").hasRole("ADMIN");
+            registry.requestMatchers("/admin/** ").hasRole("ADMIN");
             registry.requestMatchers("/user/**").hasRole("USER");
             registry.anyRequest().authenticated();
         })
-                .formLogin(formLogin -> formLogin.permitAll())
+                .formLogin(httpSecurityFormLoginConfigurer -> {
+                    httpSecurityFormLoginConfigurer
+                            .loginPage("/login")
+                            .successHandler(new AuthenticationSuccessHandler())
+                            .permitAll();
+                })
                 .build();
     }
 

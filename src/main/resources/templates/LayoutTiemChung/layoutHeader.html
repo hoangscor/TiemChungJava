@@ -54,6 +54,19 @@
                                     <a class="shopping-cart" href="#"><i class="fas fa-shopping-cart"></i></a>
                                 </div>
                             </li>
+                            <!-- Hiển thị "Xin chào" và nút "Đăng xuất" nếu người dùng đã đăng nhập -->
+                            <li class="header-icons" th:if="${#authentication.name != null}">
+                                <!-- Nút "Xin chào" -->
+                                <a class="header-icons">
+                                    Xin chào, <span th:text="${#authentication.name}"></span> yêu dấu
+                                </a>
+                            </li>
+                            <li th:if="${#authentication.name != null}">
+                                <!-- Nút "Đăng xuất" -->
+                                <a href="/logout" class="header-icons">
+                                    Đăng xuất
+                                </a>
+                            </li>
                         </ul>
                     </nav>
                     <a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
