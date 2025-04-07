@@ -13,11 +13,11 @@ public class VNPayController {
     @Autowired
     private VNPayService vnPayService;
 
-
-    @GetMapping("")
+    @GetMapping({"", "/"})
     public String home(){
-        return "index";
+        return "order";
     }
+
 
     @PostMapping("/submitOrder")
     public String submidOrder(@RequestParam("amount") int orderTotal,
