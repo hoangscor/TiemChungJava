@@ -1,8 +1,15 @@
 package edu.uth.tiemchungjava.controller;
 
+import edu.uth.tiemchungjava.models.MyUser;
+import edu.uth.tiemchungjava.models.MyUserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-//import org.springframework.ui.Model;
+
+import java.util.List;
 
 @Controller
 
@@ -45,14 +52,28 @@ public class HomeController {
     @GetMapping("/index")
     public String index() {return "index"; // goi den html home
     }
-//    @GetMapping("/admin/home")//goi den admin
-//    public String admin() {
-//        model.addAttribute("title", "Admin");
-//        return "homeAdmin.html";
-//    }
+    @Autowired
+    private MyUserRepository myUserRepository;
 
     @GetMapping("/admin")
-    public String admin() {return "homeAdmin";}
+    public String admin(Authentication authentication, Model model) {
+        // Lấy username của người dùng từ Authentication
+        String username = ((User) authentication.getPrincipal()).getUsername();
+
+        // Lấy thông tin người dùng từ cơ sở dữ liệu
+        List<MyUser> userList = myUserRepository.findAll();  // Lấy tất cả người dùng
+
+        // Truyền thông tin vào model
+        model.addAttribute("username", username); // Truyền username vào model
+        model.addAttribute("users", userList);    // Truyền danh sách người dùng vào model
+
+        return "homeAdmin"; // Trả về view homeAdmin
+    }
+
+//    @GetMapping("/admin")
+//    public String admin() {return "homeAdmin";}
+    @GetMapping("/categoryAdmin")
+    public String category() {return "categoryAdmin";}
 
     @GetMapping("/user/home")
     public String user() {return "index";}     // goi den user
