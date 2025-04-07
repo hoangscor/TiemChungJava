@@ -281,6 +281,7 @@
         </button>
     </div>
 </div>
+
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const messageInput = document.getElementById('messageInput');
@@ -290,66 +291,95 @@
         const attachmentBtn = document.getElementById('attachmentBtn');
 
         // Kích hoạt nút gửi khi có văn bản trong input
-        messageInput.addEventListener('input', function () {
+        messageInput.addEventListener('input', function() {
             sendBtn.disabled = messageInput.value.trim() === '';
-
         });
-    });
-    messageInput.addEventListener('input', function() {
-        sendBtn.disabled = messageInput.value.trim() === '';
-    });
 
-    // Gửi tin nhắn khi nhấn Enter
-    messageInput.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter' && messageInput.value.trim() !== '') {
-            sendMessage();
+        // Gửi tin nhắn khi nhấn Enter
+        messageInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' && messageInput.value.trim() !== '') {
+                sendMessage();
+            }
+        });
+
+        // Gửi tin nhắn khi nhấn nút gửi
+        sendBtn.addEventListener('click', sendMessage);
+
+        // Xử lý nút đính kèm
+        attachmentBtn.addEventListener('click', function() {
+            // Xử lý đính kèm tệp ở đây
+            console.log('Đính kèm tệp');
+        });
+
+        function sendMessage() {
+            const messageText = messageInput.value.trim();
+            if (messageText === '') return;
+
+            // Thêm tin nhắn của người dùng
+            addMessage(messageText, 'user');
+
+            // Xóa input
+            messageInput.value = '';
+            sendBtn.disabled = true;
+
+            // Gửi tin nhắn đến máy chủ Spring Boot
+            sendToServer(messageText);
         }
-    });
 
-    // Gửi tin nhắn khi nhấn nút gửi
-    sendBtn.addEventListener('click', sendMessage);
+        function addMessage(text, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}-message`;
 
-    // Xử lý nút đính kèm
-    attachmentBtn.addEventListener('click', function() {
-        // Xử lý đính kèm tệp ở đây
-        console.log('Đính kèm tệp');
-    });
-    function sendMessage() {
-        const messageText = messageInput.value.trim();
-        if (messageText === '') return;
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const timeString = `${hours}:${minutes}`;
 
-        // Thêm tin nhắn của người dùng
-        addMessage(messageText, 'user');
-
-        // Xóa input
-        messageInput.value = '';
-        sendBtn.disabled = true;
-
-        // Gửi tin nhắn đến máy chủ Spring Boot
-        sendToServer(messageText);
-    }
-    function addMessage(text, sender) {
-        const messageDiv = document.createElement('div');
-        messageDiv.className = `message ${sender}-message`;}
-    function addMessage(text, sender) {
-        const messageDiv = document.createElement('div');
-        messageDiv.className = `message ${sender}-message`;
-
-        const now = new Date();
-        const hours = now.getHours().toString().padStart(2, '0');
-        const minutes = now.getMinutes().toString().padStart(2, '0');
-        const timeString = `${hours}:${minutes}`;
-
-        messageDiv.innerHTML = `
+            messageDiv.innerHTML = `
                     <div class="message-text">${text}</div>
                     <div class="message-time">${timeString}</div>
                 `;
 
-        chatMessages.appendChild(messageDiv);
+            chatMessages.appendChild(messageDiv);
+            scrollToBottom();
+        }
+
+        function scrollToBottom() {
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function sendToServer(message) {
+            // Tích hợp với Spring Boot ở đây
+            console.log('Tin nhắn sẽ được gửi đến Spring Boot:', message);
+
+            // Ví dụ tích hợp với Spring Boot
+            /*
+            fetch('/api/chat/message', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    message: message,
+                    timestamp: new Date().toISOString()
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message) {
+                    // Hiển thị phản hồi từ server
+                    addMessage(data.message, 'operator');
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+            */
+        }
+
+        // Tự động cuộn xuống khi trang được tải
         scrollToBottom();
-    }
-        </script>
-
-
+    });
+</script>
 </body>
 </html>
