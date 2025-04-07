@@ -9,57 +9,73 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 @Controller
-@RequestMapping("/vaccines")
+@RequestMapping("/vaccines") // Base path: /vaccines
 public class VaccineController {
+
     @Autowired
     private VaccineService service;
 
+    // Hiển thị danh sách tất cả vaccine
     @GetMapping
     public String showVaccines(Model model) {
         List<VaccineDTO> vaccines = service.getAllVaccines();
         model.addAttribute("vaccines", vaccines);
         return "vaccine";
     }
-    @GetMapping("/")
+
+    // Hiển thị trang chủ
+    @GetMapping("/index")
     public String showIndex(Model model) {
-        List<VaccineDTO> vaccines = service.getAllVaccines();  // Lấy danh sách vaccine từ service
-        model.addAttribute("vaccines", vaccines);  // Truyền vào model với tên "vaccines"
-        return "index";  // Trả về view index
+        List<VaccineDTO> vaccines = service.getAllVaccines();
+        model.addAttribute("vaccines", vaccines);
+        return "index";
     }
-    @GetMapping("/vaccines/new")
+
+    // Hiển thị form tạo vaccine mới
+    @GetMapping("/new")
     public String createVaccineForm(Model model) {
         model.addAttribute("vaccine", new Vaccine());
         return "create_vaccine";
     }
 
     // Xử lý tạo mới vaccine
-    @PostMapping("/vaccines")
+    @PostMapping
     public String createVaccine(@ModelAttribute Vaccine vaccine) {
         service.createVaccine(vaccine);
-        return "redirect:/vaccines"; // Redirect về trang danh sách vaccine
+        return "redirect:/vaccines";
     }
 
-    // Hiển thị trang chỉnh sửa vaccine
-    @GetMapping("/vaccines/edit/{id}")
-    public String editVaccineForm(@PathVariable Long id, Model model) {
-        model.addAttribute("vaccine", service.getVaccineById(id).orElseThrow(() -> new RuntimeException("Vaccine not found")));
+    // Hiển thị form chỉnh sửa vaccine
+    @GetMapping("/edit/{id}")
+    public String editVaccineForm(@PathVariable("id") Long id, Model model) {
+        Vaccine vaccine = service.getVaccineById(id)
+                .orElseThrow(() -> new RuntimeException("Vaccine not found"));
+        model.addAttribute("vaccine", vaccine);
         return "edit_vaccine";
     }
 
     // Xử lý cập nhật vaccine
-    @PostMapping("/vaccines/update/{id}")
-    public String updateVaccine(@PathVariable Long id, @ModelAttribute Vaccine vaccine) {
+    @PostMapping("/update/{id}")
+    public String updateVaccine(@PathVariable("id") Long id, @ModelAttribute Vaccine vaccine) {
         service.updateVaccine(id, vaccine);
-        return "redirect:/vaccines"; // Redirect về trang danh sách vaccine
+        return "redirect:/vaccines";
     }
 
     // Xử lý xóa vaccine
-    @GetMapping("/vaccines/delete/{id}")
-    public String deleteVaccine(@PathVariable Long id) {
+    @GetMapping("/delete/{id}")
+    public String deleteVaccine(@PathVariable("id") Long id) {
         service.deleteVaccine(id);
-        return "redirect:/vaccines"; // Redirect về trang danh sách vaccine
+        return "redirect:/vaccines";
+    }
+
+    // ✅ Trang đặt hàng cho vaccine
+    @GetMapping("/tao-don-hang/{id}")
+    public String taoDonHang(@PathVariable("id") Long id, Model model) {
+        Vaccine vaccine = service.getVaccineById(id)
+                .orElseThrow(() -> new RuntimeException("Vaccine not found"));
+        model.addAttribute("vaccine", vaccine);
+        return "order"; // phải có file order.html trong templates
     }
 }
-
-
