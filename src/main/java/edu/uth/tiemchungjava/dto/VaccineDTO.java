@@ -12,8 +12,8 @@ public class VaccineDTO {
     private String ageGroup;
     private Integer price;
     private String img_url;
-    public VaccineDTO(Long id, String name, String description, Integer price, String img_url) {
-        this.id = id;
+    public VaccineDTO(String id, String name, String description, Integer price, String img_url) {
+        this.id = Long.valueOf(id);
         this.name = name;
         this.description = description;
         this.ageGroup = ageGroup;
