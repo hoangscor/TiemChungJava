@@ -103,6 +103,13 @@
             font-size: 0.8em;
             margin-left: 5px;
         }
+
+        .error-message {
+            color: #e74c3c;
+            font-size: 0.85em;
+            margin-top: 5px;
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -147,14 +154,15 @@
         <div class="form-group">
             <label for="underlyingConditions">
                 Bệnh Nền
-                <span class="optional-label">(Không bắt buộc)</span>
+                <span class="optional-label">(Hông có ép)</span>
             </label>
-            <input type="text" id="underlyingConditions" class="form-control" placeholder="Nhập bệnh nền nếu có">
+            <input type="text" id="underlyingConditions" class="form-control" placeholder="Bệnh gì nói luôn">
         </div>
 
         <div class="form-group">
             <label for="bookingDate">Ngày Tiêm</label>
-            <input type="text" id="bookingDate" class="form-control" placeholder="DD/MM/YYYY" maxlength="10" required>
+            <input type="text" id="bookingDate" class="form-control" placeholder="DD/MM/YYYY" required>
+            <div id="dateError" class="error-message">Bà sống cho tương lai đi bà Thơ</div>
         </div>
 
         <div class="form-group">
@@ -169,11 +177,6 @@
                 <option value="PFIZER">Pfizer</option>
                 <option value="MODERNA">Moderna</option>
                 <option value="HPV">HPV</option>
-                <option value="GIANG MAI">Giang mai</option>
-                <option value="LẬU">Lậu</option>
-                <option value="HIV">HIV</option>
-                <option value="BỊ KHÙNG">Bị khùm</option>
-
             </select>
         </div>
 
@@ -182,66 +185,104 @@
 </div>
 
 <script>
-    // Giữ nguyên script từ phiên bản trước
     const bookingDateInput = document.getElementById('bookingDate');
+    const dateErrorElement = document.getElementById('dateError');
 
-    bookingDateInput.addEventListener('keypress', function(e) {
-        const char = String.fromCharCode(e.keyCode || e.which);
-        const pattern = /[0-9/]/;
+    // Hỗ trợ tự động thêm dấu /
+    bookingDateInput.addEventListener('input', function(e) {
+        let value = e.target.value;
 
-        if (!pattern.test(char)) {
-            e.preventDefault();
+        // Xóa tất cả dấu / để có thể xử lý lại
+        value = value.replace(/\//g, '');
+
+        // Thêm dấu / sau 2 và 4 ký tự
+        if (value.length > 4) {
+            value = value.substring(0, 2) + '/' + value.substring(2, 4) + '/' + value.substring(4);
+        } else if (value.length > 2) {
+            value = value.substring(0, 2) + '/' + value.substring(2);
         }
 
-        const input = e.target;
-        if (char !== '/' && (input.value.length === 2 || input.value.length === 5)) {
-            input.value += '/';
+        // Giới hạn độ dài tối đa là 10 ký tự (DD/MM/YYYY)
+        if (value.length > 10) {
+            value = value.substring(0, 10);
         }
+
+        e.target.value = value;
     });
 
-    function formatDate(inputDate) {
-        inputDate = inputDate.trim();
-        const parts = inputDate.split('/');
-
-        if (parts.length !== 3) {
-            return null;
+    // Kiểm tra tính hợp lệ của ngày khi form được gửi đi
+    function isValidDate(dateString) {
+        // Kiểm tra định dạng DD/MM/YYYY
+        if (!/^\d{2}\/\d{2}\/\d{4}$/.test(dateString)) {
+            return false;
         }
 
-        const day = parts[0].padStart(2, '0');
-        const month = parts[1].padStart(2, '0');
-        let year = parts[2];
+        const parts = dateString.split('/');
+        const day = parseInt(parts[0], 10);
+        const month = parseInt(parts[1], 10);
+        const year = parseInt(parts[2], 10);
 
-        if (year.length === 2) {
-            year = (parseInt(year) > 50 ? '19' : '20') + year;
-        }
-
-        const formattedDate = `${year}-${month}-${day}`;
-        const dateObj = new Date(formattedDate);
-
-        if (isNaN(dateObj.getTime())) {
-            return null;
-        }
-
-        return formattedDate;
+        // Kiểm tra tính hợp lệ của ngày tháng
+        const date = new Date(year, month - 1, day);
+        return date.getDate() === day &&
+            date.getMonth() === month - 1 &&
+            date.getFullYear() === year;
     }
 
-    bookingDateInput.addEventListener('input', function(e) {
-        const inputDate = e.target.value;
+    // Kiểm tra xem ngày có trong quá khứ không
+    function isDateInPast(dateString) {
+        const parts = dateString.split('/');
+        const day = parseInt(parts[0], 10);
+        const month = parseInt(parts[1], 10);
+        const year = parseInt(parts[2], 10);
 
-        if (inputDate.length === 10) {
-            const formattedDate = formatDate(inputDate);
+        const selectedDate = new Date(year, month - 1, day);
+        selectedDate.setHours(0, 0, 0, 0); // Đặt giờ về 00:00:00
 
-            if (formattedDate) {
-                e.target.value = formattedDate;
+        const today = new Date();
+        today.setHours(0, 0, 0, 0); // Đặt giờ về 00:00:00
+
+        return selectedDate < today;
+    }
+
+    // Kiểm tra ngày khi người dùng nhập xong
+    bookingDateInput.addEventListener('blur', function() {
+        validateDate();
+    });
+
+    function validateDate() {
+        const dateValue = bookingDateInput.value;
+
+        if (dateValue && isValidDate(dateValue)) {
+            if (isDateInPast(dateValue)) {
+                dateErrorElement.style.display = 'block';
+                bookingDateInput.style.borderColor = '#e74c3c';
+                return false;
             } else {
-                alert('Ngày không hợp lệ. Vui lòng nhập theo định dạng DD/MM/YYYY');
-                e.target.value = '';
+                dateErrorElement.style.display = 'none';
+                bookingDateInput.style.borderColor = '#ced4da';
+                return true;
             }
         }
-    });
+        return !dateValue; // Nếu chưa nhập ngày thì vẫn hợp lệ
+    }
 
     document.getElementById('vaccineForm').addEventListener('submit', function(e) {
         e.preventDefault();
+
+        // Kiểm tra ngày có hợp lệ không
+        const bookingDate = document.getElementById('bookingDate').value;
+        if (!isValidDate(bookingDate)) {
+            alert('Ngày Tháng mà nhập cũng sai');
+            return;
+        }
+
+        // Kiểm tra ngày không trong quá khứ
+        if (isDateInPast(bookingDate)) {
+            dateErrorElement.style.display = 'block';
+            bookingDateInput.focus();
+            return;
+        }
 
         const booking = {
             fullName: document.getElementById('fullName').value,
@@ -249,7 +290,7 @@
             age: parseInt(document.getElementById('age').value),
             phoneNumber: document.getElementById('phoneNumber').value,
             email: document.getElementById('email').value,
-            bookingDate: document.getElementById('bookingDate').value,
+            bookingDate: bookingDate,
             bookingTime: document.getElementById('bookingTime').value,
             vaccineType: document.getElementById('vaccineType').value,
             underlyingConditions: document.getElementById('underlyingConditions').value
