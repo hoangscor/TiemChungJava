@@ -110,6 +110,12 @@
             margin-top: 5px;
             display: none;
         }
+
+        .info-message {
+            color: #2980b9;
+            font-size: 0.85em;
+            margin-top: 5px;
+        }
     </style>
 </head>
 <body>
@@ -154,20 +160,22 @@
         <div class="form-group">
             <label for="underlyingConditions">
                 Bệnh Nền
-                <span class="optional-label">(Hông có ép)</span>
+                <span class="optional-label">(Hỏng ép)</span>
             </label>
-            <input type="text" id="underlyingConditions" class="form-control" placeholder="Bệnh gì nói luôn">
+            <input type="text" id="underlyingConditions" class="form-control" placeholder="Bệnh gì nói lun">
         </div>
 
         <div class="form-group">
             <label for="bookingDate">Ngày Tiêm</label>
             <input type="text" id="bookingDate" class="form-control" placeholder="DD/MM/YYYY" required>
-            <div id="dateError" class="error-message">Bà sống cho tương lai đi bà Thơ</div>
+            <div id="dateError" class="error-message">Sống cho tương lai đi bà Thơ.</div>
         </div>
 
         <div class="form-group">
             <label for="bookingTime">Giờ Tiêm</label>
             <input type="time" id="bookingTime" class="form-control" required>
+            <div id="timeError" class="error-message">Giờ đó ai mà tiêm cho bà.</div>
+            <div class="info-message">Giờ làm việc: 8:00-12:00 và 13:30-17:00</div>
         </div>
 
         <div class="form-group">
@@ -187,6 +195,8 @@
 <script>
     const bookingDateInput = document.getElementById('bookingDate');
     const dateErrorElement = document.getElementById('dateError');
+    const bookingTimeInput = document.getElementById('bookingTime');
+    const timeErrorElement = document.getElementById('timeError');
 
     // Hỗ trợ tự động thêm dấu /
     bookingDateInput.addEventListener('input', function(e) {
@@ -245,9 +255,41 @@
         return selectedDate < today;
     }
 
+    // Kiểm tra giờ có hợp lệ không (không trong giờ nghỉ trưa và không sau 17h)
+    function isValidTime(timeString) {
+        if (!timeString) return false;
+
+        const [hours, minutes] = timeString.split(':').map(Number);
+
+        // Chuyển đổi sang số phút từ 00:00
+        const totalMinutes = hours * 60 + minutes;
+
+        // Kiểm tra giờ nghỉ trưa (12:00-13:30)
+        const lunchBreakStart = 12 * 60; // 12:00
+        const lunchBreakEnd = 13 * 60 + 30; // 13:30
+
+        // Giờ kết thúc ngày làm việc (17:00)
+        const endOfDay = 17 * 60; // 17:00
+
+        // Giờ bắt đầu ngày làm việc (8:00)
+        const startOfDay = 8 * 60; // 8:00
+
+        // Kiểm tra thời gian có nằm trong giờ làm việc không
+        const isDuringLunchBreak = totalMinutes >= lunchBreakStart && totalMinutes < lunchBreakEnd;
+        const isAfterWorkHours = totalMinutes >= endOfDay;
+        const isBeforeWorkHours = totalMinutes < startOfDay;
+
+        return !(isDuringLunchBreak || isAfterWorkHours || isBeforeWorkHours);
+    }
+
     // Kiểm tra ngày khi người dùng nhập xong
     bookingDateInput.addEventListener('blur', function() {
         validateDate();
+    });
+
+    // Kiểm tra giờ khi người dùng nhập xong
+    bookingTimeInput.addEventListener('blur', function() {
+        validateTime();
     });
 
     function validateDate() {
@@ -267,13 +309,31 @@
         return !dateValue; // Nếu chưa nhập ngày thì vẫn hợp lệ
     }
 
+    function validateTime() {
+        const timeValue = bookingTimeInput.value;
+
+        if (timeValue) {
+            if (isValidTime(timeValue)) {
+                timeErrorElement.style.display = 'none';
+                bookingTimeInput.style.borderColor = '#ced4da';
+                return true;
+            } else {
+                timeErrorElement.style.display = 'block';
+                bookingTimeInput.style.borderColor = '#e74c3c';
+                return false;
+            }
+        }
+        return false; // Cần phải nhập giờ
+    }
+
     document.getElementById('vaccineForm').addEventListener('submit', function(e) {
         e.preventDefault();
 
         // Kiểm tra ngày có hợp lệ không
         const bookingDate = document.getElementById('bookingDate').value;
         if (!isValidDate(bookingDate)) {
-            alert('Ngày Tháng mà nhập cũng sai');
+            alert('Ngày tháng mà nhập cũng sai');
+            bookingDateInput.focus();
             return;
         }
 
@@ -284,6 +344,14 @@
             return;
         }
 
+        // Kiểm tra giờ có hợp lệ không
+        const bookingTime = document.getElementById('bookingTime').value;
+        if (!isValidTime(bookingTime)) {
+            timeErrorElement.style.display = 'block';
+            bookingTimeInput.focus();
+            return;
+        }
+
         const booking = {
             fullName: document.getElementById('fullName').value,
             gender: document.getElementById('gender').value,
@@ -291,7 +359,7 @@
             phoneNumber: document.getElementById('phoneNumber').value,
             email: document.getElementById('email').value,
             bookingDate: bookingDate,
-            bookingTime: document.getElementById('bookingTime').value,
+            bookingTime: bookingTime,
             vaccineType: document.getElementById('vaccineType').value,
             underlyingConditions: document.getElementById('underlyingConditions').value
         };
