@@ -67,6 +67,10 @@
                                     Đăng xuất
                                 </a>
                             </li>
+                            <!-- Hiển thị "Đăng nhập" nếu người dùng chưa đăng nhập -->
+                            <li th:if="${#authentication.name == 'anonymousUser'}">
+                                <a href="/login" class="header-icons">Đăng nhập</a>
+                            </li>
                         </ul>
                     </nav>
                     <a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
