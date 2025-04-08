@@ -1,7 +1,9 @@
 package edu.uth.tiemchungjava.controller;
 
+import edu.uth.tiemchungjava.dto.VaccineDTO;
 import edu.uth.tiemchungjava.models.MyUser;
 import edu.uth.tiemchungjava.models.MyUserRepository;
+import edu.uth.tiemchungjava.service.VaccineService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.Authentication;
@@ -14,6 +16,8 @@ import java.util.List;
 @Controller
 
 public class HomeController {
+
+
     @GetMapping("/gioithieu")
     public String gioiThieu() {
         return "gioithieu";
@@ -69,8 +73,18 @@ public class HomeController {
 
         return "homeAdmin"; // Trả về view homeAdmin
     }
+    @Autowired
+    private VaccineService service;
 
-//    @GetMapping("/admin")
+    @GetMapping("/donhang")
+    public String getDonHang(Model model) {
+        List<VaccineDTO> vaccines = service.getAllVaccines(); // Lấy dữ liệu từ VaccineService
+        model.addAttribute("vaccines", vaccines); // Truyền vào model
+        return "donhang"; // Trả về trang donhang.html
+    }
+
+
+    //    @GetMapping("/admin")
 //    public String admin() {return "homeAdmin";}
     @GetMapping("/categoryAdmin")
     public String category() {return "categoryAdmin";}
@@ -88,5 +102,8 @@ public class HomeController {
         // Spring Security sẽ tự động xử lý logout
         return "redirect:/login"; // Redirect về trang login sau khi logout
     }
-
+    @GetMapping("/")
+    public String home() {
+        return "redirect:/index"; // Chuyển hướng tới /index
+    }
 }
