@@ -43,6 +43,17 @@ public class SercurityConfiguration {
                             .successHandler(new AuthenticationSuccessHandler())
                             .permitAll();
                 })
+                .logout(logout -> logout
+                        .logoutUrl("/logout")  // Định nghĩa URL đăng xuất
+                        .invalidateHttpSession(true)  // Xóa session khi đăng xuất
+                        .deleteCookies("JSESSIONID") // Xóa cookie
+                        .logoutSuccessUrl("/login") // Redirect về trang đăng nhập sau khi logout
+                        .permitAll()) // Cho phép logout mọi lúc
+                .sessionManagement(session ->
+                        session.invalidSessionUrl("/login")  // Đảm bảo rằng khi session hết hạn, sẽ chuyển hướng về trang đăng nhập
+                                .maximumSessions(1)  // Giới hạn chỉ một phiên đăng nhập tại một thời điểm
+                                .expiredUrl("/login") // Chuyển hướng khi session hết hạn
+                )
                 .build();
     }
 
