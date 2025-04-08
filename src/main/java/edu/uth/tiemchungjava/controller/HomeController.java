@@ -83,4 +83,10 @@ public class HomeController {
     @GetMapping("/order")
     public String order() {return "order.html";}
 
+    @GetMapping("/logout")
+    public String logout() {
+        // Spring Security sẽ tự động xử lý logout
+        return "redirect:/login"; // Redirect về trang login sau khi logout
+    }
+
 }
