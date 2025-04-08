@@ -100,7 +100,7 @@ public class HomeController {
     @GetMapping("/logout")
     public String logout() {
         // Spring Security sẽ tự động xử lý logout
-        return "redirect:/login"; // Redirect về trang login sau khi logout
+        return "redirect:/index"; // Redirect về trang login sau khi logout
     }
     @GetMapping("/")
     public String home() {
