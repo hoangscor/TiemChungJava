@@ -55,13 +55,13 @@
                                 </div>
                             </li>
                             <!-- Hiển thị "Xin chào" và nút "Đăng xuất" nếu người dùng đã đăng nhập -->
-                            <li class="header-icons" th:if="${#authentication.name != null}">
+                            <li class="header-icons" th:if="${#authentication.name != 'anonymousUser'}">
                                 <!-- Nút "Xin chào" -->
                                 <a class="header-icons">
                                     Xin chào, <span th:text="${#authentication.name}"></span> yêu dấu
                                 </a>
                             </li>
-                            <li th:if="${#authentication.name != null}">
+                            <li th:if="${#authentication.name != 'anonymousUser'}">
                                 <!-- Nút "Đăng xuất" -->
                                 <a href="/logout" class="header-icons">
                                     Đăng xuất
