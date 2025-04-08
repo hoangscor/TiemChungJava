@@ -308,7 +308,7 @@
         <p th:text="${vaccine.name}">Tên vaccine</p>
         <p><span class="label">Mô tả:</span> <span th:text="${vaccine.description}"></span></p>
         <img class="center" th:src="@{'/img/products/' + ${vaccine.img_url}}" th:alt="${vaccine.name}" />
-        <p><span class="label">Giá:</span> <span th:text="${vaccine.price}"></span> VND</p>
+        <p><span class="label">Giá:</span> <span th:text="${vaccine.price}"></span> <VND></VND></p>
         <button class="booking-button"><a href="/lydatlichtiem">Đặt lịch</a></button>
 
       </li>
