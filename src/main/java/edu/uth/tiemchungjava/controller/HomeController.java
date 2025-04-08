@@ -49,8 +49,8 @@ public class HomeController {
     }
 
 
-    @GetMapping("/lydatlichtiem")//goi den html
-    public String lydatlichtiem() {return "lydatlichtiem";}
+    @GetMapping("/giaodiendatlichtiem")//goi den html
+    public String giaodiendatlichtiem() {return "giaodiendatlichtiem";}
 
 
     @GetMapping("/index")

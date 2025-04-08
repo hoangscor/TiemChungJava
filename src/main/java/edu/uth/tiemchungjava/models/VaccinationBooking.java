@@ -63,7 +63,8 @@ public class VaccinationBooking {
         this.underlyingConditions = underlyingConditions;
     }
 
-    // Getters and Setters
+    // Getters and Setters (bỏ qua để tiết kiệm không gian)
+
     public String getFullName() {
         return fullName;
     }
@@ -99,6 +100,13 @@ public class VaccinationBooking {
     }
     public void setBookingDate(LocalDate bookingDate) {
         this.bookingDate = bookingDate;
+    }
+
+    public Long getId() {
+        return id;
+    }
+    public void setId(Long id) {
+        this.id = id;
     }
     public LocalTime getBookingTime() {
         return bookingTime;
