@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Đặt Lịch Tiêm Chủng - Bệnh Viện [Tên Bệnh Viện]</title>
@@ -152,12 +152,11 @@
             <label for="vaccineType">Loại Vaccine <span style="color: red;">*</span></label>
             <select id="vaccineType" required>
                 <option value="">Chọn Loại Vaccine</option>
-                <option value="PFIZER">Pfizer</option>
-                <option value="MODERNA">Moderna</option>
-                <option value="ASTRAZENECA">AstraZeneca</option>
+                <th:block th:each="vaccine : ${vaccines}">
+                    <option th:value="${vaccine.name}" th:text="${vaccine.name}"></option>
+                </th:block>
             </select>
         </div>
-
         <button type="submit" class="submit-btn">Đặt Lịch Tiêm</button>
     </form>
 </div>
