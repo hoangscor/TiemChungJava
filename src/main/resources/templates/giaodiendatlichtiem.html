@@ -220,7 +220,10 @@
             return null;
         }
 
-        return formattedDate;
+        return {
+            dateObj: dateObj,
+            formattedDate: formattedDate
+        };
     }
 
     // Thêm event listener để validate ngày khi nhập đủ 10 ký tự
@@ -229,10 +232,23 @@
 
         // Kiểm tra khi đã nhập đủ 10 ký tự
         if (inputDate.length === 10) {
-            const formattedDate = formatDate(inputDate);
+            const result = formatDate(inputDate);
 
-            if (formattedDate) {
-                e.target.value = formattedDate;
+            if (result) {
+                // Kiểm tra xem ngày có phải là quá khứ không
+                const today = new Date();
+                today.setHours(0, 0, 0, 0); // Đặt giờ về 00:00:00 để so sánh chính xác ngày
+
+                if (result.dateObj < today) {
+                    alert('Không thể đặt lịch cho ngày trong quá khứ. Vui lòng chọn ngày hiện tại hoặc tương lai.');
+                    e.target.value = '';
+                } else {
+                    // Chuyển về định dạng DD/MM/YYYY để hiển thị trong input
+                    const day = String(result.dateObj.getDate()).padStart(2, '0');
+                    const month = String(result.dateObj.getMonth() + 1).padStart(2, '0');
+                    const year = result.dateObj.getFullYear();
+                    e.target.value = `${day}/${month}/${year}`;
+                }
             } else {
                 alert('Ngày không hợp lệ. Vui lòng nhập theo định dạng DD/MM/YYYY');
                 e.target.value = '';
@@ -244,36 +260,52 @@
     document.getElementById('vaccineForm').addEventListener('submit', function(e) {
         e.preventDefault();
 
-        const booking = {
-            fullName: document.getElementById('fullName').value,
-            gender: document.getElementById('gender').value,
-            age: parseInt(document.getElementById('age').value),
-            phoneNumber: document.getElementById('phoneNumber').value,
-            email: document.getElementById('email').value,
-            bookingDate: document.getElementById('bookingDate').value,
-            bookingTime: document.getElementById('bookingTime').value,
-            vaccineType: document.getElementById('vaccineType').value,
-            underlyingConditions: document.getElementById('underlyingConditions').value
-        };
+        // Kiểm tra lại ngày đặt lịch trước khi submit
+        const bookingDateValue = document.getElementById('bookingDate').value;
+        const result = formatDate(bookingDateValue);
 
-        // Thay đổi URL API nếu cần
-        fetch('/api/booking/create', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(booking)
-        })
-            .then(response => response.json())
-            .then(data => {
-                alert('Đặt lịch tiêm thành công!');
-                console.log(data);
-                document.getElementById('vaccineForm').reset(); // Reset form sau khi thành công
+        if (result) {
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            if (result.dateObj < today) {
+                alert('Không thể đặt lịch cho ngày trong quá khứ. Vui lòng chọn ngày hiện tại hoặc tương lai.');
+                return;
+            }
+
+            const booking = {
+                fullName: document.getElementById('fullName').value,
+                gender: document.getElementById('gender').value,
+                age: parseInt(document.getElementById('age').value),
+                phoneNumber: document.getElementById('phoneNumber').value,
+                email: document.getElementById('email').value,
+                bookingDate: result.formattedDate, // Sử dụng định dạng YYYY-MM-DD cho API
+                bookingTime: document.getElementById('bookingTime').value,
+                vaccineType: document.getElementById('vaccineType').value,
+                underlyingConditions: document.getElementById('underlyingConditions').value
+            };
+
+            // Thay đổi URL API nếu cần
+            fetch('/api/booking/create', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(booking)
             })
-            .catch(error => {
-                alert('Có lỗi xảy ra. Vui lòng thử lại.');
-                console.error('Error:', error);
-            });
+                .then(response => response.json())
+                .then(data => {
+                    alert('Đặt lịch tiêm thành công!');
+                    console.log(data);
+                    document.getElementById('vaccineForm').reset(); // Reset form sau khi thành công
+                })
+                .catch(error => {
+                    alert('Có lỗi xảy ra. Vui lòng thử lại.');
+                    console.error('Error:', error);
+                });
+        } else {
+            alert('Ngày không hợp lệ. Vui lòng nhập theo định dạng DD/MM/YYYY');
+        }
     });
 </script>
 </body>
