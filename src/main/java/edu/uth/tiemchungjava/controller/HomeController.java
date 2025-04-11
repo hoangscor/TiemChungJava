@@ -3,6 +3,8 @@ package edu.uth.tiemchungjava.controller;
 import edu.uth.tiemchungjava.dto.VaccineDTO;
 import edu.uth.tiemchungjava.models.MyUser;
 import edu.uth.tiemchungjava.models.MyUserRepository;
+import edu.uth.tiemchungjava.models.Vaccine;
+import edu.uth.tiemchungjava.repository.VaccineRepository;
 import edu.uth.tiemchungjava.service.VaccineService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
@@ -53,8 +55,15 @@ public class HomeController {
     public String giaodiendatlichtiem() {return "giaodiendatlichtiem";}
 
 
+    @Autowired
+    private VaccineRepository vaccineRepository;
     @GetMapping("/index")
-    public String index() {return "index"; // goi den html home
+    public String index(Model model) {
+        List<Vaccine> vaccineList = vaccineRepository.findAll();
+
+        model.addAttribute("vaccines", vaccineList);
+
+        return "index";
     }
     @Autowired
     private MyUserRepository myUserRepository;
