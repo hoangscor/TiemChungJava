@@ -43,15 +43,12 @@ public class VaccinationBooking {
     public enum Gender {
         MALE, FEMALE, OTHER
     }
+    @ManyToOne
+    @JoinColumn(name = "vaccine_id")
+    private Vaccine vaccine;
 
-    // Constructors
-    public VaccinationBooking() {}
-
-    // Constructor đầy đủ
-    public VaccinationBooking(String fullName, Gender gender, Integer age,
-                              String phoneNumber, String email,
-                              LocalDate bookingDate, LocalTime bookingTime,
-                              String vaccineType, String underlyingConditions) {
+    public VaccinationBooking(Long id, String fullName, Gender gender, Integer age, String phoneNumber, String email, LocalDate bookingDate, LocalTime bookingTime, String vaccineType, String underlyingConditions, Vaccine vaccine) {
+        this.id = id;
         this.fullName = fullName;
         this.gender = gender;
         this.age = age;
@@ -61,7 +58,21 @@ public class VaccinationBooking {
         this.bookingTime = bookingTime;
         this.vaccineType = vaccineType;
         this.underlyingConditions = underlyingConditions;
+        this.vaccine = vaccine;
     }
+
+    public Vaccine getVaccine() {
+        return vaccine;
+    }
+
+    public void setVaccine(Vaccine vaccine) {
+        this.vaccine = vaccine;
+    }
+
+    public VaccinationBooking() {}
+
+    // Constructor đầy đủ
+
 
     // Getters and Setters (bỏ qua để tiết kiệm không gian)
 

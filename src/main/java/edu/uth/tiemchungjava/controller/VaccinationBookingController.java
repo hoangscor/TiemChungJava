@@ -7,9 +7,7 @@ import edu.uth.tiemchungjava.service.VaccinationBookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,7 +23,7 @@ public class VaccinationBookingController {
 
     // API tạo booking (thêm thông tin đặt lịch tiêm)
     @PostMapping("/create")
-    public String createBooking(VaccinationBooking booking) {
+    public String createBooking(@RequestBody VaccinationBooking booking) {
         // Lưu thông tin đặt lịch tiêm vào cơ sở dữ liệu
         bookingService.createBooking(booking);
         return "redirect:/datlichtiem";  // Sau khi lưu xong, chuyển hướng về trang đặt lịch tiêm
@@ -34,13 +32,9 @@ public class VaccinationBookingController {
     // Hiển thị form đặt lịch tiêm với danh sách vaccine
     @GetMapping
     public String showBookingForm(Model model) {
-        // Lấy danh sách vaccine từ cơ sở dữ liệu
         List<Vaccine> vaccineList = vaccineRepository.findAll();
-
-        // Truyền danh sách vaccine vào model để hiển thị trên giao diện
         model.addAttribute("vaccines", vaccineList);
 
-        // Trả về tên trang HTML chứa form
         return "giaodiendatlichtiem.html";
     }
 }
