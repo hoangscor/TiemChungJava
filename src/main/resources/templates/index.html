@@ -37,7 +37,35 @@
 	<link rel="stylesheet" href="css/responsive.css">
 	<link rel="stylesheet" href="css/styles.css">
 
+<style>
+	.vaccine-list {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr); /* 3 columns */
+		gap: 20px; /* space between items */
+		padding: 20px;
+	}
 
+	.vaccine-box {
+		border: 1px solid #ddd;
+		padding: 15px;
+		text-align: center;
+		border-radius: 8px;
+		background-color: #f9f9f9;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	}
+
+	.vaccine-box img {
+		max-width: 100%;
+		height: auto;
+		margin: 10px 0;
+	}
+
+	.center {
+		display: block;
+		margin: 0 auto;
+	}
+
+</style>
 </head>
 <body>
 <!--PreLoader-->
@@ -116,74 +144,22 @@
 <div class="vaccine-container">
 	<div class="header">
 		<h2>DANH MỤC VẮC XIN TẠI VNVC</h2>
-		<a href="#" class="view-all">Xem tất cả</a>
+		<a href="/vaccines" class="view-all">Xem tất cả</a>
 	</div>
 
 	<div class="vaccine-list">
-		<div class="vaccine-item">
-			<a href="#">
-				<img src="img/products/vacxin-1.jpg" alt="Vắc xin Sốt Xuất Huyết">
-				<h3>VẮC XIN SỐT XUẤT HUYẾT</h3>
-				<p>(Qdenga, Nhật Bản)</p>
-			</a>
-		</div>
-
-		<div class="vaccine-item">
-			<a href="#">
-				<img src="img/products/vacxin-2.jpg" alt="Vắc xin Phế Cầu 23">
-				<h3>VẮC XIN PHẾ CẦU 23</h3>
-				<p>(Pneumovax 23, Mỹ)</p>
-			</a>
-		</div>
-
-		<div class="vaccine-item">
-			<a href="#">
-				<img src="img/products/vacxin-3.jpg" alt="Vắc xin Phế Cầu 13">
-				<h3>VẮC XIN PHẾ CẦU 13</h3>
-				<p>(Prevenar 13, Bỉ)</p>
-			</a>
-		</div>
-
-		<div class="vaccine-item">
-			<a href="#">
-				<img src="img/products/vaccine-5.jpg" alt="Vắc xin HPV">
-				<h3>VẮC XIN UNG THƯ DO HPV</h3>
-				<p>(Gardasil 9, Mỹ)</p>
-			</a>
-		</div>
-
-		<div class="vaccine-item">
-			<a href="#">
-				<img src="img/products/vaccine-7.jpg" alt="Vắc xin Zona">
-				<h3>VẮC XIN ZONA THẦN KINH</h3>
-				<p>(Shingrix, Bỉ)</p>
-			</a>
-		</div>
-
-		<div class="vaccine-item">
-			<a href="#">
-				<img src="img/products/vacxin-8.jpg" alt="Vắc xin Não Mô Cầu B">
-				<h3>VẮC XIN NÃO MÔ CẦU NHÓM B</h3>
-				<p>(Bexsero, Ý)</p>
-			</a>
-		</div>
-
-		<div class="vaccine-item">
-			<a href="#">
-				<img src="img/products/vaccine-9.jpg" alt="Vắc xin Não Mô Cầu ACYW135">
-				<h3>VẮC XIN NÃO MÔ CẦU NHÓM A,C,Y,W-135</h3>
-				<p>(Menactra, Mỹ)</p>
-			</a>
-		</div>
-
-		<div class="vaccine-item">
-			<a href="#">
-				<img src="img/products/vaccine-10.jpg" alt="Vắc xin 6in1">
-				<h3>VẮC XIN 6IN1</h3>
-				<p>(Hexaxim, Pháp)</p>
-			</a>
+		<div class="vaccine-item" th:each="vaccine : ${vaccines}">
+			<div class="vaccine-box">
+				<img class="center" th:src="@{'/img/products/' + ${vaccine.img_url}}" th:alt="${vaccine.name}" />
+				<p th:text="${vaccine.name}">Tên vaccine</p>
+				<p><span class="label">Mô tả:</span> <span th:text="${vaccine.description}"></span></p>
+			</div>
 		</div>
 	</div>
+
+
+
+</div>
 </div>
 <div class="vaccine-container">
 	<!-- cart banner section -->
