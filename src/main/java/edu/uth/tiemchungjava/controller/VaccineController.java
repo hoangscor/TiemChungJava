@@ -4,11 +4,13 @@ import edu.uth.tiemchungjava.dto.VaccineDTO;
 import edu.uth.tiemchungjava.models.Vaccine;
 import edu.uth.tiemchungjava.service.VaccineService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/vaccines") // Base path: /vaccines
@@ -77,5 +79,14 @@ public class VaccineController {
                 .orElseThrow(() -> new RuntimeException("Vaccine not found"));
         model.addAttribute("vaccine", vaccine);
         return "order"; // phải có file order.html trong templates
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getVaccineById(@PathVariable("id") Long id) {
+        Optional<Vaccine> vaccineOpt = service.getVaccineById(id);
+        if (vaccineOpt.isPresent()) {
+            return ResponseEntity.ok(vaccineOpt.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 }
