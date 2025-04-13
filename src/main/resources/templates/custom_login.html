@@ -2,9 +2,17 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
+    <!-- Thiết lập viewport cho responsive -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng nhập</title>
     <style>
+        /*
+          Style chung cho body:
+          - Font chữ sử dụng Arial
+          - Màu nền sáng (#f3f4f6)
+          - Sử dụng flexbox để canh giữa nội dung theo cả chiều dọc và ngang
+          - Chiều cao full màn hình, bỏ margin và overflow ẩn (ẩn thanh cuộn)
+        */
         body {
             font-family: Arial, sans-serif;
             background-color: #f3f4f6;
@@ -16,6 +24,11 @@
             overflow: hidden;
         }
 
+        /*
+          Container chứa form đăng nhập:
+          - Nền trắng, padding đều, bo tròn các góc, shadow nhẹ
+          - Đặt chiều rộng cố định và sử dụng position relative để phục vụ các phần tử pseudo bên trong
+        */
         .login-container {
             background-color: #fff;
             padding: 30px;
@@ -26,72 +39,212 @@
             z-index: 1;
         }
 
+        /*
+          Tiêu đề trong form đăng nhập:
+          - Bo khoảng dưới, căn giữa văn bản, màu đen
+        */
         .login-container h2 {
             margin-bottom: 20px;
             text-align: center;
-            color: #000; /* Màu đen cho tiêu đề */
+            color: #000;
         }
 
+        /*
+          Style cho từng nhóm input trong form
+          (các ô nhập liệu được nhóm lại với nhau)
+        */
         .form-group {
             margin-bottom: 15px;
         }
 
+        /*
+          Label (nhãn) cho các input:
+          - Hiển thị dạng block, có margin dưới nhỏ và màu chữ đen
+        */
         .form-group label {
             display: block;
             margin-bottom: 5px;
-            color: #000; /* Màu đen cho nhãn */
+            color: #000;
             font-weight: normal;
         }
 
+        /*
+          Input box:
+          - Chiếm 100% chiều rộng, padding bên trong, border bo tròn,
+            màu chữ hiển thị đen, và dùng box-sizing để đảm bảo kích cỡ ổn định
+        */
         .form-group input {
             width: 100%;
             padding: 8px;
             box-sizing: border-box;
             border: 1px solid #ccc;
             border-radius: 4px;
-            color: #000; /* Màu chữ đen trong input */
+            color: #000;
         }
 
+        /*
+          Nút đăng nhập:
+          - Chiếm full chiều rộng của container, padding vừa phải
+          - Nền xanh (#007BFF), màu chữ trắng, không có border, bo góc nhẹ
+          - Hiệu ứng hover chuyển sang màu xanh đậm
+        */
         .login-btn {
             width: 100%;
             padding: 10px;
-            background-color: #007BFF; /* Nền xanh dương cho nút */
+            background-color: #007BFF;
             border: none;
             color: white;
             border-radius: 4px;
             cursor: pointer;
             font-size: 16px;
         }
-
         .login-btn:hover {
-            background-color: #0056b3; /* Màu xanh dương đậm khi hover */
+            background-color: #0056b3;
         }
 
-        .signup-link {
+        /*
+          Container cho link "Đăng ký ngay" và "Tôi là người dùng mới":
+          - Căn giữa văn bản và tạo khoảng margin bên trên
+        */
+        .signup-link, .newuser-link {
             text-align: center;
             margin-top: 15px;
         }
 
+        /*
+          Link cho "Đăng ký ngay":
+          - Màu xanh nhạt, in đậm, bỏ gạch chân
+          - Hiệu ứng hover chuyển màu xanh đậm
+        */
         .signup-link a {
-            color: #007BFF; /* Màu xanh dương cho liên kết */
+            color: #007BFF;
             font-weight: bold;
+            text-decoration: none;
         }
-
         .signup-link a:hover {
-            color: #0056b3; /* Màu xanh dương đậm khi hover */
+            color: #0056b3;
         }
 
-        /* Hiệu ứng chim bay */
+        /* -------------------------------
+           CSS cho nút "Tôi là người dùng mới" kiểu ống tiêm vắc xin màu cam
+        --------------------------------*/
+
+        /*
+          .syringe-btn:
+          - Sử dụng inline-block để có thể định dạng như block nhưng vẫn nằm cùng dòng
+          - Position relative để có thể định vị các pseudo-element ::after và ::before
+          - Padding: tạo không gian bên trong nút
+          - Nền màu cam (#FFA500) với border darkorange, bo góc tròn tạo hình dạng ống tiêm
+          - Không gạch chân, chữ trắng, in đậm và chuyển đổi nền khi hover
+          - overflow hidden để ẩn phần animation di chuyển ra ngoài
+        */
+        .syringe-btn {
+            display: inline-block;
+            position: relative;
+            padding: 10px 20px;
+            background-color: #FFA500; /* Màu cam */
+            border: 2px solid darkorange;
+            border-radius: 30px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            overflow: hidden;
+        }
+        .syringe-btn:hover {
+            background-color: darkorange;
+        }
+
+        /*
+          Pseudo-element ::after tạo hình "ống kim" ở bên phải của nút:
+          - Đặt position absolute, ngoài mép phải với kích cỡ cố định
+          - Sử dụng background màu xám nhạt để mô phỏng kim tiêm
+        */
+        .syringe-btn::after {
+            content: "";
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 4px;
+            background-color: #7a7a7a; /* Màu kim tiêm */
+            border-radius: 2px;
+        }
+
+        /*
+          Pseudo-element ::before dùng để tạo hiệu ứng "nước xịt" khi nhấn nút:
+          - Ban đầu không có kích thước và hoàn toàn trong suốt
+        */
+        .syringe-btn::before {
+            content: "";
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            border-radius: 50%;
+            width: 0;
+            height: 0;
+            opacity: 0;
+        }
+
+        /*
+          Khi nút được nhấn (active), pseudo-element ::before sẽ chạy animation "sprayWater"
+        */
+        .syringe-btn:active::before {
+            animation: sprayWater 0.5s forwards;
+        }
+
+        /*
+          @keyframes sprayWater:
+          - Tạo hiệu ứng nước xịt ra từ ống tiêm
+          - Bắt đầu với kích thước 0, tăng lên ở 50% (mô phỏng nước bắn ra)
+          - Sau đó thu nhỏ trở lại và mất dần (opacity giảm về 0)
+        */
+        @keyframes sprayWater {
+            0% {
+                width: 0;
+                height: 0;
+                opacity: 1;
+                transform: translate(0, 0);
+            }
+            50% {
+                width: 30px;
+                height: 30px;
+                opacity: 0.8;
+                transform: translate(10px, -20px);
+            }
+            100% {
+                width: 0;
+                height: 0;
+                opacity: 0;
+                transform: translate(20px, -40px);
+            }
+        }
+
+        /* -------------------------------
+           Phần dưới là các hiệu ứng trang trí ban đầu như "chim bay" và "kim tiêm xịt nước"
+        --------------------------------*/
+
+        /*
+          .bird:
+          - Tạo hình các con chim tròn màu đỏ (tomato) bay qua lại
+          - Sử dụng animation fly để di chuyển
+        */
         .bird {
             position: absolute;
             width: 40px;
             height: 40px;
-            background-color: #ff6347; /* Màu đỏ cho chim */
+            background-color: #ff6347; /* Màu đỏ */
             border-radius: 50%;
             animation: fly 5s linear infinite;
             opacity: 0.7;
         }
 
+        /*
+          @keyframes fly:
+          - Xác định quãng đường bay của các con chim, di chuyển theo trục X và Y
+          - Điều chỉnh opacity để tạo hiệu ứng tự nhiên
+        */
         @keyframes fly {
             0% {
                 transform: translateX(0) translateY(0);
@@ -115,18 +268,23 @@
             }
         }
 
-        /* Kim tiêm */
+        /*
+          .syringe:
+          - Thiết kế ống tiêm hiện có: vị trí, kích thước, màu sắc và bo tròn nhẹ
+        */
         .syringe {
             position: absolute;
             top: 30%;
             left: 10%;
             width: 10px;
             height: 60px;
-            background-color: #7a7a7a; /* Màu kim tiêm */
+            background-color: #7a7a7a;
             border-radius: 3px;
             transform: rotate(45deg);
         }
-
+        /*
+          ::before của ống tiêm: tạo phần "đầu kim" nhỏ bên dưới
+        */
         .syringe:before {
             content: "";
             position: absolute;
@@ -135,11 +293,15 @@
             margin-left: -5px;
             width: 10px;
             height: 5px;
-            background-color: #7a7a7a; /* Kim tiêm */
+            background-color: #7a7a7a;
             border-radius: 50%;
         }
 
-        /* Nước xịt từ kim tiêm */
+        /*
+          .water:
+          - Tạo hiệu ứng nước xịt từ ống tiêm
+          - Sử dụng animation waterAnimation để mô phỏng chuyển động nước
+        */
         .water {
             position: absolute;
             bottom: -10px;
@@ -147,11 +309,15 @@
             margin-left: -2px;
             width: 4px;
             height: 20px;
-            background-color: #00bfff; /* Màu nước */
+            background-color: #00bfff;
             animation: waterAnimation 1s infinite ease-in-out;
         }
 
-        /* Hiệu ứng nước bắn lên */
+        /*
+          @keyframes waterAnimation:
+          - Xác định chuyển động của nước được xịt ra từ ống tiêm theo hướng lên trên
+          - Tăng giảm kích thước scale và opacity để tạo hiệu ứng bắn nước tự nhiên
+        */
         @keyframes waterAnimation {
             0% {
                 transform: translateY(0) scaleY(1);
@@ -169,31 +335,41 @@
     </style>
 </head>
 <body>
+<!-- Container đăng nhập -->
 <div class="login-container">
     <h2>Đăng nhập</h2>
+    <!-- Form đăng nhập với phương thức POST, action trỏ tới /login -->
     <form method="POST" action="/login">
+        <!-- Nhóm input cho tên đăng nhập -->
         <div class="form-group">
             <label for="username">Tên đăng nhập</label>
             <input type="text" id="username" name="username" required>
         </div>
+        <!-- Nhóm input cho mật khẩu -->
         <div class="form-group">
             <label for="password">Mật khẩu</label>
             <input type="password" id="password" name="password" required>
         </div>
+        <!-- Nút gửi form đăng nhập -->
         <button type="submit" class="login-btn">Đăng nhập</button>
     </form>
+    <!-- Link để đăng ký nếu người dùng chưa có tài khoản -->
     <div class="signup-link">
         Chưa có tài khoản? <a href="/register">Đăng ký ngay</a>
     </div>
+    <!-- Nút "Tôi là người dùng mới" được tạo kiểu theo ống tiêm vắc xin -->
+    <div class="newuser-link">
+        <a href="/index" class="syringe-btn">Tôi là người dùng mới</a>
+    </div>
 </div>
 
-<!-- Chim bay -->
+<!-- Các con chim bay (hiệu ứng trang trí) -->
 <div class="bird" style="animation-delay: 0s;"></div>
 <div class="bird" style="animation-delay: 2s;"></div>
 <div class="bird" style="animation-delay: 4s;"></div>
 <div class="bird" style="animation-delay: 6s;"></div>
 
-<!-- Kim tiêm xịt nước -->
+<!-- Ống tiêm xịt nước (hiệu ứng trang trí hiện có) -->
 <div class="syringe">
     <div class="water"></div>
 </div>
