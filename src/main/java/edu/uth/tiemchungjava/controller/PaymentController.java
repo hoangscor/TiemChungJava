@@ -93,8 +93,17 @@ public class PaymentController {
 
         VaccinationBooking booking = bookingOpt.get();
         model.addAttribute("booking", booking);
-        List<Vaccine> vaccineList = vaccineRepository.findAll();
-        model.addAttribute("vaccines", vaccineList);
+        Vaccine selectedVaccine = booking.getVaccine();
+        if (selectedVaccine == null && booking.getVaccineType() != null) {
+            try {
+                Long vaccineId = Long.parseLong(booking.getVaccineType());
+                selectedVaccine = vaccineRepository.findById(vaccineId).orElse(null);
+            } catch(Exception e) {
+                // Nếu chuyển đổi thất bại hoặc không tìm thấy vaccine, để null
+            }
+        }
+// Đưa đối tượng vaccine vào model
+        model.addAttribute("vaccine", selectedVaccine);
 
         return "order.html";
     }
