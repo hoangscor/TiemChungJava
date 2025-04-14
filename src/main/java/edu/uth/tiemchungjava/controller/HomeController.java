@@ -92,6 +92,9 @@ public class HomeController {
         return "donhang"; // Trả về trang donhang.html
     }
 
+
+    //    @GetMapping("/admin")
+//    public String admin() {return "homeAdmin";}
     @GetMapping("/categoryAdmin")
     public String category() {return "categoryAdmin";}
 
