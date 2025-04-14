@@ -91,10 +91,7 @@ public class HomeController {
         model.addAttribute("vaccines", vaccines); // Truyền vào model
         return "donhang"; // Trả về trang donhang.html
     }
-
-
-    //    @GetMapping("/admin")
-//    public String admin() {return "homeAdmin";}
+    
     @GetMapping("/categoryAdmin")
     public String category() {return "categoryAdmin";}
 
@@ -113,6 +110,10 @@ public class HomeController {
     }
     @GetMapping("/")
     public String home() {
-        return "redirect:/index"; // Chuyển hướng tới /index
+        return "redirect:/logout"; // Chuyển hướng tới /index
+    }
+    @GetMapping("/http://localhost:8080/")
+    public String homeLOGOUT() {
+        return "redirect:/logout"; // Chuyển hướng tới /index
     }
 }
