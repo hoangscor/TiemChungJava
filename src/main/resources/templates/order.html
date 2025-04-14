@@ -1,415 +1,528 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>
-        Payment Page
-    </title>
-    <script src="https://cdn.tailwindcss.com">
-    </script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-</head>
-<body class="bg-gray-100">
-<div class="max-w-4xl mx-auto p-4">
-    <div class="flex justify-between items-center mb-4">
-        <a class="text-gray-600" href="#">
-            <i class="fas fa-arrow-left">
-            </i>
-            Quay lại
-        </a>
-        <div class="flex items-center space-x-2">
-     <span class="text-gray-600">
-      En
-     </span>
-            <img alt="English flag" class="w-5 h-5" src="https://placehold.co/20x20"/>
-        </div>
-    </div>
-    <div class="bg-white p-6 rounded-lg shadow-lg">
-        <div class="flex justify-between items-center mb-6">
-            <img alt="VNPAY and VBan logos" class="w-36" src="img/vnpay-logo.png"/>
-            <div class="flex items-center space-x-2">
+    <title>Payment Page - Premium Healthcare</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
-            </div>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="bg-gray-100 p-4 rounded-lg">
-                <h2 class="text-lg font-semibold mb-4">
-                    Thông tin đơn hàng
-                </h2>
-                <div class="space-y-2">
-                    <div class="flex justify-between">
-            <span>
-             Số tiền thanh toán
-            </span>
-                        <span class="text-blue-600 font-semibold">
-              <span id="priceAmount">0</span>
-              <span class="text-sm">
-               VND
-              </span>
-            </span>
-                    </div>
-                    <div class="flex justify-between">
-            <span>
-             Giá trị đơn hàng
-            </span>
-                        <span>
-              <span id="priceAmount2">0</span>
-              <span class="text-sm">
-               VND
-              </span>
-            </span>
-                    </div>
-                    <div class="flex justify-between">
-            <span>
-             Phí giao dịch
-            </span>
-                        <span>
-             0
-             <span class="text-sm">
-              VND
-             </span>
-            </span>
-                    </div>
-                    <div class="flex justify-between">
-            <span>
-             Mã đơn hàng
-            </span>
-                        <span id="orderIdDisplay">
-             243686
-            </span>
-                    </div>
-                    <div class="flex justify-between">
-            <span>
-             Nhà cung cấp
-            </span>
-                        <span>
-             MC CTT VNPAY
-            </span>
-                    </div>
-                    <div id="vaccineInfoContainer"></div>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f0f7ff;
+            background-image: linear-gradient(315deg, #f0f7ff 0%, #ffffff 74%);
+        }
+
+        .payment-container {
+            background: linear-gradient(145deg, #ffffff, #f9fafb);
+            box-shadow: 0 20px 40px rgba(0, 30, 85, 0.08);
+            border: 1px solid rgba(219, 234, 254, 0.7);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #0050b3, #0077cc);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0, 119, 204, 0.25);
+        }
+
+        .btn-secondary {
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+
+        .btn-secondary:hover {
+            background-color: #f1f5f9;
+        }
+
+        .card-input {
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+
+        .card-input:focus {
+            border-color: #0077cc;
+            box-shadow: 0 0 0 3px rgba(0, 119, 204, 0.15);
+            outline: none;
+        }
+
+        .timer-box {
+            box-shadow: 0 4px 8px rgba(0, 30, 85, 0.05);
+            background: linear-gradient(145deg, #f8fafc, #ffffff);
+            border: 1px solid #e2e8f0;
+        }
+
+        .order-info {
+            background: linear-gradient(145deg, #f1f5f9, #ffffff);
+            border-left: 4px solid #0077cc;
+        }
+
+        .feature-badge {
+            background: rgba(0, 119, 204, 0.08);
+            border: 1px solid rgba(0, 119, 204, 0.2);
+        }
+
+        .header-gradient {
+            background: linear-gradient(90deg, #0050b3, #0077cc);
+        }
+
+        .footer-container {
+            border-top: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        .support-badge {
+            background: rgba(0, 119, 204, 0.1);
+            border: 1px solid rgba(0, 119, 204, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .support-badge:hover {
+            background: rgba(0, 119, 204, 0.15);
+            transform: translateY(-1px);
+        }
+
+        .security-badge {
+            background: rgba(0, 119, 204, 0.08);
+            border: 1px solid rgba(0, 119, 204, 0.18);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-white">
+<div class="max-w-4xl mx-auto p-6">
+    <div class="flex justify-between items-center mb-6">
+        <a class="text-blue-800 hover:text-blue-600 transition-colors flex items-center group font-medium" href="#">
+            <i class="fas fa-arrow-left mr-2 group-hover:transform group-hover:-translate-x-1 transition-transform"></i>
+            <span>Quay lại</span>
+        </a>
+    </div>
+
+    <div class="payment-container p-8 rounded-xl bg-white">
+        <div class="flex justify-between items-center mb-8 pb-6 border-b border-blue-100">
+            <div class="flex items-center">
+                <div class="bg-blue-100 p-3 rounded-full mr-4 shadow-sm">
+                    <i class="fas fa-hospital text-blue-700 text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-2xl font-bold text-blue-900">Premium Healthcare</h1>
+                    <p class="text-sm text-blue-600">Thanh toán an toàn qua VNPAY</p>
                 </div>
             </div>
+            <img alt="VNPAY logo" class="w-36" src="img/vnpay-logo.png" onerror="this.src='/api/placeholder/144/40'; this.onerror=null;"/>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+            <!-- Order Information -->
+            <div class="order-info p-6 rounded-xl shadow-sm">
+                <h2 class="text-lg font-bold mb-6 text-blue-900 flex items-center">
+                    <i class="fas fa-clipboard-list text-blue-700 mr-2"></i>
+                    Thông tin đơn hàng
+                </h2>
+
+                <div class="space-y-5">
+                    <div class="flex justify-between">
+                        <span class="text-blue-800">Số tiền thanh toán</span>
+                        <span class="text-blue-700 font-bold">
+                            <span id="priceAmount">0</span>
+                            <span class="text-sm">VND</span>
+                        </span>
+                    </div>
+
+                    <div class="flex justify-between">
+                        <span class="text-blue-700">Giá trị đơn hàng</span>
+                        <span class="text-blue-800">
+                            <span id="priceAmount2">0</span>
+                            <span class="text-sm">VND</span>
+                        </span>
+                    </div>
+
+                    <div class="flex justify-between">
+                        <span class="text-blue-700">Phí giao dịch</span>
+                        <span class="text-blue-800">
+                            0
+                            <span class="text-sm">VND</span>
+                        </span>
+                    </div>
+
+                    <div class="h-px bg-blue-100 my-3"></div>
+
+                    <div class="flex justify-between">
+                        <span class="text-blue-700">Mã đơn hàng</span>
+                        <span id="orderIdDisplay" class="text-blue-800 font-medium">243686</span>
+                    </div>
+
+                    <div class="flex justify-between">
+                        <span class="text-blue-700">Nhà cung cấp</span>
+                        <span class="text-blue-800">MC CTT VNPAY</span>
+                    </div>
+
+                    <div class="h-px bg-blue-100 my-3"></div>
+
+                    <div id="vaccineInfoContainer"></div>
+
+                    <div class="mt-5 p-4 bg-blue-50 rounded-lg border border-blue-200">
+                        <div class="flex items-center text-blue-700">
+                            <i class="fas fa-shield-alt mr-3 text-blue-600"></i>
+                            <span class="font-medium">Bảo mật thanh toán 100%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payment Form -->
             <div>
-                <h2 class="text-lg font-semibold mb-4">
+                <h2 class="text-lg font-bold mb-6 text-blue-900 flex items-center">
+                    <i class="fas fa-credit-card text-blue-700 mr-2"></i>
                     Thanh toán qua Ngân hàng
                 </h2>
-                <div class="border-b border-gray-300 mb-4">
-                    <ul class="flex space-x-4">
-                        <li class="border-b-2 border-blue-600 pb-2">
-                            Thẻ nội địa
+
+                <div class="mb-6">
+                    <ul class="flex space-x-6 border-b border-blue-100">
+                        <li class="border-b-2 border-blue-600 pb-2 text-blue-700 font-medium">
+                            <div class="flex items-center">
+                                <i class="fas fa-credit-card mr-2"></i>
+                                Thẻ nội địa
+                            </div>
                         </li>
-                        <li class="pb-2">
-                            Internet Banking
+                        <li class="pb-2 text-blue-400 hover:text-blue-600 cursor-pointer">
+                            <div class="flex items-center">
+                                <i class="fas fa-university mr-2"></i>
+                                Internet Banking
+                            </div>
                         </li>
                     </ul>
                 </div>
-                <!-- Form thanh toán -->
-                <form id="paymentForm">
-                    <div class="space-y-4">
-                        <div>
-                            <label class="block text-gray-700" for="card-number">
-                                Số thẻ
-                            </label>
-                            <input class="w-full border border-gray-300 p-2 rounded-md" id="card-number" placeholder="Nhập số thẻ" type="text"/>
-                        </div>
-                        <div>
-                            <label class="block text-gray-700" for="card-name">
-                                Tên chủ thẻ
-                            </label>
-                            <input class="w-full border border-gray-300 p-2 rounded-md" id="card-name" placeholder="Nhập tên chủ thẻ (không dấu)" type="text"/>
-                        </div>
-                        <div>
-                            <label class="block text-gray-700" for="expiry-date">
-                                Ngày phát hành
-                                <i class="fas fa-info-circle text-gray-400"></i>
-                            </label>
-                            <input class="w-full border border-gray-300 p-2 rounded-md" id="expiry-date" placeholder="MM/YY" type="text"/>
+
+                <!-- Payment Form -->
+                <form id="paymentForm" class="space-y-6">
+                    <div>
+                        <label class="block text-blue-800 font-medium mb-2" for="card-number">
+                            Số thẻ
+                        </label>
+                        <div class="relative">
+                            <input class="card-input w-full p-3 rounded-lg bg-white" id="card-number" placeholder="Nhập số thẻ" type="text"/>
+                            <div class="absolute inset-y-0 right-0 flex items-center pr-3">
+                                <i class="fas fa-credit-card text-blue-400"></i>
+                            </div>
                         </div>
                     </div>
-                    <div class="mt-4">
-                        <a class="text-blue-600" href="#">Điều kiện sử dụng dịch vụ</a>
+
+                    <div>
+                        <label class="block text-blue-800 font-medium mb-2" for="card-name">
+                            Tên chủ thẻ
+                        </label>
+                        <input class="card-input w-full p-3 rounded-lg bg-white" id="card-name" placeholder="Nhập tên chủ thẻ (không dấu)" type="text"/>
                     </div>
-                    <div class="flex justify-between items-center mt-6">
-                        <button class="bg-gray-200 px-4 py-2 rounded-md" type="button" id="cancelButton">
+
+                    <div>
+                        <label class="block text-blue-800 font-medium mb-2" for="expiry-date">
+                            Ngày phát hành
+                            <i class="fas fa-info-circle text-blue-400 ml-1 cursor-help" title="Ngày phát hành thẻ (MM/YY)"></i>
+                        </label>
+                        <input class="card-input w-full p-3 rounded-lg bg-white" id="expiry-date" placeholder="MM/YY" type="text"/>
+                    </div>
+
+                    <div class="mt-6">
+                        <a class="text-blue-600 hover:text-blue-800 font-medium text-sm flex items-center" href="#">
+                            <i class="fas fa-file-contract mr-1"></i>
+                            Điều kiện sử dụng dịch vụ
+                        </a>
+                    </div>
+
+                    <div id="countdownContainer" class="flex items-center justify-center my-6 p-3 rounded-lg timer-box"></div>
+
+                    <div class="flex justify-between items-center mt-10">
+                        <button class="btn-secondary bg-white text-blue-700 px-6 py-3 rounded-lg font-medium flex items-center shadow-sm" type="button" id="cancelButton">
+                            <i class="fas fa-times mr-2"></i>
                             Hủy thanh toán
                         </button>
-                        <button class="bg-blue-600 text-white px-4 py-2 rounded-md" type="submit">
+                        <button class="btn-primary bg-blue-700 text-white px-8 py-3 rounded-lg font-medium flex items-center shadow-md" type="submit">
                             Tiếp tục
+                            <i class="fas fa-arrow-right ml-2"></i>
                         </button>
                     </div>
                 </form>
-
-                <div id="countdownContainer" class="flex items-center my-4 justify-center"></div>
-
-                <script>
-                    document.addEventListener('DOMContentLoaded', function() {
-                        // Lấy thông tin từ URL parameters
-                        const urlParams = new URLSearchParams(window.location.search);
-                        const bookingId = urlParams.get('bookingId');
-                        const vaccineId = urlParams.get('vaccineId');
-                        let vaccinePrice = 0;
-
-                        // Hiển thị ID đơn hàng
-                        const orderIdElement = document.getElementById('orderIdDisplay');
-                        if (orderIdElement && bookingId) {
-                            orderIdElement.textContent = bookingId;
-                        }
-
-                        // Tạo countdown timer
-                        const countdownContainer = document.getElementById('countdownContainer');
-                        let minutes = 14;
-                        let seconds = 59;
-
-                        countdownContainer.innerHTML = `
-                    <span class="text-gray-700 mr-2">Thời gian còn lại:</span>
-                    <span class="bg-gray-200 px-2 py-1 rounded-md text-gray-800">${String(minutes).padStart(2, '0')}</span>
-                    <span class="mx-1">:</span>
-                    <span class="bg-gray-200 px-2 py-1 rounded-md text-gray-800">${String(seconds).padStart(2, '0')}</span>
-                `;
-
-                        const minutesElement = countdownContainer.querySelector('.bg-gray-200.px-2.py-1.rounded-md.text-gray-800:nth-child(2)');
-                        const secondsElement = countdownContainer.querySelector('.bg-gray-200.px-2.py-1.rounded-md.text-gray-800:nth-child(4)');
-
-                        // Hàm cập nhật giá tiền trên giao diện
-                        function updatePriceDisplay(price) {
-                            // Định dạng số theo kiểu hiển thị tiền (VD: 15.000)
-                            const formattedPrice = Number(price).toLocaleString('vi-VN');
-
-                            // Cập nhật tất cả các phần tử hiển thị giá
-                            const priceElements = document.querySelectorAll('#priceAmount, #priceAmount2');
-                            priceElements.forEach(element => {
-                                element.textContent = formattedPrice;
-                            });
-
-                            vaccinePrice = price; // Lưu giá lại để sử dụng khi thanh toán
-                        }
-
-                        // Lấy thông tin vaccine và hiển thị giá
-                        if (vaccineId) {
-                            // Gọi API để lấy thông tin vaccine dựa vào vaccineId
-                            fetch(`/vaccine/${vaccineId}`)
-                                .then(response => {
-                                    if (!response.ok) {
-                                        throw new Error("Không lấy được thông tin vaccine");
-                                    }
-                                    return response.json();
-                                })
-                                .then(data => {
-                                    // Cập nhật giá vaccine trên giao diện
-                                    updatePriceDisplay(data.price);
-
-                                    // Hiển thị thông tin vaccine
-                                    const vaccineInfoElement = document.createElement('div');
-                                    vaccineInfoElement.className = 'flex justify-between mt-2';
-                                    vaccineInfoElement.innerHTML = `
-                                <span>Vaccine:</span>
-                                <span>${data.name}</span>
-                            `;
-
-                                    // Thêm thông tin vaccine vào phần thông tin đơn hàng
-                                    const vaccineInfoContainer = document.getElementById('vaccineInfoContainer');
-                                    if (vaccineInfoContainer) {
-                                        vaccineInfoContainer.appendChild(vaccineInfoElement);
-                                    }
-                                })
-                                .catch(error => {
-                                    console.error("Error fetching vaccine price:", error);
-
-                                    // Nếu không lấy được từ API, thử lấy từ localStorage
-                                    const savedVaccineId = localStorage.getItem('selectedVaccineId');
-                                    const savedVaccineName = localStorage.getItem('selectedVaccineName');
-                                    const savedVaccinePrice = localStorage.getItem('selectedVaccinePrice');
-
-                                    if (savedVaccineId && savedVaccineId === vaccineId) {
-                                        // Nếu có tên vaccine trong localStorage thì hiển thị
-                                        if (savedVaccineName) {
-                                            const vaccineInfoElement = document.createElement('div');
-                                            vaccineInfoElement.className = 'flex justify-between mt-2';
-                                            vaccineInfoElement.innerHTML = `
-                                        <span>Vaccine:</span>
-                                        <span>${savedVaccineName}</span>
-                                    `;
-
-                                            const vaccineInfoContainer = document.getElementById('vaccineInfoContainer');
-                                            if (vaccineInfoContainer) {
-                                                vaccineInfoContainer.appendChild(vaccineInfoElement);
-                                            }
-                                        }
-
-                                        // Cập nhật giá từ localStorage nếu có
-                                        if (savedVaccinePrice) {
-                                            updatePriceDisplay(savedVaccinePrice);
-                                        } else {
-                                            // Giá mặc định nếu không có giá trong localStorage
-                                            updatePriceDisplay(150000);
-                                        }
-                                    } else {
-                                        // Hiển thị giá mặc định nếu không có thông tin
-                                        updatePriceDisplay(150000);
-                                    }
-                                });
-                        } else {
-                            // Hiển thị giá mặc định nếu không có vaccineId
-                            updatePriceDisplay(150000);
-                        }
-
-                        // Khởi động countdown timer
-                        const countdownInterval = setInterval(function() {
-                            seconds--;
-                            if (seconds < 0) {
-                                seconds = 59;
-                                minutes--;
-                            }
-
-                            if (minutes < 0) {
-                                clearInterval(countdownInterval);
-                                alert('Phiên thanh toán đã hết hạn. Vui lòng đặt lịch lại.');
-                                window.location.href = '/datlichtiem';
-                                return;
-                            }
-
-                            minutesElement.textContent = String(minutes).padStart(2, '0');
-                            secondsElement.textContent = String(seconds).padStart(2, '0');
-                        }, 1000);
-
-                        // Xử lý form thanh toán
-                        const paymentForm = document.getElementById('paymentForm');
-
-                        if (paymentForm) {
-                            paymentForm.addEventListener('submit', function(e) {
-                                e.preventDefault();
-
-                                const cardNumber = document.getElementById('card-number').value;
-                                const cardName = document.getElementById('card-name').value;
-                                const expiryDate = document.getElementById('expiry-date').value;
-
-                                // Kiểm tra thông tin đầu vào
-                                if (!cardNumber || !cardName || !expiryDate) {
-                                    alert('Vui lòng điền đầy đủ thông tin thẻ của bạn');
-                                    return;
-                                }
-
-                                // Mô phỏng kiểm tra thông tin thẻ ngân hàng
-                                const validCards = [
-                                    { number: '9704123456789012', name: 'NGUYEN VAN A', expiry: '12/25' },
-                                    { number: '9704223344556677', name: 'TRAN THI B', expiry: '05/26' }
-                                ];
-
-                                const isValidCard = validCards.some(card =>
-                                    card.number === cardNumber &&
-                                    card.name === cardName &&
-                                    card.expiry === expiryDate
-                                );
-
-                                // Lấy giá hiển thị trên giao diện nếu cần
-                                if (!vaccinePrice) {
-                                    const priceElement = document.getElementById('priceAmount');
-                                    if (priceElement) {
-                                        // Chuyển đổi chuỗi định dạng (ví dụ: "15.000") thành số
-                                        vaccinePrice = parseFloat(priceElement.textContent.replace(/\./g, '').replace(/,/g, '.'));
-                                    }
-                                }
-
-                                // Gửi thông tin thanh toán đến server
-                                fetch('/payment/process', {
-                                    method: 'POST',
-                                    headers: {
-                                        'Content-Type': 'application/json',
-                                    },
-                                    body: JSON.stringify({
-                                        bookingId: bookingId,
-                                        cardNumber: cardNumber,
-                                        cardName: cardName,
-                                        expiryDate: expiryDate,
-                                        amount: vaccinePrice || 150000 // Sử dụng giá đã lưu hoặc giá mặc định
-                                    })
-                                })
-                                    .then(response => {
-                                        if (!response.ok) {
-                                            return response.json().then(data => {
-                                                throw new Error(data.error || 'Thanh toán thất bại');
-                                            });
-                                        }
-                                        return response.json();
-                                    })
-                                    .then(data => {
-                                        // Hiển thị thông báo thành công
-                                        alert('Thanh toán thành công! Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi.');
-
-                                        // Xóa dữ liệu vaccine đã lưu trong localStorage
-                                        localStorage.removeItem('selectedVaccineId');
-                                        localStorage.removeItem('selectedVaccineName');
-                                        localStorage.removeItem('selectedVaccinePrice');
-
-                                        // Sau 2 giây, chuyển hướng về trang chủ
-                                        setTimeout(function() {
-                                            window.location.href = '/';
-                                        }, 2000);
-                                    })
-                                    .catch(error => {
-                                        alert('Thanh toán thất bại: ' + error.message + '. Vui lòng kiểm tra lại thông tin thẻ của bạn.');
-                                    });
-                            });
-                        }
-
-                        // Xử lý nút hủy thanh toán
-                        const cancelButton = document.getElementById('cancelButton');
-                        if (cancelButton) {
-                            cancelButton.addEventListener('click', function() {
-                                if (confirm('Bạn có chắc chắn muốn hủy thanh toán? Lịch tiêm của bạn sẽ bị hủy.')) {
-                                    // Gửi yêu cầu hủy đặt lịch
-                                    fetch('/datlichtiem/cancel/' + bookingId, {
-                                        method: 'POST'
-                                    })
-                                        .then(response => {
-                                            if (!response.ok) {
-                                                throw new Error('Không thể hủy đặt lịch');
-                                            }
-                                            return response.json();
-                                        })
-                                        .then(() => {
-                                            alert('Đã hủy đặt lịch tiêm.');
-
-                                            // Xóa dữ liệu vaccine đã lưu trong localStorage
-                                            localStorage.removeItem('selectedVaccineId');
-                                            localStorage.removeItem('selectedVaccineName');
-                                            localStorage.removeItem('selectedVaccinePrice');
-
-                                            window.location.href = '/';
-                                        })
-                                        .catch(error => {
-                                            console.error('Error:', error);
-                                            alert('Có lỗi xảy ra khi hủy đặt lịch. Vui lòng thử lại.');
-                                        });
-                                }
-                            });
-                        }
-                    });
-                </script>
             </div>
         </div>
-        <div class="flex justify-between items-center mt-6">
-            <div class="flex space-x-4">
-                <a class="flex items-center space-x-2 text-blue-600" href="tel:1900555577">
-                    <i class="fas fa-phone-alt">
-                    </i>
-                    <span>
-        1900.5555.77
-       </span>
+
+        <div class="flex justify-between items-center mt-12 pt-6 footer-container">
+            <div class="flex space-x-6">
+                <a class="support-badge flex items-center space-x-2 text-blue-700 hover:text-blue-800 transition-colors rounded-full px-4 py-2" href="tel:1900555577">
+                    <div class="bg-blue-100 p-2 rounded-full">
+                        <i class="fas fa-phone-alt text-blue-600"></i>
+                    </div>
+                    <span class="font-medium">1900.5555.77</span>
                 </a>
-                <a class="flex items-center space-x-2 text-blue-600" href="mailto:hotrovnpay@vnpay.vn">
-                    <i class="fas fa-envelope">
-                    </i>
-                    <span>
-        hotrovnpay@vnpay.vn
-       </span>
+                <a class="support-badge flex items-center space-x-2 text-blue-700 hover:text-blue-800 transition-colors rounded-full px-4 py-2" href="mailto:hotrovnpay@vnpay.vn">
+                    <div class="bg-blue-100 p-2 rounded-full">
+                        <i class="fas fa-envelope text-blue-600"></i>
+                    </div>
+                    <span class="font-medium">hotrovnpay@vnpay.vn</span>
                 </a>
             </div>
-            <div class="flex space-x-4">
-              
+            <div class="flex items-center space-x-2">
+                <span class="text-xs text-blue-500">Bảo mật bởi</span>
+                <div class="security-badge p-1 rounded-lg px-3 py-2">
+                    <i class="fas fa-lock text-blue-700"></i>
+                    <span class="text-blue-700 font-medium text-sm ml-1">VNPAY</span>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Lấy thông tin từ URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const bookingId = urlParams.get('bookingId');
+        const vaccineId = urlParams.get('vaccineId');
+        let vaccinePrice = 0;
+
+        // Hiển thị ID đơn hàng
+        const orderIdElement = document.getElementById('orderIdDisplay');
+        if (orderIdElement && bookingId) {
+            orderIdElement.textContent = bookingId;
+        }
+
+        // Tạo countdown timer
+        const countdownContainer = document.getElementById('countdownContainer');
+        let minutes = 14;
+        let seconds = 59;
+
+        countdownContainer.innerHTML = `
+                <div class="flex items-center">
+                    <span class="text-blue-700 mr-3 font-medium">Thời gian còn lại:</span>
+                    <div class="flex">
+                        <span class="bg-white px-3 py-2 rounded-lg shadow-sm text-blue-800 font-bold border border-blue-100">${String(minutes).padStart(2, '0')}</span>
+                        <span class="mx-1 text-blue-700 font-bold self-center">:</span>
+                        <span class="bg-white px-3 py-2 rounded-lg shadow-sm text-blue-800 font-bold border border-blue-100">${String(seconds).padStart(2, '0')}</span>
+                    </div>
+                </div>
+            `;
+
+        const minutesElement = countdownContainer.querySelector('.bg-white.px-3.py-2.rounded-lg.shadow-sm.text-blue-800.font-bold:nth-child(1)');
+        const secondsElement = countdownContainer.querySelector('.bg-white.px-3.py-2.rounded-lg.shadow-sm.text-blue-800.font-bold:nth-child(3)');
+
+        // Hàm cập nhật giá tiền trên giao diện
+        function updatePriceDisplay(price) {
+            // Định dạng số theo kiểu hiển thị tiền (VD: 15.000)
+            const formattedPrice = Number(price).toLocaleString('vi-VN');
+
+            // Cập nhật tất cả các phần tử hiển thị giá
+            const priceElements = document.querySelectorAll('#priceAmount, #priceAmount2');
+            priceElements.forEach(element => {
+                element.textContent = formattedPrice;
+            });
+
+            vaccinePrice = price; // Lưu giá lại để sử dụng khi thanh toán
+        }
+
+        // Lấy thông tin vaccine và hiển thị giá
+        if (vaccineId) {
+            // Gọi API để lấy thông tin vaccine dựa vào vaccineId
+            fetch(`/vaccine/${vaccineId}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("Không lấy được thông tin vaccine");
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Cập nhật giá vaccine trên giao diện
+                    updatePriceDisplay(data.price);
+
+                    // Hiển thị thông tin vaccine
+                    const vaccineInfoElement = document.createElement('div');
+                    vaccineInfoElement.className = 'flex justify-between';
+                    vaccineInfoElement.innerHTML = `
+                            <span class="text-blue-700">Vaccine:</span>
+                            <span class="text-blue-800 font-medium">${data.name}</span>
+                        `;
+
+                    // Thêm thông tin vaccine vào phần thông tin đơn hàng
+                    const vaccineInfoContainer = document.getElementById('vaccineInfoContainer');
+                    if (vaccineInfoContainer) {
+                        vaccineInfoContainer.appendChild(vaccineInfoElement);
+                    }
+                })
+                .catch(error => {
+                    console.error("Error fetching vaccine price:", error);
+
+                    // Nếu không lấy được từ API, thử lấy từ localStorage
+                    const savedVaccineId = localStorage.getItem('selectedVaccineId');
+                    const savedVaccineName = localStorage.getItem('selectedVaccineName');
+                    const savedVaccinePrice = localStorage.getItem('selectedVaccinePrice');
+
+                    if (savedVaccineId && savedVaccineId === vaccineId) {
+                        // Nếu có tên vaccine trong localStorage thì hiển thị
+                        if (savedVaccineName) {
+                            const vaccineInfoElement = document.createElement('div');
+                            vaccineInfoElement.className = 'flex justify-between';
+                            vaccineInfoElement.innerHTML = `
+                                    <span class="text-blue-700">Vaccine:</span>
+                                    <span class="text-blue-800 font-medium">${savedVaccineName}</span>
+                                `;
+
+                            const vaccineInfoContainer = document.getElementById('vaccineInfoContainer');
+                            if (vaccineInfoContainer) {
+                                vaccineInfoContainer.appendChild(vaccineInfoElement);
+                            }
+                        }
+
+                        // Cập nhật giá từ localStorage nếu có
+                        if (savedVaccinePrice) {
+                            updatePriceDisplay(savedVaccinePrice);
+                        } else {
+                            // Giá mặc định nếu không có giá trong localStorage
+                            updatePriceDisplay(150000);
+                        }
+                    } else {
+                        // Hiển thị giá mặc định nếu không có thông tin
+                        updatePriceDisplay(150000);
+                    }
+                });
+        } else {
+            // Hiển thị giá mặc định nếu không có vaccineId
+            updatePriceDisplay(150000);
+        }
+
+        // Khởi động countdown timer
+        const countdownInterval = setInterval(function() {
+            seconds--;
+            if (seconds < 0) {
+                seconds = 59;
+                minutes--;
+            }
+
+            if (minutes < 0) {
+                clearInterval(countdownInterval);
+                alert('Phiên thanh toán đã hết hạn. Vui lòng đặt lịch lại.');
+                window.location.href = '/datlichtiem';
+                return;
+            }
+
+            minutesElement.textContent = String(minutes).padStart(2, '0');
+            secondsElement.textContent = String(seconds).padStart(2, '0');
+        }, 1000);
+
+        // Xử lý form thanh toán
+        const paymentForm = document.getElementById('paymentForm');
+
+        if (paymentForm) {
+            paymentForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const cardNumber = document.getElementById('card-number').value;
+                const cardName = document.getElementById('card-name').value;
+                const expiryDate = document.getElementById('expiry-date').value;
+
+                // Kiểm tra thông tin đầu vào
+                if (!cardNumber || !cardName || !expiryDate) {
+                    alert('Vui lòng điền đầy đủ thông tin thẻ của bạn');
+                    return;
+                }
+
+                // Mô phỏng kiểm tra thông tin thẻ ngân hàng
+                const validCards = [
+                    { number: '9704123456789012', name: 'NGUYEN VAN A', expiry: '12/25' },
+                    { number: '9704223344556677', name: 'TRAN THI B', expiry: '05/26' }
+                ];
+
+                const isValidCard = validCards.some(card =>
+                    card.number === cardNumber &&
+                    card.name === cardName &&
+                    card.expiry === expiryDate
+                );
+
+                // Lấy giá hiển thị trên giao diện nếu cần
+                if (!vaccinePrice) {
+                    const priceElement = document.getElementById('priceAmount');
+                    if (priceElement) {
+                        // Chuyển đổi chuỗi định dạng (ví dụ: "15.000") thành số
+                        vaccinePrice = parseFloat(priceElement.textContent.replace(/\./g, '').replace(/,/g, '.'));
+                    }
+                }
+
+                // Gửi thông tin thanh toán đến server
+                fetch('/payment/process', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        bookingId: bookingId,
+                        cardNumber: cardNumber,
+                        cardName: cardName,
+                        expiryDate: expiryDate,
+                        amount: vaccinePrice || 150000 // Sử dụng giá đã lưu hoặc giá mặc định
+                    })
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            return response.json().then(data => {
+                                throw new Error(data.error || 'Thanh toán thất bại');
+                            });
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        // Hiển thị thông báo thành công
+                        alert('Thanh toán thành công! Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi.');
+
+                        // Xóa dữ liệu vaccine đã lưu trong localStorage
+                        localStorage.removeItem('selectedVaccineId');
+                        localStorage.removeItem('selectedVaccineName');
+                        localStorage.removeItem('selectedVaccinePrice');
+
+                        // Sau 2 giây, chuyển hướng về trang chủ
+                        setTimeout(function() {
+                            window.location.href = '/';
+                        }, 2000);
+                    })
+                    .catch(error => {
+                        alert('Thanh toán thất bại: ' + error.message + '. Vui lòng kiểm tra lại thông tin thẻ của bạn.');
+                    });
+            });
+        }
+
+        // Xử lý nút hủy thanh toán
+        const cancelButton = document.getElementById('cancelButton');
+        if (cancelButton) {
+            cancelButton.addEventListener('click', function() {
+                if (confirm('Bạn có chắc chắn muốn hủy thanh toán? Lịch tiêm của bạn sẽ bị hủy.')) {
+                    // Gửi yêu cầu hủy đặt lịch
+                    fetch('/datlichtiem/cancel/' + bookingId, {
+                        method: 'POST'
+                    })
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Không thể hủy đặt lịch');
+                            }
+                            return response.json();
+                        })
+                        .then(() => {
+                            alert('Đã hủy đặt lịch tiêm.');
+
+                            // Xóa dữ liệu vaccine đã lưu trong localStorage
+                            localStorage.removeItem('selectedVaccineId');
+                            localStorage.removeItem('selectedVaccineName');
+                            localStorage.removeItem('selectedVaccinePrice');
+
+                            window.location.href = '/';
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            alert('Có lỗi xảy ra khi hủy đặt lịch. Vui lòng thử lại.');
+                        });
+                }
+            });
+        }
+    });
+</script>
 </body>
 </html>
