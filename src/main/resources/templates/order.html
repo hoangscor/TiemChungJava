@@ -39,25 +39,24 @@
                 <div class="space-y-2">
                     <div class="flex justify-between">
             <span>
-             Số tiền thanh toán
+             Tên Vaccine
             </span>
                         <span class="text-blue-600 font-semibold">
-              <span id="priceAmount">0</span>
-              <span class="text-sm">
+<span th:text="${vaccine.name}">
+    <span class="text-sm">
                VND
               </span>
+</span>
             </span>
                     </div>
                     <div class="flex justify-between">
-            <span>
-             Giá trị đơn hàng
+                       <span>
+             Số tiền thanh toán
             </span>
-                        <span>
-              <span id="priceAmount2">0</span>
-              <span class="text-sm">
-               VND
-              </span>
+                        <span class="text-blue-600 font-semibold">
+<span th:text="${vaccine.price}">
             </span>
+                        </span>
                     </div>
                     <div class="flex justify-between">
             <span>
@@ -98,9 +97,7 @@
                         <li class="border-b-2 border-blue-600 pb-2">
                             Thẻ nội địa
                         </li>
-                        <li class="pb-2">
-                            Internet Banking
-                        </li>
+
                     </ul>
                 </div>
                 <!-- Form thanh toán -->
@@ -170,88 +167,6 @@
                         const minutesElement = countdownContainer.querySelector('.bg-gray-200.px-2.py-1.rounded-md.text-gray-800:nth-child(2)');
                         const secondsElement = countdownContainer.querySelector('.bg-gray-200.px-2.py-1.rounded-md.text-gray-800:nth-child(4)');
 
-                        // Hàm cập nhật giá tiền trên giao diện
-                        function updatePriceDisplay(price) {
-                            // Định dạng số theo kiểu hiển thị tiền (VD: 15.000)
-                            const formattedPrice = Number(price).toLocaleString('vi-VN');
-
-                            // Cập nhật tất cả các phần tử hiển thị giá
-                            const priceElements = document.querySelectorAll('#priceAmount, #priceAmount2');
-                            priceElements.forEach(element => {
-                                element.textContent = formattedPrice;
-                            });
-
-                            vaccinePrice = price; // Lưu giá lại để sử dụng khi thanh toán
-                        }
-
-                        // Lấy thông tin vaccine và hiển thị giá
-                        if (vaccineId) {
-                            // Gọi API để lấy thông tin vaccine dựa vào vaccineId
-                            fetch(`/vaccine/${vaccineId}`)
-                                .then(response => {
-                                    if (!response.ok) {
-                                        throw new Error("Không lấy được thông tin vaccine");
-                                    }
-                                    return response.json();
-                                })
-                                .then(data => {
-                                    // Cập nhật giá vaccine trên giao diện
-                                    updatePriceDisplay(data.price);
-
-                                    // Hiển thị thông tin vaccine
-                                    const vaccineInfoElement = document.createElement('div');
-                                    vaccineInfoElement.className = 'flex justify-between mt-2';
-                                    vaccineInfoElement.innerHTML = `
-                                <span>Vaccine:</span>
-                                <span>${data.name}</span>
-                            `;
-
-                                    // Thêm thông tin vaccine vào phần thông tin đơn hàng
-                                    const vaccineInfoContainer = document.getElementById('vaccineInfoContainer');
-                                    if (vaccineInfoContainer) {
-                                        vaccineInfoContainer.appendChild(vaccineInfoElement);
-                                    }
-                                })
-                                .catch(error => {
-                                    console.error("Error fetching vaccine price:", error);
-
-                                    // Nếu không lấy được từ API, thử lấy từ localStorage
-                                    const savedVaccineId = localStorage.getItem('selectedVaccineId');
-                                    const savedVaccineName = localStorage.getItem('selectedVaccineName');
-                                    const savedVaccinePrice = localStorage.getItem('selectedVaccinePrice');
-
-                                    if (savedVaccineId && savedVaccineId === vaccineId) {
-                                        // Nếu có tên vaccine trong localStorage thì hiển thị
-                                        if (savedVaccineName) {
-                                            const vaccineInfoElement = document.createElement('div');
-                                            vaccineInfoElement.className = 'flex justify-between mt-2';
-                                            vaccineInfoElement.innerHTML = `
-                                        <span>Vaccine:</span>
-                                        <span>${savedVaccineName}</span>
-                                    `;
-
-                                            const vaccineInfoContainer = document.getElementById('vaccineInfoContainer');
-                                            if (vaccineInfoContainer) {
-                                                vaccineInfoContainer.appendChild(vaccineInfoElement);
-                                            }
-                                        }
-
-                                        // Cập nhật giá từ localStorage nếu có
-                                        if (savedVaccinePrice) {
-                                            updatePriceDisplay(savedVaccinePrice);
-                                        } else {
-                                            // Giá mặc định nếu không có giá trong localStorage
-                                            updatePriceDisplay(150000);
-                                        }
-                                    } else {
-                                        // Hiển thị giá mặc định nếu không có thông tin
-                                        updatePriceDisplay(150000);
-                                    }
-                                });
-                        } else {
-                            // Hiển thị giá mặc định nếu không có vaccineId
-                            updatePriceDisplay(150000);
-                        }
 
                         // Khởi động countdown timer
                         const countdownInterval = setInterval(function() {
@@ -406,7 +321,7 @@
                 </a>
             </div>
             <div class="flex space-x-4">
-              
+
             </div>
         </div>
     </div>
