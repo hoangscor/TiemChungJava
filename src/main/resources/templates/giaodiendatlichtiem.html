@@ -1,172 +1,362 @@
 <!DOCTYPE html>
-<html  xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Đặt Lịch Tiêm Chủng - Bệnh Viện [Hoàng Ngọc Lạc]</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đặt Lịch Tiêm Chủng - Bệnh Viện Hoàng Ngọc Lạc</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            max-width: 700px;
-            margin: 40px auto;
-            padding: 30px;
-            background-color: #f8f9fa; /* Light gray background */
-            color: #495057; /* Dark gray text */
-            line-height: 1.6;
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #1abc9c;
+            --light: #f5f7fa;
+            --dark: #34495e;
+            --text: #2c3e50;
+            --border: #e6e9f0;
+            --error: #e74c3c;
+            --success: #27ae60;
         }
-        .booking-form {
-            background-color: #fff;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-            border: 1px solid #e9ecef; /* Light gray border */
-        }
-        h2 {
-            color: #007bff; /* Primary blue color for heading */
-            margin-bottom: 30px;
-            text-align: center;
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: #343a40; /* Dark color for labels */
-            font-weight: bold;
-        }
-        .form-group input[type="text"],
-        .form-group input[type="number"],
-        .form-group input[type="tel"],
-        .form-group input[type="email"],
-        .form-group input[type="time"],
-        .form-group select {
-            width: calc(100% - 22px);
-            padding: 12px;
-            border: 1px solid #ced4da; /* Light border for inputs */
-            border-radius: 6px;
-            font-size: 1rem;
-            color: #495057;
+
+        * {
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
         }
-        .form-group input::placeholder {
-            color: #6c757d; /* Light gray for placeholders */
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.7;
+            padding: 0;
+            margin: 0;
         }
+
+        .page-container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            padding: 1.5rem 0;
+            color: white;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hospital-name {
+            font-size: 1.8rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .hospital-tagline {
+            font-size: 1rem;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        .main-content {
+            flex: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .booking-form {
+            width: 100%;
+            max-width: 700px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .booking-form::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--secondary) 0%, var(--accent) 100%);
+        }
+
+        h2 {
+            color: var(--primary);
+            margin-bottom: 2rem;
+            font-weight: 500;
+            text-align: center;
+            font-size: 1.8rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--secondary) 0%, var(--accent) 100%);
+        }
+
+        .form-group {
+            margin-bottom: 1.8rem;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.6rem;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 1rem;
+            color: var(--text);
+            transition: all 0.3s ease;
+            background-color: #f9fafc;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.15);
+            background-color: white;
+        }
+
+        .form-control::placeholder {
+            color: #a0aec0;
+            font-size: 0.95rem;
+        }
+
         .inline-group {
             display: flex;
-            gap: 20px;
+            gap: 1.5rem;
         }
+
         .submit-btn {
             width: 100%;
-            padding: 14px;
-            background-color: #28a745; /* Success green button */
+            padding: 1rem;
+            background: linear-gradient(90deg, var(--secondary) 0%, var(--accent) 100%);
             color: white;
             border: none;
             border-radius: 6px;
             cursor: pointer;
             font-size: 1.1rem;
-            transition: background-color 0.3s ease;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            box-shadow: 0 4px 15px rgba(26, 188, 156, 0.2);
         }
+
         .submit-btn:hover {
-            background-color: #218838; /* Darker green on hover */
+            transform: translateY(-2px);
+            box-shadow: 0 7px 15px rgba(26, 188, 156, 0.3);
         }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
         .hospital-info {
-            margin-top: 30px;
-            padding: 20px;
-            background-color: #e9ecef; /* Light background for info */
-            border-radius: 8px;
+            margin-top: 1rem;
+            padding: 1.5rem;
+            background-color: white;
+            border-radius: 10px;
             font-size: 0.9rem;
-            color: #6c757d;
+            color: #64748b;
             text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            max-width: 700px;
+            width: 100%;
+            border: 1px solid var(--border);
         }
-        .hospital-info p {
-            margin-bottom: 10px;
+
+        .hospital-info strong {
+            color: var(--primary);
         }
+
+        .info-icon {
+            color: var(--secondary);
+            margin-right: 5px;
+        }
+
+        footer {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        .required {
+            color: var(--error);
+        }
+
+        .form-help {
+            font-size: 0.8rem;
+            color: #64748b;
+            margin-top: 0.4rem;
+        }
+
+        /* Style for input icons */
+        .input-with-icon {
+            position: relative;
+        }
+
+        .input-icon {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 1rem;
+            color: #a0aec0;
+        }
+
+        .input-with-icon .form-control {
+            padding-left: 2.8rem;
+        }
+
         /* Responsive adjustments */
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
             .inline-group {
                 flex-direction: column;
-                gap: 10px;
+                gap: 1.5rem;
             }
+
             .booking-form {
-                padding: 20px;
+                padding: 2rem 1.5rem;
             }
+
+            .main-content {
+                padding: 2rem 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
             h2 {
-                font-size: 1.8rem;
-                margin-bottom: 20px;
+                font-size: 1.5rem;
+            }
+
+            .hospital-name {
+                font-size: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
-<div class="booking-form">
-    <h2>Đặt Lịch Tiêm Chủng</h2>
-    <form id="vaccineForm">
-        <div class="form-group">
-            <label for="fullName">Họ và Tên <span style="color: red;">*</span></label>
-            <input type="text" id="fullName" placeholder="Nhập đầy đủ họ và tên" required>
+<div class="page-container">
+    <header>
+        <div class="header-content">
+            <h1 class="hospital-name">Bệnh Viện Hoàng Ngọc Lạc</h1>
+            <p class="hospital-tagline">Tận tâm chăm sóc - Lấy người bệnh làm trung tâm</p>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <div class="booking-form">
+            <h2>Đặt Lịch Tiêm Chủng</h2>
+            <form id="vaccineForm">
+                <div class="form-group">
+                    <label for="fullName">Họ và Tên <span class="required">*</span></label>
+                    <input type="text" id="fullName" class="form-control" placeholder="Nhập đầy đủ họ và tên" required>
+                </div>
+
+                <div class="inline-group">
+                    <div class="form-group" style="flex-grow: 1;">
+                        <label for="gender">Giới Tính <span class="required">*</span></label>
+                        <select id="gender" class="form-control" required>
+                            <option value="">Chọn Giới Tính</option>
+                            <option value="MALE">Nam</option>
+                            <option value="FEMALE">Nữ</option>
+                            <option value="OTHER">Khác</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" style="flex-grow: 1;">
+                        <label for="age">Tuổi <span class="required">*</span></label>
+                        <input type="number" id="age" class="form-control" min="0" max="120" placeholder="Nhập số tuổi" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="phoneNumber">Số Điện Thoại <span class="required">*</span></label>
+                    <input type="tel" id="phoneNumber" class="form-control" placeholder="Nhập số điện thoại" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Địa chỉ Email <span class="required">*</span></label>
+                    <input type="email" id="email" class="form-control" placeholder="Nhập địa chỉ email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="underlyingConditions">Bệnh Nền (nếu có)</label>
+                    <input type="text" id="underlyingConditions" class="form-control" placeholder="Nhập bệnh nền nếu có">
+                    <div class="form-help">Vui lòng liệt kê các bệnh nền để đội ngũ y tế có thể đánh giá tốt nhất.</div>
+                </div>
+
+                <div class="inline-group">
+                    <div class="form-group" style="flex-grow: 1;">
+                        <label for="bookingDate">Ngày Tiêm <span class="required">*</span></label>
+                        <input type="text" id="bookingDate" class="form-control" placeholder="DD/MM/YYYY" maxlength="10" required>
+                    </div>
+
+                    <div class="form-group" style="flex-grow: 1;">
+                        <label for="bookingTime">Giờ Tiêm <span class="required">*</span></label>
+                        <input type="time" id="bookingTime" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="vaccineType">Loại Vaccine <span class="required">*</span></label>
+                    <select id="vaccineType" class="form-control" required>
+                        <option value="">Chọn Loại Vaccine</option>
+                        <th:block th:each="vaccine : ${vaccines}">
+                            <option th:value="${vaccine.id}" th:text="${vaccine.name}"></option>
+                        </th:block>
+                    </select>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    Đặt Lịch Tiêm
+                </button>
+            </form>
         </div>
 
-        <div class="inline-group">
-            <div class="form-group" style="flex-grow: 1;">
-                <label for="gender">Giới Tính <span style="color: red;">*</span></label>
-                <select id="gender" required>
-                    <option value="">Chọn Giới Tính</option>
-                    <option value="MALE">Nam</option>
-                    <option value="FEMALE">Nữ</option>
-                    <option value="OTHER">Khác</option>
-                </select>
-            </div>
-
-            <div class="form-group" style="flex-grow: 1;">
-                <label for="age">Tuổi <span style="color: red;">*</span></label>
-                <input type="number" id="age" min="0" max="120" placeholder="Nhập số tuổi" required>
-            </div>
+        <div class="hospital-info">
+            <p><strong>Lưu ý:</strong> Vui lòng điền đầy đủ thông tin và kiểm tra kỹ trước khi đặt lịch.</p>
+            <p>Chúng tôi sẽ liên hệ lại với bạn để xác nhận lịch hẹn trong thời gian sớm nhất.</p>
+            <p>Nếu có bất kỳ thắc mắc nào, vui lòng liên hệ số điện thoại: <a href="tel:113" style="color: var(--secondary); text-decoration: none;">113</a>.</p>
+            <p>Xin cảm ơn quý khách đã tin tưởng dịch vụ của Bệnh viện Hoàng Ngọc Lạc.</p>
         </div>
-
-        <div class="form-group">
-            <label for="phoneNumber">Số Điện Thoại <span style="color: red;">*</span></label>
-            <input type="tel" id="phoneNumber" placeholder="Nhập số điện thoại" required>
-        </div>
-
-        <div class="form-group">
-            <label for="email">Địa chỉ Email <span style="color: red;">*</span></label>
-            <input type="email" id="email" placeholder="Nhập địa chỉ email" required>
-        </div>
-
-        <div class="form-group">
-            <label for="underlyingConditions">Bệnh Nền (nếu có)</label>
-            <input type="text" id="underlyingConditions" placeholder="Nhập bệnh nền nếu có">
-        </div>
-
-        <div class="form-group">
-            <label for="bookingDate">Ngày Tiêm (DD/MM/YYYY) <span style="color: red;">*</span></label>
-            <input type="text" id="bookingDate" placeholder="DD/MM/YYYY" maxlength="10" required>
-        </div>
-
-        <div class="form-group">
-            <label for="bookingTime">Giờ Tiêm <span style="color: red;">*</span></label>
-            <input type="time" id="bookingTime" required>
-        </div>
-
-        <div class="form-group">
-            <label for="vaccineType">Loại Vaccine <span style="color: red;">*</span></label>
-            <select id="vaccineType" required>
-                <option value="">Chọn Loại Vaccine</option>
-                <th:block th:each="vaccine : ${vaccines}">
-                    <option th:value="${vaccine.id}" th:text="${vaccine.name}"></option>
-                </th:block>
-            </select>
-        </div>
-        <button type="submit" class="submit-btn">Đặt Lịch Tiêm</button>
-    </form>
-</div>
-
-<div class="hospital-info">
-    <p><strong>Lưu ý:</strong> Vui lòng điền đầy đủ thông tin và kiểm tra kỹ trước khi đặt lịch.</p>
-    <p>Chúng tôi sẽ liên hệ lại với bạn để xác nhận lịch hẹn trong thời gian sớm nhất.</p>
-    <p>Nếu có bất kỳ thắc mắc nào, vui lòng liên hệ số điện thoại: <a href="tel:113">113</a>.</p>
-    <p>Xin cảm ơn quý khách đã tin tưởng dịch vụ của Bệnh viện [Lạc Hoàng Ngọc].</p>
-</div>
+    </div>
 
 <script>
     function formatDate(inputDate) {
