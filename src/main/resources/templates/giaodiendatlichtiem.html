@@ -285,7 +285,7 @@
             <h2>Đặt Lịch Tiêm Chủng</h2>
             <form id="vaccineForm">
                 <div class="form-group">
-                    <label for="fullName">Họ và Tên <span class="required">*</span></label>
+                    <label for="fullName">Họ và Tênn <span class="required">*</span></label>
                     <input type="text" id="fullName" class="form-control" placeholder="Nhập đầy đủ họ và tên" required>
                 </div>
 
@@ -358,107 +358,107 @@
         </div>
     </div>
 
-<script>
-    function formatDate(inputDate) {
-        // Loại bỏ bất kỳ khoảng trắng thừa
-        inputDate = inputDate.trim();
+    <script>
+        function formatDate(inputDate) {
+            // Loại bỏ bất kỳ khoảng trắng thừa
+            inputDate = inputDate.trim();
 
-        // Tách các phần của ngày
-        const parts = inputDate.split('/');
+            // Tách các phần của ngày
+            const parts = inputDate.split('/');
 
-        // Kiểm tra và điều chỉnh định dạng
-        if (parts.length !== 3) {
-            return null;
-        }
-
-        const day = parts[0].padStart(2, '0');
-        const month = parts[1].padStart(2, '0');
-        let year = parts[2];
-
-        // Xử lý năm 2 số
-        if (year.length === 2) {
-            year = (parseInt(year) > 50 ? '19' : '20') + year;
-        }
-
-        // Kiểm tra tính hợp lệ của ngày
-        const formattedDate = `${year}-${month}-${day}`;
-        const dateObj = new Date(formattedDate);
-
-        // Validate ngày
-        if (isNaN(dateObj.getTime())) {
-            return null;
-        }
-
-        return {
-            dateObj: dateObj,
-            formattedDate: formattedDate
-        };
-    }
-
-    document.getElementById('vaccineForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        // Kiểm tra lại ngày đặt lịch trước khi submit
-        const bookingDateValue = document.getElementById('bookingDate').value;
-        const result = formatDate(bookingDateValue);
-
-        if (result) {
-            const today = new Date();
-            today.setHours(0, 0, 0, 0);
-
-            if (result.dateObj < today) {
-                alert('Không thể đặt lịch cho ngày trong quá khứ. Vui lòng chọn ngày hiện tại hoặc tương lai.');
-                return;
+            // Kiểm tra và điều chỉnh định dạng
+            if (parts.length !== 3) {
+                return null;
             }
 
-            // Lấy thông tin vaccine được chọn
-            const vaccineSelect = document.getElementById('vaccineType');
-            const vaccineId = vaccineSelect.value;
-            const vaccineName = vaccineSelect.options[vaccineSelect.selectedIndex].text;
+            const day = parts[0].padStart(2, '0');
+            const month = parts[1].padStart(2, '0');
+            let year = parts[2];
 
-            const booking = {
-                fullName: document.getElementById('fullName').value,
-                gender: document.getElementById('gender').value,
-                age: parseInt(document.getElementById('age').value),
-                phoneNumber: document.getElementById('phoneNumber').value,
-                email: document.getElementById('email').value,
-                bookingDate: result.formattedDate, // Sử dụng định dạng YYYY-MM-DD cho API
-                bookingTime: document.getElementById('bookingTime').value,
-                vaccineType: vaccineId,
-                underlyingConditions: document.getElementById('underlyingConditions').value
+            // Xử lý năm 2 số
+            if (year.length === 2) {
+                year = (parseInt(year) > 50 ? '19' : '20') + year;
+            }
+
+            // Kiểm tra tính hợp lệ của ngày
+            const formattedDate = `${year}-${month}-${day}`;
+            const dateObj = new Date(formattedDate);
+
+            // Validate ngày
+            if (isNaN(dateObj.getTime())) {
+                return null;
+            }
+
+            return {
+                dateObj: dateObj,
+                formattedDate: formattedDate
             };
-
-            // Lưu thông tin vaccine đã chọn vào localStorage để sử dụng ở trang thanh toán
-            localStorage.setItem('selectedVaccineId', vaccineId);
-            localStorage.setItem('selectedVaccineName', vaccineName);
-
-            // Thay đổi URL API nếu cần
-            fetch('/datlichtiem/create', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(booking)
-            })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    // Chuyển hướng đến trang thanh toán với ID đặt lịch và ID vaccine
-                    window.location.href = '/payment?bookingId=' + data.id + '&vaccineId=' + vaccineId;
-                })
-                .catch(error => {
-                    alert('Có lỗi xảy ra khi đặt lịch. Vui lòng thử lại.');
-                    console.error('Error:', error);
-                });
-        } else {
-            alert('Ngày không hợp lệ. Vui lòng nhập theo định dạng DD/MM/YYYY');
         }
-    });
 
-</script>
+        document.getElementById('vaccineForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Kiểm tra lại ngày đặt lịch trước khi submit
+            const bookingDateValue = document.getElementById('bookingDate').value;
+            const result = formatDate(bookingDateValue);
+
+            if (result) {
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+
+                if (result.dateObj < today) {
+                    alert('Không thể đặt lịch cho ngày trong quá khứ. Vui lòng chọn ngày hiện tại hoặc tương lai.');
+                    return;
+                }
+
+                // Lấy thông tin vaccine được chọn
+                const vaccineSelect = document.getElementById('vaccineType');
+                const vaccineId = vaccineSelect.value;
+                const vaccineName = vaccineSelect.options[vaccineSelect.selectedIndex].text;
+
+                const booking = {
+                    fullName: document.getElementById('fullName').value,
+                    gender: document.getElementById('gender').value,
+                    age: parseInt(document.getElementById('age').value),
+                    phoneNumber: document.getElementById('phoneNumber').value,
+                    email: document.getElementById('email').value,
+                    bookingDate: result.formattedDate, // Sử dụng định dạng YYYY-MM-DD cho API
+                    bookingTime: document.getElementById('bookingTime').value,
+                    vaccineType: vaccineId,
+                    underlyingConditions: document.getElementById('underlyingConditions').value
+                };
+
+                // Lưu thông tin vaccine đã chọn vào localStorage để sử dụng ở trang thanh toán
+                localStorage.setItem('selectedVaccineId', vaccineId);
+                localStorage.setItem('selectedVaccineName', vaccineName);
+
+                // Thay đổi URL API nếu cần
+                fetch('/datlichtiem/create', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(booking)
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        // Chuyển hướng đến trang thanh toán với ID đặt lịch và ID vaccine
+                        window.location.href = '/payment?bookingId=' + data.id + '&vaccineId=' + vaccineId;
+                    })
+                    .catch(error => {
+                        alert('Có lỗi xảy ra khi đặt lịch. Vui lòng thử lại.');
+                        console.error('Error:', error);
+                    });
+            } else {
+                alert('Ngày không hợp lệ. Vui lòng nhập theo định dạng DD/MM/YYYY');
+            }
+        });
+
+    </script>
 </body>
 </html>
