@@ -383,8 +383,27 @@
                                     <td class="px-4 py-3 text-sm" th:text="${order.age}">Age</td> <!-- Hiển Thị Mô Tả -->
                                     <td class="px-4 py-3 text-sm" th:text="${order.bookingDate}">Booking Date</td> <!-- Hiển thị giá -->
                                     <td class="px-4 py-3 text-sm" th:text="${order.bookingTime}">Booking Time</td> <!-- Hiển thị giá -->
-                                    <td class="px-4 py-3 text-sm" th:text="${order.underlyingConditions}">Tình trạng bệnh</td> <!-- Hiển thị giá -->
-                                    <td class="px-4 py-3 text-sm" th:text="${order.vaccineType}">Vaccine Type</td> <!-- Hiển thị giá -->
+                                    <td class="px-4 py-3 text-sm" th:text="${order.underlyingConditions}">Tình trạng bệnh</td> <!-- Hiển thị bệnh  -->
+<!--                                    <td class="px-4 py-3 text-sm" th:text="${order.vaccineType}">Vaccine Type</td> &lt;!&ndash; Hiển thị thuốc &ndash;&gt;-->
+                                    <td class="px-4 py-3 text-sm">
+  <span th:switch="${order.vaccineType}">
+    <span th:case="'1'">Vắc xin BCG (Việt Nam)</span>
+    <span th:case="'2'">Vắc xin Engerix B (Bỉ)</span>
+    <span th:case="'3'">Vắc xin Euvax B (Hàn Quốc)</span>
+    <span th:case="'4'">Vắc xin Heberbiovac (Cuba)</span>
+    <span th:case="'5'">Vắc xin Heberbiovac (Cuba)</span>
+    <span th:case="'6'">Vắc xin Hexaxim (Pháp)</span>
+    <span th:case="'7'">Vắc xin Infanrix Hexa (Bỉ)</span>
+    <span th:case="'8'">Vắc xin Pentaxim (Pháp)</span>
+    <span th:case="'9'">Vắc xin Prevenar 13 (Bỉ)</span>
+    <span th:case="'10'">Vắc xin Synflorix (Bỉ)</span>
+    <span th:case="'11'">Vắc xin Vaxigrip Tetra (Pháp)</span>
+    <span th:case="'12'">Vắc xin Heberbiovac (Cuba)</span>
+    <span th:case="'13'">Vắc xin Menactra (Mỹ)</span>
+    <span th:case="'14'">Vắc xin Varilrix (Bỉ)</span>
+    <span th:case="*">Không xác định</span>
+  </span>
+                                    </td>
 
                                 </tr>
                                 <!--end tr user-->
