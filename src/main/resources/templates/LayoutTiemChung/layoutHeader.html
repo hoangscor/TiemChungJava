@@ -64,9 +64,9 @@
 
                             <!-- Dành cho USER: chỉ hiển thị text chứ không có link -->
                             <li class="header-icons" th:if="${#authorization.expression('hasRole(''USER'')')}">
-    <a class="header-icons" href="/index" >
-        Xin chào, <span th:text="${#authentication.name}"></span> yêu dấu
-    </a>
+                                <a class="header-icons" href="/index" >
+                                    Xin chào, <span th:text="${#authentication.name}"></span> yêu dấu
+                                </a>
                             </li>
                             <li th:if="${#authentication.name != 'anonymousUser'}">
                                 <!-- Nút "Đăng xuất" -->
