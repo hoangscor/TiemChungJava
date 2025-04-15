@@ -10,6 +10,7 @@ import edu.uth.tiemchungjava.service.VaccinationBookingService;
 import edu.uth.tiemchungjava.service.VaccineService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -91,9 +92,16 @@ public class HomeController {
     private MyUserRepository myUserRepository;
 
     @GetMapping("/admin")
-    public String admin(Authentication authentication, Model model) {
+    public String admin(Authentication authentication,
+                        @RequestParam(value = "page", defaultValue = "1") int page,
+                        Model model) {
         // Lấy username của người dùng từ Authentication
         String username = ((User) authentication.getPrincipal()).getUsername();
+
+        // Define the page size (number of items per page)
+        int pageSize = 4;
+        // Get paginated users
+        Page<MyUser> userPage = myUserRepository.findAll(PageRequest.of(page - 1, pageSize));
 
         // Lấy thông tin người dùng từ cơ sở dữ liệu
         List<MyUser> userList = myUserRepository.findAll();  // Lấy tất cả người dùng
@@ -101,6 +109,10 @@ public class HomeController {
         // Truyền thông tin vào model
         model.addAttribute("username", username); // Truyền username vào model
         model.addAttribute("users", userList);    // Truyền danh sách người dùng vào model
+        model.addAttribute("users", userPage.getContent());
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", userPage.getTotalPages());
+        model.addAttribute("totalItems", userPage.getTotalElements());
 
         return "homeAdmin"; // Trả về view homeAdmin
     }
@@ -108,7 +120,16 @@ public class HomeController {
     private VaccineService service;
 
     @GetMapping("/donhang")
-    public String getDonHang(Model model) {
+    public String getDonHang(@RequestParam(value = "page", defaultValue = "1") int page, Model model)
+    {
+        int pageSize = 4;  // Set the number of items per page
+        Page<VaccineDTO> vaccinePage = service.getPaginatedVaccines(page, pageSize); // Pagination method
+
+        model.addAttribute("vaccines", vaccinePage.getContent());
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", vaccinePage.getTotalPages());
+        model.addAttribute("totalItems", vaccinePage.getTotalElements());
+
         List<VaccineDTO> vaccines = service.getAllVaccines(); // Lấy dữ liệu từ VaccineService
         model.addAttribute("vaccines", vaccines); // Truyền vào model
         return "donhang"; // Trả về trang donhang.html
