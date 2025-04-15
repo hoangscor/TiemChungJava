@@ -30,13 +30,13 @@ public class SercurityConfiguration {
         return httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(registry->{
-            registry.requestMatchers("/index", "/doingu", "/gioithieu", "/lichtiem", "/lydatlichtiem", "/quytrinh", "/Vaccine"
-                    ,"/register/**", "/img/**", "/assets/**", "/bootstrap/**"
-                    , "/css/**", "/js/**", "/pages/**", "/webfonts/**" , "/admin/**", "/categoryAdmin" , "/").permitAll(); // tam thoi su dung admin
-//            registry.requestMatchers("/admin/** ").hasRole("ADMIN");
-            registry.requestMatchers("/user/**").hasRole("USER");
-            registry.anyRequest().authenticated();
-        })
+                    registry.requestMatchers("/index", "/doingu", "/gioithieu", "/lichtiem", "/lydatlichtiem", "/quytrinh", "/Vaccine"
+                            ,"/register/**", "/img/**", "/assets/**", "/bootstrap/**"
+                            , "/css/**", "/js/**", "/pages/**", "/webfonts/**" , "/admin/**", "/categoryAdmin" , "/", "datlichtiem").permitAll(); // tam thoi su dung admin
+                    registry.requestMatchers("/admin/** " , "admin" , "donhang" , "lichsu").hasRole("ADMIN");
+                    registry.requestMatchers("/user/**").hasRole("USER");
+                    registry.anyRequest().authenticated();
+                })
                 .formLogin(httpSecurityFormLoginConfigurer -> {
                     httpSecurityFormLoginConfigurer
                             .loginPage("/login")

@@ -3,21 +3,43 @@ package edu.uth.tiemchungjava.controller;
 import edu.uth.tiemchungjava.dto.VaccineDTO;
 import edu.uth.tiemchungjava.models.MyUser;
 import edu.uth.tiemchungjava.models.MyUserRepository;
+import edu.uth.tiemchungjava.models.VaccinationBooking;
 import edu.uth.tiemchungjava.models.Vaccine;
 import edu.uth.tiemchungjava.repository.VaccineRepository;
+import edu.uth.tiemchungjava.service.VaccinationBookingService;
 import edu.uth.tiemchungjava.service.VaccineService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
 @Controller
 
 public class HomeController {
+    @Autowired
+    private VaccinationBookingService bookingService;
+
+    @GetMapping("/lichsu")
+    public String getOrderHistory(
+            @RequestParam(value = "page", defaultValue = "1") int page,
+            Model model) {
+        int pageSize = 4; // Mỗi trang hiển thị 8 nội dung
+        Page<VaccinationBooking> orderPage = bookingService.getPaginatedBookings(page, pageSize);
+
+        // Đẩy dữ liệu của trang hiện tại (content trong Page) vào model
+        model.addAttribute("orderHistory", orderPage.getContent());
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", orderPage.getTotalPages());
+        model.addAttribute("totalItems", orderPage.getTotalElements());
+
+        return "lichsu";
+    }
 
 
     @GetMapping("/gioithieu")

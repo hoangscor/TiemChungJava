@@ -16,8 +16,8 @@ import java.util.List;
 
 @RequestMapping("/admin")
 public class CategoryController {
-@Autowired
-private CategoryService categoryService;
+    @Autowired
+    private CategoryService categoryService;
     @GetMapping("/categoryAdmin")
     public String category(Model model) {
         List<Category> list = this.categoryService.getAll();
