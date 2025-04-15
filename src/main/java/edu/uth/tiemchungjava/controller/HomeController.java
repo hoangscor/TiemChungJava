@@ -38,6 +38,7 @@ public class HomeController {
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", orderPage.getTotalPages());
         model.addAttribute("totalItems", orderPage.getTotalElements());
+        model.addAttribute("selectedMenu", "history"); // Set selected menu for history page
 
         return "lichsu";
     }
@@ -85,6 +86,7 @@ public class HomeController {
         List<Vaccine> vaccineList = vaccineRepository.findAll();
 
         model.addAttribute("vaccines", vaccineList);
+        model.addAttribute("selectedMenu", "dashboard"); // Set selected menu for dashboard page
 
         return "index";
     }
@@ -113,6 +115,7 @@ public class HomeController {
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", userPage.getTotalPages());
         model.addAttribute("totalItems", userPage.getTotalElements());
+        model.addAttribute("selectedMenu", "dashboard"); // Set selected menu for dashboard page
 
         return "homeAdmin"; // Trả về view homeAdmin
     }
@@ -129,15 +132,13 @@ public class HomeController {
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", vaccinePage.getTotalPages());
         model.addAttribute("totalItems", vaccinePage.getTotalElements());
+        model.addAttribute("selectedMenu", "products"); // Set selected menu for products page
 
         List<VaccineDTO> vaccines = service.getAllVaccines(); // Lấy dữ liệu từ VaccineService
         model.addAttribute("vaccines", vaccines); // Truyền vào model
         return "donhang"; // Trả về trang donhang.html
     }
 
-
-    //    @GetMapping("/admin")
-//    public String admin() {return "homeAdmin";}
     @GetMapping("/categoryAdmin")
     public String category() {return "categoryAdmin";}
 
@@ -151,7 +152,6 @@ public class HomeController {
 
     @GetMapping("/logout")
     public String logout() {
-        // Spring Security sẽ tự động xử lý logout
         return "redirect:/index"; // Redirect về trang login sau khi logout
     }
     @GetMapping("/")
