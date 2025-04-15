@@ -44,18 +44,36 @@ public class HomeController {
     }
 
 
+//    @GetMapping("/gioithieu")
+//    public String gioiThieu() {
+//        return "gioithieu";
+//    }
+
     @GetMapping("/gioithieu")
-    public String gioiThieu() {
+    public String gioiThieu(Model model) {
+        model.addAttribute("selectedMenu", "gioithieu");
         return "gioithieu";
     }
 
+//    @GetMapping("/doingu")
+//    public String doiNgu() {
+//        return "doingu";
+//    }
+
     @GetMapping("/doingu")
-    public String doiNgu() {
+    public String doiNgu(Model model) {
+        model.addAttribute("selectedMenu", "doingu");
         return "doingu";
     }
 
+//    @GetMapping("/lichtiem")
+//    public String lichTiem() {
+//        return "lichtiem";
+//    }
+
     @GetMapping("/lichtiem")
-    public String lichTiem() {
+    public String lichTiem(Model model) {
+        model.addAttribute("selectedMenu", "lichtiem");
         return "lichtiem";
     }
 
@@ -86,8 +104,7 @@ public class HomeController {
         List<Vaccine> vaccineList = vaccineRepository.findAll();
 
         model.addAttribute("vaccines", vaccineList);
-        model.addAttribute("selectedMenu", "dashboard"); // Set selected menu for dashboard page
-
+        model.addAttribute("selectedMenu", "home");
         return "index";
     }
     @Autowired
