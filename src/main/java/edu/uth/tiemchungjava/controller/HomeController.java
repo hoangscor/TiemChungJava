@@ -3,8 +3,10 @@ package edu.uth.tiemchungjava.controller;
 import edu.uth.tiemchungjava.dto.VaccineDTO;
 import edu.uth.tiemchungjava.models.MyUser;
 import edu.uth.tiemchungjava.models.MyUserRepository;
+import edu.uth.tiemchungjava.models.VaccinationBooking;
 import edu.uth.tiemchungjava.models.Vaccine;
 import edu.uth.tiemchungjava.repository.VaccineRepository;
+import edu.uth.tiemchungjava.service.VaccinationBookingService;
 import edu.uth.tiemchungjava.service.VaccineService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
@@ -18,6 +20,20 @@ import java.util.List;
 @Controller
 
 public class HomeController {
+    @Autowired
+    private VaccinationBookingService bookingService;
+
+    @GetMapping("/lichsu")
+    public String getOrderHistory(Model model) {
+        // Gọi service để lấy danh sách đơn hàng
+        List<VaccinationBooking> orderHistory = bookingService.getAllBookings();
+
+        // Đẩy dữ liệu vào model để truyền vào view
+        model.addAttribute("orderHistory", orderHistory);
+
+        // Trả về view lichsu.html (danh sách lịch sử đơn hàng)
+        return "lichsu";
+    }
 
 
     @GetMapping("/gioithieu")
