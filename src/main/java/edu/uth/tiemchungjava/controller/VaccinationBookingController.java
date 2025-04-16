@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/datlichtiem")
@@ -46,15 +47,25 @@ public class VaccinationBookingController {
 
     // API hủy booking
     @PostMapping("/cancel/{id}")
-    @ResponseBody
-    public ResponseEntity<?> cancelBooking(@PathVariable Long id) {
+    public ResponseEntity<?> cancelBooking(@PathVariable("id") Long id) {
         try {
-            bookingService.cancelBooking(id);
+            Optional<VaccinationBooking> bookingOpt = bookingService.getBookingById(id);
+
+            if (!bookingOpt.isPresent()) {
+                Map<String, String> response = new HashMap<>();
+                response.put("error", "Không tìm thấy thông tin đặt lịch");
+                return ResponseEntity.badRequest().body(response);
+            }
+
+            VaccinationBooking booking = bookingOpt.get();
+            booking.setStatus("CANCELLED");
+            booking.setPaymentStatus("CANCELLED");
+
+            bookingService.updateBooking(booking);
 
             Map<String, String> response = new HashMap<>();
             response.put("status", "success");
-            response.put("message", "Đã hủy đặt lịch thành công");
-
+            response.put("message", "Đã hủy đặt lịch tiêm thành công");
             return ResponseEntity.ok(response);
         } catch (Exception e) {
             Map<String, String> response = new HashMap<>();

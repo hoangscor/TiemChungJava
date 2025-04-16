@@ -36,20 +36,38 @@ public class PaymentController {
     public ResponseEntity<?> processPayment(@RequestBody Map<String, Object> paymentData) {
         try {
             Long bookingId = Long.parseLong(paymentData.get("bookingId").toString());
-            String cardNumber = (String) paymentData.get("cardNumber");
-            String cardName = (String) paymentData.get("cardName");
-            String expiryDate = (String) paymentData.get("expiryDate");
-            double amount = Double.parseDouble(paymentData.get("amount").toString());
-
-            // Kiểm tra xem booking có tồn tại không
             Optional<VaccinationBooking> bookingOpt = bookingService.getBookingById(bookingId);
             if (!bookingOpt.isPresent()) {
                 Map<String, String> response = new HashMap<>();
                 response.put("error", "Không tìm thấy thông tin đặt lịch");
                 return ResponseEntity.badRequest().body(response);
             }
+            VaccinationBooking booking = bookingOpt.get();
 
-            // Kiểm tra thông tin thẻ (điều này nên được thực hiện bởi cổng thanh toán thực tế)
+            // Lấy thông tin vaccine từ booking: nếu đã có, dùng luôn; nếu chưa có, tra cứu theo vaccineType
+            Vaccine selectedVaccine = booking.getVaccine();
+            if (selectedVaccine == null && booking.getVaccineType() != null) {
+                try {
+                    Long vaccineId = Long.parseLong(booking.getVaccineType());
+                    selectedVaccine = vaccineRepository.findById(vaccineId).orElse(null);
+                } catch(Exception e) {
+                    // Log lỗi nếu cần, ví dụ: logger.error("Lỗi chuyển đổi vaccineId: ", e);
+                }
+            }
+
+            if (selectedVaccine == null) {
+                Map<String, String> response = new HashMap<>();
+                response.put("error", "Thông tin vaccine không hợp lệ");
+                return ResponseEntity.badRequest().body(response);
+            }
+
+            // Sử dụng giá của vaccine làm số tiền thanh toán
+            double price = selectedVaccine.getPrice();
+
+            // Kiểm tra thông tin thẻ
+            String cardNumber = (String) paymentData.get("cardNumber");
+            String cardName = (String) paymentData.get("cardName");
+            String expiryDate = (String) paymentData.get("expiryDate");
             boolean isValidCard = paymentService.validateCardInfo(cardNumber, cardName, expiryDate);
             if (!isValidCard) {
                 Map<String, String> response = new HashMap<>();
@@ -57,17 +75,16 @@ public class PaymentController {
                 return ResponseEntity.badRequest().body(response);
             }
 
-            // Lưu thông tin thanh toán
+            // Tạo đối tượng Payment và gán số tiền lấy từ vaccine (không dùng giá trị truyền lên từ client)
             Payment payment = new Payment();
-            payment.setBooking(bookingOpt.get());
-            payment.setAmount(amount);
-            payment.setCardNumber(cardNumber.substring(cardNumber.length() - 4)); // Chỉ lưu 4 số cuối
+            payment.setBooking(booking);
+            payment.setAmount(price); // Sử dụng giá của vaccine
+            payment.setCardNumber(cardNumber.substring(cardNumber.length() - 4)); // Lưu 4 số cuối của thẻ
             payment.setStatus("COMPLETED");
 
             paymentService.savePayment(payment);
 
             // Cập nhật trạng thái đặt lịch
-            VaccinationBooking booking = bookingOpt.get();
             booking.setPaymentStatus("PAID");
             bookingService.updateBooking(booking);
 
