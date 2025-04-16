@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sửa Người Dùng</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/assets/css/tailwind.output.css" />
+</head>
+<body class="bg-gray-50">
+<div class="container mx-auto p-4">
+    <h1 class="text-2xl font-semibold">Sửa Người Dùng</h1>
+    <form th:action="@{'/admin/user/edit/' + ${user.id}}" th:object="${user}" method="post" class="mt-4">
+        <div class="mb-4">
+            <label class="block mb-1">Username:</label>
+            <input type="text" th:field="*{username}" class="w-full px-3 py-2 border rounded" required />
+        </div>
+        <div class="mb-4">
+            <label class="block mb-1">Password:</label>
+            <input type="password" th:field="*{password}" class="w-full px-3 py-2 border rounded" required />
+        </div>
+        <div class="mb-4">
+            <label class="block mb-1">Role:</label>
+            <!-- Dropdown để chọn role -->
+            <select th:field="*{role}" class="w-full px-3 py-2 border rounded">
+                <option value="ADMIN" th:selected="${user.role == 'ADMIN'}">ADMIN</option>
+                <option value="USER" th:selected="${user.role == 'USER'}">USER</option>
+            </select>
+        </div>
+        <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">Lưu</button>
+    </form>
+    <a href="/admin" class="mt-4 inline-block text-blue-500">Quay lại Dashboard</a>
+</div>
+</body>
+</html>
