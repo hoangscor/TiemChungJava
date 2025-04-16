@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="vi"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Lịch Sử Thanh Toán</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e0f7fa; /* Nền xanh dương nhạt */
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #00796b; /* Màu chữ tiêu đề */
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #00796b; /* Đường viền màu xanh */
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #b2dfdb; /* Nền màu xanh nhạt cho tiêu đề */
+    }
+
+    tr:nth-child(even) {
+      background-color: #e0f2f1; /* Nền màu xanh nhạt cho hàng chẵn */
+    }
+
+    tr:hover {
+      background-color: #b2ebf2; /* Nền màu xanh nhạt khi hover */
+    }
+  </style>
+</head>
+<body>
+<div class="container mx-auto mt-8">
+  <h1 class="text-2xl font-bold mb-4">Lịch sử thanh toán</h1>
+  <table class="min-w-full border border-gray-200">
+    <thead>
+    <tr class="bg-gray-100">
+      <th class="border p-2">Mã đơn hàng</th>
+      <th class="border p-2">Họ tên</th>
+      <th class="border p-2">Vaccine</th>
+      <th class="border p-2">Số tiền thanh toán</th>
+      <th class="border p-2">Trạng thái</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="payment : ${payments}">
+      <!-- Mã đơn hàng -->
+      <td class="border p-2" th:text="${payment.id}">1</td>
+      <!-- Họ tên đặt lịch (lấy từ đối tượng booking) -->
+      <td class="border p-2" th:text="${payment.booking.fullName}">Nguyễn Văn A</td>
+      <!-- Tên Vaccine (lấy từ booking nếu có vaccine hoặc từ booking.vaccine) -->
+      <td class="border p-2" th:text="${payment.booking.vaccine != null ? payment.booking.vaccine.name : 'N/A'}">Tên Vaccine</td>
+      <!-- Số tiền -->
+      <td class="border p-2" th:text="${payment.amount}">1000000</td>
+      <!-- Trạng thái thanh toán -->
+      <td class="border p-2" th:text="${payment.status}">COMPLETED</td>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
+</title>
+</head>
+<body>
+
+</body>
+</html>
