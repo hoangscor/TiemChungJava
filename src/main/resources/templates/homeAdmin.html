@@ -320,10 +320,17 @@
             <main class="h-full overflow-y-auto">
                 <div class="container px-6 mx-auto grid">
                     <h2
-                            class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200"
-                    >
+                            class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
                         Dashboard
                     </h2>
+<!--                    <div class="mb-4">-->
+<!--                        <a href="/admin/user/create" class="px-2 py-1 font-semibold leading-tight,">Thêm Người Dùng</a>-->
+<!--                    </div>-->
+                    <div class="mb-4">
+                        <a href="/admin/user/create" class="px-4 py-2 font-semibold text-white bg-black rounded hover:bg-gray-800">
+                            Thêm Người Dùng
+                        </a>
+                    </div>
                     <!-- Cards -->
                     <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
                         <!-- Card -->
@@ -420,6 +427,7 @@
                                     <th class="px-4 py-3">Username</th>
                                     <th class="px-4 py-3">Password</th>
                                     <th class="px-4 py-3">Role</th>
+                                    <th class="px-4 py-3">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
@@ -437,6 +445,20 @@
                         <span class="px-2 py-1 font-semibold leading-tight"
                               th:text="${user.role}"></span> <!-- Hiển thị role -->
                                     </td>
+                                    <td class="px-3 py-3 text-sm">
+                                        <!-- Nút chỉnh sửa -->
+                                        <a th:href="@{'/admin/user/edit/' + ${user.id}}"
+                                           class="px-2 py-1 font-semibold text-green-500 bg-black rounded hover:text-green-700 hover:bg-gray-600">
+                                            Edit
+                                        </a>
+                                        <!-- Nút xóa -->
+                                        <a th:href="@{'/admin/user/delete/' + ${user.id}}"
+                                           class="px-2 py-1 font-semibold text-white bg-black rounded hover:bg-gray-600"
+                                           onclick="return confirm('Bạn có chắc chắn muốn xóa user này không?');">
+                                            Delete
+                                        </a>
+                                    </td>
+
                                 </tr>
                                 <!--end tr user-->
                                 </tbody>
