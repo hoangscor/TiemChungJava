@@ -127,16 +127,10 @@
                     <div class="flex justify-between">
             <span>
              Tên Vaccine
-            </span>
-                        <span class="text-blue-600 font-semibold">
-                        <span class="text-blue-800">Số tiền thanh toán</span>
-                        <span class="text-blue-700 font-bold">
-                            <span id="priceAmount">0</span>
-                            <span class="text-sm">VND</span>
-<span th:text="${vaccine.name}">
-    <span class="text-sm">
-               VND
-              </span>
+            </span >
+
+<span class="text-blue-700" th:text="${vaccine.name}">
+
 </span>
             </span>
                         </span>
@@ -148,7 +142,10 @@
             </span>
                         <span class="text-blue-600 font-semibold">
 <span th:text="${vaccine.price}">
+                                <span class="text-sm">VND</span>
+
             </span>
+
                         
                         </span>
                     </div>
@@ -305,22 +302,15 @@
         let seconds = 59;
 
         countdownContainer.innerHTML = `
-                <div class="flex items-center">
-                    <span class="text-blue-700 mr-3 font-medium">Thời gian còn lại:</span>
-                    <div class="flex">
-                        <span class="bg-white px-3 py-2 rounded-lg shadow-sm text-blue-800 font-bold border border-blue-100">${String(minutes).padStart(2, '0')}</span>
-                        <span class="mx-1 text-blue-700 font-bold self-center">:</span>
-                        <span class="bg-white px-3 py-2 rounded-lg shadow-sm text-blue-800 font-bold border border-blue-100">${String(seconds).padStart(2, '0')}</span>
-                    </div>
-                </div>
-            `;
+                     <span class="text-gray-700 mr-2">Thời gian còn lại:</span>
+                     <span class="bg-gray-200 px-2 py-1 rounded-md text-gray-800">${String(minutes).padStart(2, '0')}</span>
+                     <span class="mx-1">:</span>
+                     <span class="bg-gray-200 px-2 py-1 rounded-md text-gray-800">${String(seconds).padStart(2, '0')}</span>
+                 `;
 
-        const minutesElement = countdownContainer.querySelector('.bg-white.px-3.py-2.rounded-lg.shadow-sm.text-blue-800.font-bold:nth-child(1)');
-        const secondsElement = countdownContainer.querySelector('.bg-white.px-3.py-2.rounded-lg.shadow-sm.text-blue-800.font-bold:nth-child(3)');
-
-
-
-        // Khởi động countdown timer
+        const minutesElement = countdownContainer.querySelector('.bg-gray-200.px-2.py-1.rounded-md.text-gray-800:nth-child(2)');
+        const secondsElement = countdownContainer.querySelector('.bg-gray-200.px-2.py-1.rounded-md.text-gray-800:nth-child(4)');
+// Khởi động countdown timer
         const countdownInterval = setInterval(function() {
             seconds--;
             if (seconds < 0) {
@@ -419,18 +409,41 @@
             });
         }
 
-                                            window.location.href = '/';
-                                        })
-                                        .catch(error => {
-                                            console.error('Error:', error);
-                                            alert('Có lỗi xảy ra khi hủy đặt lịch. Vui lòng thử lại.');
-                                        });
-                                }
-                            });
-                        }
-                    });
-                </script>
-            </div>
+        // Xử lý nút hủy thanh toán
+        const cancelButton = document.getElementById('cancelButton');
+        if (cancelButton) {
+            cancelButton.addEventListener('click', function() {
+                if (confirm('Bạn có chắc chắn muốn hủy thanh toán? Lịch tiêm của bạn sẽ bị hủy.')) {
+                    // Gửi yêu cầu hủy đặt lịch
+                    fetch('/datlichtiem/cancel/' + bookingId, {
+                        method: 'POST'
+                    })
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Không thể hủy đặt lịch');
+                            }
+                            return response.json();
+                        })
+                        .then(() => {
+                            alert('Đã hủy đặt lịch tiêm.');
+
+                            // Xóa dữ liệu vaccine đã lưu trong localStorage
+                            localStorage.removeItem('selectedVaccineId');
+                            localStorage.removeItem('selectedVaccineName');
+                            localStorage.removeItem('selectedVaccinePrice');
+
+                            window.location.href = '/';
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            alert('Có lỗi xảy ra khi hủy đặt lịch. Vui lòng thử lại.');
+                        });
+                }
+            });
+        }
+    });
+</script>
+    </div>
         </div>
         <div class="flex justify-between items-center mt-6">
             <div class="flex space-x-4">
