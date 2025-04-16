@@ -13,16 +13,67 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @Controller
 
 public class HomeController {
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+    // Hiển thị form tạo người dùng mới (tại /admin/user/create)
+    @GetMapping("/admin/user/create")
+    public String showCreateUserForm(Model model) {
+        model.addAttribute("user", new MyUser());
+        return "createUser"; // Đây là tên file Thymeleaf (createUser.html) sẽ tạo bên dưới
+    }
+
+    // Xử lý tạo người dùng mới
+    @PostMapping("/admin/user/create")
+    public String createUser(@ModelAttribute("user") MyUser user) {
+        // Mã hóa mật khẩu
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        // Nếu không set role thì gán mặc định là USER
+        if (user.getRole() == null || user.getRole().trim().isEmpty()) {
+            user.setRole("USER");
+        }
+        myUserRepository.save(user);
+        return "redirect:/admin"; // Quay về trang admin sau khi tạo xong
+    }
+    // Hiển thị form chỉnh sửa người dùng (tại /admin/user/edit/{id})
+    @GetMapping("/admin/user/edit/{id}")
+    public String showEditUserForm(@PathVariable("id") Long id, Model model) {
+        MyUser user = myUserRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + id));
+        model.addAttribute("user", user);
+        return "editUser"; // Sẽ render file editUser.html bên dưới
+    }
+
+    // Xử lý cập nhật người dùng
+    @PostMapping("/admin/user/edit/{id}")
+    public String updateUser(@PathVariable("id") Long id, @ModelAttribute("user") MyUser user) {
+        user.setId(id); // Đảm bảo id đúng
+        // Cập nhật mật khẩu (mã hóa lại mật khẩu mới)
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        myUserRepository.save(user);
+        return "redirect:/admin"; // Sau khi update quay về trang admin
+    }
+
+    // Xóa người dùng theo id (tại /admin/user/delete/{id})
+    @GetMapping("/admin/user/delete/{id}")
+    public String deleteUser(@PathVariable("id") Long id) {
+        myUserRepository.deleteById(id);
+        return "redirect:/admin";
+    }
+
+
+
+    //    ----------------------------------------------------------------------------------
     @Autowired
     private VaccinationBookingService bookingService;
 
