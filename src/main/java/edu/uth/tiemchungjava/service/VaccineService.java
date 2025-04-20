@@ -25,15 +25,19 @@ public class VaccineService {
         return vaccinePage.map(this::convertToDTO); // Convert to DTO
     }
 
-    public List<VaccineDTO> getAllVaccines() {
-        return repository.findAllByOrderByAgeGroupAscNameAsc()
+
+    public List<VaccineDTO> findByAgeGroup(String ageGroup) {
+        return repository.findByAgeGroup(ageGroup)
                 .stream()
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());
     }
 
-    public List<VaccineDTO> getByAgeGroup(String ageGroup) {
-        return repository.findByAgeGroup(ageGroup)
+    public List<String> getAllAgeGroups() {
+        return repository.findDistinctAgeGroups();
+    }
+    public List<VaccineDTO> getAllVaccines() {
+        return repository.findAllByOrderByAgeGroupAscNameAsc()
                 .stream()
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());
