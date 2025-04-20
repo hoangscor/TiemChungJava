@@ -9,7 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Controller
@@ -21,11 +23,34 @@ public class VaccineController {
 
     // Hiển thị danh sách tất cả vaccine
     @GetMapping
-    public String showVaccines(Model model) {
-        List<VaccineDTO> vaccines = service.getAllVaccines();
+    public String showVaccineCatalog(
+            @RequestParam(name="ageGroup", required=false) String ageGroup,
+            Model model
+    ) {
+        // Lấy danh sách nhóm tuổi
+        List<String> ageGroups = service.getAllAgeGroups();
+        model.addAttribute("ageGroups", ageGroups);
+
+        // Lấy danh sách vaccine DTO
+        List<VaccineDTO> vaccines = (ageGroup == null || ageGroup.isEmpty())
+                ? service.getAllVaccines()
+                : service.findByAgeGroup(ageGroup);
         model.addAttribute("vaccines", vaccines);
-        return "vaccine";
+        model.addAttribute("selectedAgeGroup", ageGroup==null? "": ageGroup);
+
+        // >>> TẠO BẢN ĐỒ ageGroup → file ảnh tương ứng
+        Map<String,String> imageMap = new HashMap<>();
+        imageMap.put("0-2 tháng",         "iterm-1-3.png");
+        imageMap.put("2-6 tháng",         "iterm-2-2.png");
+        imageMap.put("7-12 tháng",        "iterm-3-2.png");
+        imageMap.put("13-24 tháng",       "iterm-4-2.png");
+        imageMap.put("tiền học đường",    "iterm-7-2.png");
+        imageMap.put("vị thành niên",     "iterm-8-1.png");
+        model.addAttribute("imageMap", imageMap);
+
+        return "Vaccine";
     }
+
 
     // Hiển thị trang chủ
     @GetMapping("/index")
