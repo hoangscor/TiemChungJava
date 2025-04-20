@@ -88,16 +88,7 @@
                                             Quy trình tiêm chủng
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="/luuytruoc" class="block px-4 py-2 hover:bg-gray-100 transition-colors duration-300">
-                                            Lưu ý trước khi tiêm
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/luuysau" class="block px-4 py-2 hover:bg-gray-100 transition-colors duration-300">
-                                            Lưu ý sau khi tiêm
-                                        </a>
-                                    </li>
+
                                 </ul>
                             </li>
 
@@ -130,11 +121,26 @@
                             </li>
 
                             <!-- Dành cho USER: chỉ hiển thị text chứ không có link -->
+                            <li th:classappend="${selectedMenu eq 'lienhe' ? 'current-list-item text-blue-600 font-bold' : ''}">
+
                             <li class="header-icons" th:if="${#authorization.expression('hasRole(''USER'')')}">
                                 <a class="header-icons" href="/index" >
                                     Xin chào, <span th:text="${#authentication.name}"></span> yêu dấu
                                 </a>
+                            <ul class="sub-menu absolute left-0 mt-2 w-56 bg-white rounded shadow-lg opacity-0 invisible group-hover:visible group-hover:opacity-100 transition-all duration-300 ease-in-out">
+                                <li>
+                                    <a href="/user" class="block px-4 py-2 hover:bg-gray-100 transition-colors duration-300">
+                                        Thông tin cá nhân
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/history" class="block px-4 py-2 hover:bg-gray-100 transition-colors duration-300">
+                                        Lịch sử đặt lịch
+                                    </a>
+                                </li>
+                            </ul>
                             </li>
+                       </li>
                             <li th:if="${#authentication.name != 'anonymousUser'}">
                                 <!-- Nút "Đăng xuất" -->
                                 <a href="/logout" class="header-icons">
