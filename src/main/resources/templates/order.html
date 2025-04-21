@@ -95,7 +95,10 @@
 <body class="bg-gradient-to-br from-blue-50 to-white">
 <div class="max-w-4xl mx-auto p-6">
     <div class="flex justify-between items-center mb-6">
-        <a class="text-blue-800 hover:text-blue-600 transition-colors flex items-center group font-medium" href="#">
+        <a
+                href="javascript:history.back()"
+                class="text-blue-800 hover:text-blue-600 transition-colors flex items-center group font-medium"
+        >
             <i class="fas fa-arrow-left mr-2 group-hover:transform group-hover:-translate-x-1 transition-transform"></i>
             <span>Quay lại</span>
         </a>
@@ -628,39 +631,39 @@
         </div>
     </div>
 </div>
-        // Xử lý nút hủy thanh toán
-        const cancelButton = document.getElementById('cancelButton');
-        if (cancelButton) {
-            cancelButton.addEventListener('click', function() {
-                if (confirm('Bạn có chắc chắn muốn hủy thanh toán? Lịch tiêm của bạn sẽ bị hủy.')) {
-                    // Gửi yêu cầu hủy đặt lịch
-                    fetch('/datlichtiem/cancel/' + bookingId, {
-                        method: 'POST'
-                    })
-                        .then(response => {
-                            if (!response.ok) {
-                                throw new Error('Không thể hủy đặt lịch');
-                            }
-                            return response.json();
-                        })
-                        .then(() => {
-                            alert('Đã hủy đặt lịch tiêm.');
+<!--        // Xử lý nút hủy thanh toán-->
+<!--        const cancelButton = document.getElementById('cancelButton');-->
+<!--        if (cancelButton) {-->
+<!--            cancelButton.addEventListener('click', function() {-->
+<!--                if (confirm('Bạn có chắc chắn muốn hủy thanh toán? Lịch tiêm của bạn sẽ bị hủy.')) {-->
+<!--                    // Gửi yêu cầu hủy đặt lịch-->
+<!--                    fetch('/datlichtiem/cancel/' + bookingId, {-->
+<!--                        method: 'POST'-->
+<!--                    })-->
+<!--                        .then(response => {-->
+<!--                            if (!response.ok) {-->
+<!--                                throw new Error('Không thể hủy đặt lịch');-->
+<!--                            }-->
+<!--                            return response.json();-->
+<!--                        })-->
+<!--                        .then(() => {-->
+<!--                            alert('Đã hủy đặt lịch tiêm.');-->
 
-                            // Xóa dữ liệu vaccine đã lưu trong localStorage
-                            localStorage.removeItem('selectedVaccineId');
-                            localStorage.removeItem('selectedVaccineName');
-                            localStorage.removeItem('selectedVaccinePrice');
+<!--                            // Xóa dữ liệu vaccine đã lưu trong localStorage-->
+<!--                            localStorage.removeItem('selectedVaccineId');-->
+<!--                            localStorage.removeItem('selectedVaccineName');-->
+<!--                            localStorage.removeItem('selectedVaccinePrice');-->
 
-                            window.location.href = '/';
-                        })
-                        .catch(error => {
-                            console.error('Error:', error);
-                            alert('Có lỗi xảy ra khi hủy đặt lịch. Vui lòng thử lại.');
-                        });
-                }
-            });
-        }
-    });
+<!--                            window.location.href = '/';-->
+<!--                        })-->
+<!--                        .catch(error => {-->
+<!--                            console.error('Error:', error);-->
+<!--                            alert('Có lỗi xảy ra khi hủy đặt lịch. Vui lòng thử lại.');-->
+<!--                        });-->
+<!--                }-->
+<!--            });-->
+<!--        }-->
+<!--    });-->
 </script>
 </body>
 </html>
