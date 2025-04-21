@@ -20,12 +20,12 @@
                     <nav class="main-menu">
                         <ul>
                             <!-- Trang chủ -->
-                            <li th:classappend="${selectedMenu eq 'home' ? 'current-list-item text-blue-600 font-bold' : ''}">
+                            <li>
                                 <a href="/index">Trang chủ</a>
                             </li>
 
                             <!-- Giới thiệu -->
-                            <li th:classappend="${selectedMenu eq 'gioithieu' ? 'current-list-item text-blue-600 font-bold' : ''}" class="group relative">
+                            <li>
                                 <a href="/gioithieu" class="transition-colors duration-300 ease-in-out">
                                     Giới thiệu
                                 </a>
@@ -45,27 +45,18 @@
 
                             <!-- Vắc xin trẻ em -->
                             <li th:classappend="${selectedMenu eq 'vactxinTreEm' ? 'current-list-item text-blue-600 font-bold' : ''}" class="group relative">
-                                <a href="#" class="transition-colors duration-300 ease-in-out">
+                                <a href="vaccines" class="transition-colors duration-300 ease-in-out">
                                     Vắc xin trẻ em
                                 </a>
                                 <ul class="sub-menu absolute left-0 mt-2 w-56 bg-white rounded shadow-lg opacity-0 invisible group-hover:visible group-hover:opacity-100 transition-all duration-300 ease-in-out">
-                                    <li>
-                                        <a href="/lido" class="block px-4 py-2 hover:bg-gray-100 transition-colors duration-300">
-                                            Vì sao trẻ em cần tiêm vắc xin
-                                        </a>
-                                    </li>
                                     <li>
                                         <a href="/lichtiem" class="block px-4 py-2 hover:bg-gray-100 transition-colors duration-300">
                                             Lịch tiêm chủng cho trẻ
                                         </a>
                                     </li>
+
                                     <li>
-                                        <a href="/loaivacxin" class="block px-4 py-2 hover:bg-gray-100 transition-colors duration-300">
-                                            Các loại vắc xin
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/banggia" class="block px-4 py-2 hover:bg-gray-100 transition-colors duration-300">
+                                        <a href="/vaccines" class="block px-4 py-2 hover:bg-gray-100 transition-colors duration-300">
                                             Bảng giá tiêm chủng
                                         </a>
                                     </li>
@@ -74,7 +65,7 @@
 
                             <!-- Cẩm nang -->
                             <li th:classappend="${selectedMenu eq 'camnang' ? 'current-list-item text-blue-600 font-bold' : ''}" class="group relative">
-                                <a href="/index" class="transition-colors duration-300 ease-in-out">
+                                <a href="/vaccines" class="transition-colors duration-300 ease-in-out">
                                     Cẩm nang
                                 </a>
                                 <ul class="sub-menu absolute left-0 mt-2 w-56 bg-white rounded shadow-lg opacity-0 invisible group-hover:visible group-hover:opacity-100 transition-all duration-300 ease-in-out">
@@ -100,12 +91,7 @@
                                 </a>
                             </li>
 
-                            <!-- F&Q -->
-                            <li th:classappend="${selectedMenu eq 'faq' ? 'current-list-item text-blue-600 font-bold' : ''}">
-                                <a href="/index" class="transition-colors duration-300 ease-in-out">
-                                    F&Q
-                                </a>
-                            </li>
+
 
                             <li>
                                 <div class="header-icons">
