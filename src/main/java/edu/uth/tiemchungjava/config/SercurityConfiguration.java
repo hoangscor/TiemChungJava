@@ -32,9 +32,10 @@ public class SercurityConfiguration {
                 .authorizeHttpRequests(registry->{
                     registry.requestMatchers("/index", "/doingu", "/gioithieu", "/lichtiem", "/lydatlichtiem", "/quytrinh", "/Vaccine"
                             ,"/register/**", "/img/**", "/assets/**", "/bootstrap/**"
-                            , "/css/**", "/js/**", "/pages/**", "/webfonts/**" , "/admin/**", "/categoryAdmin" , "/", "/datlichtiem", "/vaccines", "/chatbox").permitAll(); // tam thoi su dung admin
+                            , "/css/**", "/js/**", "/pages/**", "/webfonts/**" , "/admin/**", "/categoryAdmin" , "/"
+                            , "/vaccines", "/chatbox", "datlichtiem").permitAll();
                     registry.requestMatchers("/admin/** " , "admin" , "donhang" , "lichsu").hasRole("ADMIN");
-                    registry.requestMatchers("/user/**").hasRole("USER");
+                    registry.requestMatchers("/datlichtiem" ).hasRole("USER");
                     registry.anyRequest().authenticated();
                 })
                 .formLogin(httpSecurityFormLoginConfigurer -> {
