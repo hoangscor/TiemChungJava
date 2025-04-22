@@ -25,7 +25,7 @@
 
     h1 {
       text-align: center;
-      color: #00796b; /* Màu chữ tiêu đề */
+      color: #1486d6; /* Màu chữ tiêu đề */
     }
 
     table {
@@ -35,13 +35,13 @@
     }
 
     th, td {
-      border: 1px solid #00796b; /* Đường viền màu xanh */
+      border: 1px solid #1486d6; /* Đường viền màu xanh */
       padding: 10px;
       text-align: left;
     }
 
     th {
-      background-color: #b2dfdb; /* Nền màu xanh nhạt cho tiêu đề */
+      background-color: #62ccef; /* Nền màu xanh nhạt cho tiêu đề */
     }
 
     tr:nth-child(even) {
@@ -54,6 +54,7 @@
   </style>
 </head>
 <body>
+
 <div class="container mx-auto mt-8">
   <h1 class="text-2xl font-bold mb-4">Lịch sử thanh toán</h1>
   <table class="min-w-full border border-gray-200">
@@ -62,6 +63,7 @@
       <th class="border p-2">Mã đơn hàng</th>
       <th class="border p-2">Họ tên</th>
       <th class="border p-2">Vaccine</th>
+      <th class="border p-2">Ngày đặt lịch</th>  <!-- Cột mới -->
       <th class="border p-2">Số tiền thanh toán</th>
       <th class="border p-2">Trạng thái</th>
     </tr>
@@ -72,20 +74,30 @@
       <td class="border p-2" th:text="${payment.id}">1</td>
       <!-- Họ tên đặt lịch (lấy từ đối tượng booking) -->
       <td class="border p-2" th:text="${payment.booking.fullName}">Nguyễn Văn A</td>
-      <!-- Tên Vaccine (lấy từ booking nếu có vaccine hoặc từ booking.vaccine) -->
-      <td class="border p-2" th:text="${payment.booking.vaccine != null ? payment.booking.vaccine.name : 'N/A'}">Tên Vaccine</td>
+
+      <!-- Tên Vaccine -->
+      <td class="border p-2"
+          th:text="${payment.booking.vaccine != null ? payment.booking.vaccine.name : 'N/A'}">
+      </td>
+
+      <!-- Ngày đặt lịch -->
+      <td th:text="${payment.booking.bookingDate}">NULL</td>
       <!-- Số tiền -->
       <td class="border p-2" th:text="${payment.amount}">1000000</td>
       <!-- Trạng thái thanh toán -->
       <td class="border p-2" th:text="${payment.status}">COMPLETED</td>
+
+    </tr>
+
     </tbody>
   </table>
 </div>
-</body>
-</html>
-</title>
-</head>
-<body>
+
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
+</script>
+
+
 
 </body>
 </html>
