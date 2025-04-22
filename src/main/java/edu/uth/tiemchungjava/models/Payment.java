@@ -11,7 +11,7 @@ public class Payment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "booking_id", nullable = false)
     private VaccinationBooking booking;
 
@@ -22,6 +22,8 @@ public class Payment {
     @ManyToOne
     @JoinColumn(name = "vaccine_id")
     private Vaccine vaccine;
+
+
 
     public Vaccine getVaccine() {
         return vaccine;

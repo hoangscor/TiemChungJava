@@ -117,6 +117,7 @@ public class HomeController {
         return "doingu";
     }
 
+
 //    @GetMapping("/lichtiem")
 //    public String lichTiem() {
 //        return "lichtiem";
@@ -153,9 +154,11 @@ public class HomeController {
     @GetMapping("/index")
     public String index(Model model) {
         List<Vaccine> vaccineList = vaccineRepository.findAll();
-
         model.addAttribute("vaccines", vaccineList);
         model.addAttribute("selectedMenu", "home");
+
+        List<VaccinationBooking> reminders = bookingService.getUpcomingBookingsWithin7Days();
+        model.addAttribute("reminders", reminders);
         return "index";
     }
     @Autowired

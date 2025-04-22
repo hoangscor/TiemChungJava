@@ -25,7 +25,9 @@ public class PaymentService {
         return paymentRepository.save(payment);
     }
 
-
+    public List<Payment> getAllPayments() {
+        return paymentRepository.findAll();
+    }
     public boolean validateCardInfo(String cardNumber, String cardName, String expiryDate) {
         // Kiểm tra thông tin thẻ trong danh sách thẻ hợp lệ
         return VALID_CARDS.stream().anyMatch(card ->

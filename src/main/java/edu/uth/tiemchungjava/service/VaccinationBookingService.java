@@ -8,6 +8,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,6 +22,11 @@ public class VaccinationBookingService {
     public Page<VaccinationBooking> getPaginatedBookings(int pageNo, int pageSize) {
         Pageable pageable = PageRequest.of(pageNo - 1, pageSize); // Vì index trang bắt đầu từ 0
         return bookingRepository.findAll(pageable);
+    }
+    public List<VaccinationBooking> getUpcomingBookingsWithin7Days() {
+        LocalDate today = LocalDate.now();
+        LocalDate next7Days = today.plusDays(7);
+        return bookingRepository.findByBookingDateBetween(today, next7Days);
     }
 
     // Hàm lấy danh sách đơn hàng (lịch sử đặt lịch)

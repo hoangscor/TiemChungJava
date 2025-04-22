@@ -30,7 +30,11 @@ public class VaccinationBookingController {
     @ResponseBody
     public ResponseEntity<?> createBooking(@RequestBody VaccinationBooking booking) {
         try {
-            // Lưu thông tin đặt lịch tiêm vào cơ sở dữ liệu
+            Long vacId = Long.parseLong(booking.getVaccineType());
+            Vaccine vacc = vaccineRepository.findById(vacId)
+                    .orElseThrow(() -> new RuntimeException("Vaccine không tồn tại"));
+            booking.setVaccine(vacc);
+
             VaccinationBooking savedBooking = bookingService.createBooking(booking);
 
             Map<String, Object> response = new HashMap<>();
@@ -82,4 +86,5 @@ public class VaccinationBookingController {
 
         return "giaodiendatlichtiem.html";
     }
+
 }
