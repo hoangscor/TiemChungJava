@@ -95,10 +95,6 @@ public class HomeController {
     }
 
 
-//    @GetMapping("/gioithieu")
-//    public String gioiThieu() {
-//        return "gioithieu";
-//    }
 
     @GetMapping("/gioithieu")
     public String gioiThieu(Model model) {
@@ -106,10 +102,6 @@ public class HomeController {
         return "gioithieu";
     }
 
-//    @GetMapping("/doingu")
-//    public String doiNgu() {
-//        return "doingu";
-//    }
 
     @GetMapping("/doingu")
     public String doiNgu(Model model) {
@@ -117,11 +109,6 @@ public class HomeController {
         return "doingu";
     }
 
-
-//    @GetMapping("/lichtiem")
-//    public String lichTiem() {
-//        return "lichtiem";
-//    }
 
     @GetMapping("/lichtiem")
     public String lichTiem(Model model) {
@@ -147,6 +134,9 @@ public class HomeController {
 
     @GetMapping("/giaodiendatlichtiem")//goi den html
     public String giaodiendatlichtiem() {return "giaodiendatlichtiem";}
+
+    @GetMapping("/chatbox")//goi den html
+    public String chatBox() {return "chatbox";}
 
 
     @Autowired
