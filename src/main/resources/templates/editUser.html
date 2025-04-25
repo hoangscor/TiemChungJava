@@ -5,30 +5,125 @@
     <title>Sửa Người Dùng</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/assets/css/tailwind.output.css" />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 2rem;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #6A0DAD; /* Màu tím cho tiêu đề */
+        }
+
+        .btn-submit {
+            background-color: #6A0DAD; /* Màu tím cho nút */
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background-color: #9B4DCA; /* Tím nhạt hơn khi hover */
+        }
+
+        .form-input:focus, .form-select:focus {
+            border-color: #6A0DAD; /* Màu tím khi focus */
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(106, 13, 173, 0.2);
+        }
+
+        .form-input, .form-select {
+            padding: 10px 12px;
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            color: #333;
+            margin-top: 8px;
+        }
+
+        .form-input::placeholder {
+            color: #aaa;
+        }
+
+        a {
+            text-decoration: none;
+            color: #6A0DAD; /* Màu tím cho liên kết */
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #9B4DCA; /* Màu tím nhạt hơn khi hover */
+        }
+
+        .form-container {
+            margin-top: 2rem;
+        }
+    </style>
 </head>
 <body class="bg-gray-50">
-<div class="container mx-auto p-4">
+<div class="container">
     <h1 class="text-2xl font-semibold">Sửa Người Dùng</h1>
-    <form th:action="@{'/admin/user/edit/' + ${user.id}}" th:object="${user}" method="post" class="mt-4">
+    <form th:action="@{'/admin/user/edit/' + ${user.id}}" th:object="${user}" method="post" class="mt-4 form-container">
         <div class="mb-4">
             <label class="block mb-1">Username:</label>
-            <input type="text" th:field="*{username}" class="w-full px-3 py-2 border rounded" required />
+            <input type="text" th:field="*{username}" class="form-input" required />
         </div>
         <div class="mb-4">
             <label class="block mb-1">Password:</label>
-            <input type="password" th:field="*{password}" class="w-full px-3 py-2 border rounded" required />
+            <input type="password" th:field="*{password}" class="form-input" required />
         </div>
         <div class="mb-4">
             <label class="block mb-1">Role:</label>
-            <!-- Dropdown để chọn role -->
-            <select th:field="*{role}" class="w-full px-3 py-2 border rounded">
+            <select th:field="*{role}" class="form-select">
                 <option value="ADMIN" th:selected="${user.role == 'ADMIN'}">ADMIN</option>
                 <option value="USER" th:selected="${user.role == 'USER'}">USER</option>
             </select>
         </div>
-        <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700">Lưu</button>
+        <button type="submit" class="btn-submit px-4 py-2 text-white rounded hover:bg-purple-700 focus:outline-none">Lưu</button>
     </form>
-    <a href="/admin" class="mt-4 inline-block text-blue-500">Quay lại Dashboard</a>
+    <a href="/admin" class="mt-4 inline-block text-purple-600">Quay lại Dashboard</a>
 </div>
+
+<script>
+    // JavaScript to enhance form behavior
+    const formInputs = document.querySelectorAll('.form-input');
+    const formSelects = document.querySelectorAll('.form-select');
+
+    formInputs.forEach(input => {
+        input.addEventListener('focus', function() {
+            this.style.borderColor = '#6A0DAD'; // Màu tím khi focus
+        });
+
+        input.addEventListener('blur', function() {
+            this.style.borderColor = '#ddd'; // Màu mặc định khi blur
+        });
+    });
+
+    formSelects.forEach(select => {
+        select.addEventListener('focus', function() {
+            this.style.borderColor = '#6A0DAD'; // Màu tím khi focus
+        });
+
+        select.addEventListener('blur', function() {
+            this.style.borderColor = '#ddd'; // Màu mặc định khi blur
+        });
+    });
+
+    // Optional: Show alert on successful form submission
+    document.querySelector('form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        alert("Thông tin người dùng đã được cập nhật thành công!");
+        // You can submit the form programmatically here if needed.
+        this.submit(); // Uncomment to actually submit the form after the alert
+    });
+</script>
 </body>
 </html>
